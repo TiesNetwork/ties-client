@@ -1,8 +1,3 @@
-import './index.css'
+import Example from './example'
 
-import React from 'react'
-import {render} from 'react-dom'
-
-import App from './App'
-
-render(<App/>, document.querySelector('#app'))
+ReactDOM.render(<Example />, document.getElementById('app'))
