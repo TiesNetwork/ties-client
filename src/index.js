@@ -1,3 +1,3 @@
-import Example from './example'
+import App from './app'
 
-ReactDOM.render(<Example />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))
