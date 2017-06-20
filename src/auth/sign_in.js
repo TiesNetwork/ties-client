@@ -1,5 +1,6 @@
 import { Component } from 'react'
 
+import Button from '../common/button'
 import Form, { Input } from '../common/form'
 import Link from '../common/link'
 
@@ -29,6 +30,10 @@ export default class SignIn extends Component {
               <Link to="/signup">
                 Создать новый ETH-кошелёк
               </Link>
+
+              <Button>
+                Восстановить кошелёк
+              </Button>
             </div>
           </Form>
         </div>
