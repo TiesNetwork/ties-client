@@ -1,0 +1,14 @@
+:local .Search {
+  &Form {
+    display: flex;
+    padding: 16px
+  }
+
+  &Results {
+    margin-top: 24px;
+
+    &Header {
+      padding: 0 16px;
+    }
+  }
+}

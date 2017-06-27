@@ -7,10 +7,18 @@ module.exports = nwb => ({
     extra: {
       plugins: [
         new nwb.webpack.ProvidePlugin({
+          classNames: 'classnames',
+          PropTypes: 'prop-types',
           React: 'react',
           ReactDOM: 'react-dom'
         })
       ]
+    },
+    rules: {
+      'sass-css': {
+        localIdentName: '[local]',
+        modules: true
+      }
     }
   }
 })

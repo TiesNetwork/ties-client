@@ -1,12 +1,4 @@
-import { Component, PropTypes } from 'react'
-
-export default class Input extends Component {
-  static propTypes = {
-    id: PropTypes.string,
-    label: PropTypes.string,
-    name: PropTypes.string.isRequired
-  }
-
+class Input extends React.Component {
   render() {
     return (
       <div className="input">
@@ -26,3 +18,12 @@ export default class Input extends Component {
     )
   }
 }
+
+Input.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string
+}
+
+export default Input

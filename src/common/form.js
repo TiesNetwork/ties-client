@@ -1,14 +1,9 @@
 import classNames from 'classnames'
-import { Component, PropTypes } from 'react'
 import { uniqueId } from 'lodash'
 
-import InputField from './form/input'
+import InputComponent from './form/input'
 
-class Field extends Component {
-  static propTypes = {
-    className: PropTypes.string
-  }
-
+class Field extends React.Component {
   state = { id: uniqueId('field_') }
 
   render() {
@@ -20,10 +15,10 @@ class Field extends Component {
   }
 }
 
-export default class Form extends Component {
+export default class Form extends React.Component {
   render() {
     return (
-      <form>
+      <form className={classNames(this.props.className, 'Form')}>
         {this.props.children}
       </form>
     )
@@ -32,6 +27,6 @@ export default class Form extends Component {
 
 export const Input = props => (
   <Field className="form__field_input">
-    <InputField {...props} />
+    <InputComponent {...props} />
   </Field>
 )
