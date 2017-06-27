@@ -1,7 +1,7 @@
 import Avatar from './common/avatar'
 import Button from './common/button'
 
-import UserExperience from './user/experiences/experience'
+import UserExperiencesItem from './user/experiences/item'
 
 import Style from './user.scss'
 
@@ -43,8 +43,8 @@ class User extends React.Component {
           </div>
 
           <div className="UserExperiencesContainer">
-            <UserExperience date="02.2016 - настоящее время" title="Super cool project #1" />
-            <UserExperience date="03.2014 - 01.2016" title="Super cool project #2" />
+            <UserExperiencesItem date="02.2016 - настоящее время" title="Super cool project #1" />
+            <UserExperiencesItem date="03.2014 - 01.2016" title="Super cool project #2" />
           </div>
 
           <div className="UserExperiencesActions">

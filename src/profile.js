@@ -2,23 +2,25 @@ import Avatar from './common/avatar'
 import Button from './common/button'
 import Form, { Input } from './common/form'
 
+import Style from './profile.scss'
+
 class Profile extends React.Component {
   render() {
     return (
-      <div className="Profile">
-        <div className="ProfileInvite">
+      <div className={Style.Profile}>
+        <div className={Style.ProfileInvite}>
           <Form>
-            <Input name="mail" placeholder="E-mail"/>
+            <Input name="mail" placeholder="E-mail" />
             <Button>
               Отправить инвайт
             </Button>
           </Form>
         </div>
 
-        <div className="ProfileHeader">
-          <Avatar className="ProfileHeaderAvatar"/>
+        <div className={Style.ProfileHeader}>
+          <Avatar className={Style.ProfileHeaderAvatar} />
 
-          <div className="ProfileHeaderInfo">
+          <div className={Style.ProfileHeaderInfo}>
             <div className="ProfileHeaderInfoFullName">
               John Doe
             </div>
@@ -29,7 +31,7 @@ class Profile extends React.Component {
           </div>
         </div>
 
-        <div className="ProfileBalance">
+        <div className={Style.ProfileBalance}>
           <div className="ProfileBalanceHeader">
             Balance:
           </div>
