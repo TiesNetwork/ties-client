@@ -1,0 +1,27 @@
+:local .User {
+
+}
+
+:local .UserExperiences {
+  margin-top: 24px;
+}
+
+:local .UserHeader {
+  display: flex;
+}
+
+:local .UserHeaderAction {
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
+}
+
+:local .UserHeaderActions {
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+}
+
+:local .UserHeaderInfo {
+  padding: 0 16px;
+}
