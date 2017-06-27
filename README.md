@@ -1,3 +1,6 @@
 # Ties
 
-Describe Ties here.
+```
+npm i
+npm start
+```
