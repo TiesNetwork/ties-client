@@ -9,6 +9,8 @@ class User extends React.Component {
   render() {
     return (
       <div className={Styles.User}>
+        <h3>User</h3>
+
         <div className={Styles.UserHeader}>
           <Avatar />
 

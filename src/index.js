@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import Invoices from './scenes/invoices'
 import Profile from './scenes/profile'
 import Search from './scenes/search'
+import Sign from './scenes/sign'
 import User from './scenes/user'
 
 class App extends React.Component {
@@ -14,6 +15,9 @@ class App extends React.Component {
             <Link to="/invoices">Invoices</Link>&nbsp;|&nbsp;
             <Link to="/profile">Profile</Link>&nbsp;|&nbsp;
             <Link to="/search">Search</Link>&nbsp;|&nbsp;
+            <Link to="/sign/in">Sign In</Link>&nbsp;|&nbsp;
+            <Link to="/sign/up">Sign Up</Link>&nbsp;|&nbsp;
+            <Link to="/sign/up/recovery">Sign Up Recovery</Link>&nbsp;|&nbsp;
             <Link to="/user">User</Link>
           </div>
 
@@ -21,6 +25,7 @@ class App extends React.Component {
             <Route component={Invoices} path="/invoices" />
             <Route component={Profile} path="/profile" />
             <Route component={Search} path="/search" />
+            <Route component={Sign} path="/sign" />
             <Route component={User} path="/user" />
           </div>
         </div>

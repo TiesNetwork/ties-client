@@ -8,7 +8,7 @@ class InvoicesNew extends React.Component {
   render() {
     return (
       <div className={Styles.InvoicesNew}>
-        <h1>Create new invoice:</h1>
+        <h3>Create new invoice:</h3>
 
         <Form className="InvoicesNewForm">
           <Input

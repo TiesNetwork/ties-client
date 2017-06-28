@@ -9,6 +9,8 @@ class Search extends React.Component {
   render() {
     return (
       <div className={Styles.Search}>
+        <h3>Search</h3>
+
         <Form className={Styles.SearchForm}>
           <Input
             name="search"

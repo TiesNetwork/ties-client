@@ -9,10 +9,10 @@ import InvoicesNew from './scenes/new'
 
 class Invoices extends React.Component {
   render() {
-
-    console.log(this)
     return (
       <div className="Invoices">
+        <h3>Invoices</h3>
+
         <Route component={InvoicesNew} path="/invoices/new" />
 
         {this.props.match.isExact && (
