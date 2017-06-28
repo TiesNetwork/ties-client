@@ -1,0 +1,19 @@
+:local .UserExperienceItem {
+  padding: 16px;
+
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+}
+
+:local .UserExperienceItemDescription {
+  margin-top: 16px;
+}
+
+:local .UserExperienceItemHeader {
+  display: flex;
+}
+
+:local .UserExperienceItemTitle {
+  flex: 0 0 200px;
+}

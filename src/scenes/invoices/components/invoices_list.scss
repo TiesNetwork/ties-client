@@ -1,0 +1,16 @@
+:local .InvoicesList {
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+}
+
+:local .InvoicesListHeader {
+  align-items: center;
+  display: flex;
+  height: 56px;
+  padding: 0 16px;
+}
+
+:local .InvoicesListTitle {
+  font-weight: bold;
+}

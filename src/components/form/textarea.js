@@ -1,29 +1,29 @@
-class Input extends React.Component {
+import Styles from './textarea.scss'
+
+class Textarea extends React.Component {
   render() {
     return (
-      <div className="input">
+      <div className={Styles.Textarea}>
         {this.props.label && (
           <label
-            className="input__label"
+            className={Styles.TextareaLabel}
             htmlFor={this.props.id}
           >
             {this.props.label}
           </label>
         )}
 
-        <input {...this.props}
-          className="input__control"
-        />
+        <textarea {...this.props} />
       </div>
     )
   }
 }
 
-Input.propTypes = {
+Textarea.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string
 }
 
-export default Input
+export default Textarea

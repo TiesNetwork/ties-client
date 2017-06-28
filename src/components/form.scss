@@ -1,0 +1,13 @@
+:local .Form {
+  padding: 24px;
+}
+
+:local .FormActions {
+  margin-top: 32px;
+}
+
+:local .FormField {
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+}

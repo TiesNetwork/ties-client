@@ -1,0 +1,28 @@
+:local .Profile {
+  display: flex;
+}
+
+:local .ProfileBalance {
+  border-left: 1px solid #CCC;
+  margin-left: 24px;
+  padding-left: 24px;
+}
+
+:local .ProfileHeader {
+  display: flex;
+}
+
+:local .ProfileHeaderAction {
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
+}
+
+:local .ProfileHeaderActions {
+  display: flex;
+  flex-direction: column;
+}
+
+:local .ProfileHeaderInfo {
+  padding: 0 16px;
+}
