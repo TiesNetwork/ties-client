@@ -11,7 +11,7 @@ class SignUp extends React.Component {
       <div className="SignUp">
         {this.props.match.isExact && (
           <div>
-            <h3>Create new account</h3>
+            <h3>Create new ETH-wallet</h3>
 
             <div>
               Your ETH-wallet is your Ties.Network account.<br/>
