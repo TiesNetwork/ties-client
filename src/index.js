@@ -1,40 +1,13 @@
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
 
-import Invoices from './scenes/invoices'
-import Profile from './scenes/profile'
-import Search from './scenes/search'
-import Sign from './scenes/sign'
-import Transfer from './scenes/transfer'
-import User from './scenes/user'
+import Scenes from './scenes'
+import reducer from './reducer'
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <div style={{ background: '#EFEFEF', padding: '16px'}}>
-            <Link to="/invoices">Invoices</Link>&nbsp;|&nbsp;
-            <Link to="/profile">Profile</Link>&nbsp;|&nbsp;
-            <Link to="/search">Search</Link>&nbsp;|&nbsp;
-            <Link to="/sign/in">Sign In</Link>&nbsp;|&nbsp;
-            <Link to="/sign/up">Sign Up</Link>&nbsp;|&nbsp;
-            <Link to="/sign/up/recovery">Sign Up Recovery</Link>&nbsp;|&nbsp;
-            <Link to="/transfer">Transfer</Link>&nbsp;|&nbsp;
-            <Link to="/user">User</Link>
-          </div>
-
-          <div style={{ marginTop: '24px' }}>
-            <Route component={Invoices} path="/invoices" />
-            <Route component={Profile} path="/profile" />
-            <Route component={Search} path="/search" />
-            <Route component={Sign} path="/sign" />
-            <Route component={Transfer} path="/transfer" />
-            <Route component={User} path="/user" />
-          </div>
-        </div>
-      </Router>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+  <Provider store={createStore(reducer, applyMiddleware(thunk))}>
+    <Scenes />
+  </Provider>,
+  document.getElementById('app')
+)

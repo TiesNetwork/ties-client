@@ -6,12 +6,15 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1"
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-form": "^6.8.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "electron": "^1.6.11",
     "nwb": "0.16.x",
-    "nwb-sass": "^0.8.1",
     "nwb-stylus": "^0.7.0"
   },
   "description": "Ties.Network client",
