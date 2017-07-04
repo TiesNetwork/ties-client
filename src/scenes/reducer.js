@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import loginReducer from './Login/reducer'
+import walletReducer from './Wallet/reducer'
 
 export default combineReducers({
-  login: loginReducer
+  wallet: walletReducer
 })
