@@ -48,7 +48,7 @@ export default {
   },
 
   output: {
-    filename: 'bundle.js',
+    filename: 'dist/bundle.js',
     path: path.join(__dirname, 'src'),
     publicPath: `http://localhost:${PORT}/dist`,
     libraryTarget: 'commonjs2'
