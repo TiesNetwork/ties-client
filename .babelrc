@@ -1,0 +1,24 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-class-properties",
+        "transform-es2015-classes",
+        "react-hot-loader/babel",
+        ["flow-runtime", {
+          "annotate": true,
+          "assert": true
+        }]
+      ]
+    }
+  },
+  "plugins": [ "add-module-exports", "dynamic-import-webpack" ],
+  "presets": [
+    ["env", {
+      "targets": { "node": 8 },
+      "useBuiltIns": true
+    }],
+    "stage-0",
+    "react"
+  ]
+}
