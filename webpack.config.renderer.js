@@ -48,10 +48,9 @@ export default {
   },
 
   output: {
-    filename: 'dist/bundle.js',
+    filename: 'bundle.js',
     path: path.join(__dirname, 'src'),
-    publicPath: `http://localhost:${PORT}/dist`,
-    libraryTarget: 'commonjs2'
+    publicPath: `http://localhost:${PORT}/dist`
   },
 
   plugins: [
