@@ -1,8 +1,18 @@
-export default (state = {
+import { combineReducers } from 'redux'
 
-}, action) => {
+import createReducer from './scenes/Create/reducer'
+
+const scenesReducer = combineReducers({
+  create: createReducer
+})
+
+export default (state, action) => {
+  console.log(state, action)
   switch (action.type) {
     default:
-      return state
+      return {
+        ...state,
+        scenes: scenesReducer(state && state.scenes, action)
+      }
   }
 }

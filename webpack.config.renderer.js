@@ -29,6 +29,9 @@ export default {
   devtool: 'inline-source-map',
 
   entry: [
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://localhost:${PORT}/`,
+    'webpack/hot/only-dev-server',
     path.join(__dirname, 'src/index.js')
   ],
 
@@ -61,6 +64,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.ProvidePlugin({
+      PropTypes: 'prop-types',
       React: 'react',
       ReactDOM: 'react-dom'
     })
