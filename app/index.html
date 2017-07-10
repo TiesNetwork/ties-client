@@ -6,22 +6,54 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="status">Connecting to the database</div>
+    <div id="app" style="display: none;"></div>
 
     <script>
       {
-        const scripts = []
+        const Client = require('@ties-network/ties-client-base')
 
-        scripts.push(
-          process.env.HOT
-            ? 'http://localhost:' + (process.env.PORT || 8080) + '/dist/bundle.js'
-            : './dist/bundle.js'
-        )
+        Client.setConfig({
+          connection: {
+            login: 'reader',
+            password: 'reader',
+            keyspace: 'ties',
+            address: 'hosting.krawlly.com',
+            port: 9042
+          },
+          tiesdb: {
+            host: 'http://mock.db.ties.network/db/',
+          },
+          blockchain: {
+            host: 'https://kovan.infura.io/biP9YQcNXTag7nvAELQJ',
+//          host: 'http://192.168.1.44:8545'
+          },
+        })
 
-        document.write(scripts.map(script =>
-          '<script defer src="' + script + '"><\/script>'
-        ).join(''))
+        Client.connect()
+          .then(() => {
+            const $app = document.getElementById('app')
+                , $status = document.getElementById('status')
+
+            $status.parentNode.removeChild($status)
+            $app.style.display = 'block'
+
+          }).catch(error => {
+            alert(error)
+          });
       }
+
+      const scripts = []
+
+      scripts.push(
+        process.env.HOT
+          ? 'http://localhost:' + (process.env.PORT || 8080) + '/dist/bundle.js'
+          : './dist/bundle.js'
+      )
+      console.log(scripts)
+      document.write(scripts.map(script =>
+        '<script defer src="' + script + '"><\/script>'
+      ).join(''))
     </script>
   </body>
 </html>

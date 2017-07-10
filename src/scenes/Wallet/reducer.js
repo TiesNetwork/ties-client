@@ -7,7 +7,6 @@ const scenesReducer = combineReducers({
 })
 
 export default (state, action) => {
-  console.log(state, action)
   switch (action.type) {
     default:
       return {
