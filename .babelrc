@@ -4,11 +4,7 @@
       "plugins": [
         "transform-class-properties",
         "transform-es2015-classes",
-        "react-hot-loader/babel",
-        ["flow-runtime", {
-          "annotate": true,
-          "assert": true
-        }]
+        "react-hot-loader/babel"
       ]
     }
   },

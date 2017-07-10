@@ -7,7 +7,7 @@ const installExtensions = async () => {
 
   return Promise
     .all(extensions.map(extension => installer.default(installer[extension], forceDownload)))
-    .catch(console.log())
+    .catch(console.log)
 }
 
 let mainWindow = null
@@ -23,6 +23,7 @@ app.on('ready', async () => {
   })
 
   mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow.webContents.openDevTools()
 
   mainWindow.on('close', () => {
     mainWindow = null
