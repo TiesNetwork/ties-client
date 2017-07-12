@@ -1,29 +1,15 @@
-import { AppContainer } from 'react-hot-loader'
-import { Provider } from 'react-redux'
-import { applyMiddleware, createStore } from 'redux'
-import thunk from 'redux-thunk'
+import createHistory from 'history/createHashHistory'
 
-import Scenes from './scenes'
+import { routerMiddleware } from 'react-router-redux'
+import { applyMiddleware, createStore } from 'redux'
+import loggerMiddleware from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
+
+import App from './App'
 import reducer from './reducer'
 
-ReactDOM.render(
-  <AppContainer>
-    <Provider store={createStore(reducer, applyMiddleware(thunk))}>
-      <Scenes />
-    </Provider>
-  </AppContainer>,
-  document.getElementById('app')
-)
+const history = createHistory()
+    , store = createStore(reducer, applyMiddleware(
+        thunkMiddleware, loggerMiddleware, routerMiddleware(history)))
 
-module.hot && module.hot.accept('./scenes', () => {
-  const NextScene = require('./scenes')
-
-  ReactDOM.render(
-    <AppContainer>
-      <Provider store={createStore(reducer, applyMiddleware(thunk))}>
-        <NextScene />
-      </Provider>
-    </AppContainer>,
-    document.getElementById('app')
-  )
-})
+ReactDOM.render(<App history={history} store={store} />, document.getElementById('app'))

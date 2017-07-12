@@ -2,12 +2,14 @@
   "author": "Ivan Vyatkin <vanya095@gmail.com>",
   "dependencies": {
     "@ties-network/ties-client-base": "^1.0.3",
+    "history": "^4.6.3",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.1",
     "redux-form": "^6.8.0",
     "redux-thunk": "^2.2.0"
@@ -27,6 +29,7 @@
     "electron": "^1.6.11",
     "electron-devtools-installer": "^2.2.0",
     "react-hot-loader": "3.0.0-beta.6",
+    "redux-logger": "^3.0.6",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
