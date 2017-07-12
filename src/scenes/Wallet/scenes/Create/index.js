@@ -1,7 +1,4 @@
 import { connect } from 'react-redux'
-
-import { create } from './actions'
-
 import WalletCreateForm from './components/Form'
 
 class WalletCreate extends React.Component {
@@ -26,6 +23,6 @@ WalletCreate.propTypes = {
 export default connect(
   state => ({ ...state.scenes.wallet.scenes.create }),
   dispatch => ({
-    handleSubmit: values => dispatch(create(values))
+    handleSubmit: null
   })
 )(WalletCreate)
