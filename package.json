@@ -1,7 +1,7 @@
 {
   "author": "Ivan Vyatkin <vanya095@gmail.com>",
   "dependencies": {
-    "@ties-network/ties-client-base": "^1.0.3",
+    "@ties-network/ties-client-base": "^1.1.1",
     "history": "^4.6.3",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",

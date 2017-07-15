@@ -1,25 +1,23 @@
 import { Field, reduxForm } from 'redux-form'
 
-class WalletSecurityForm extends React.Component {
+class ProfileEditForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
         <Field
           component="input"
-          name="password"
-          placeholder="Password"
-          type="password"
+          name="name"
+          placeholder="Name"
         />
 
         <Field
           component="input"
-          name="password_confirm"
-          placeholder="Confirm password"
-          type="password"
+          name="surnname"
+          placeholder="Surname"
         />
 
         <button>
-          Save password
+          Save
         </button>
       </form>
     )
@@ -27,5 +25,5 @@ class WalletSecurityForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'WalletSecurityForm'
-})(WalletSecurityForm)
+  form: 'ProfileEditForm'
+})(ProfileEditForm)

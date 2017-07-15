@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux'
 
-import createReducer from './scenes/Create/reducer'
-import recoveryReducer from './scenes/Recovery/reducer'
+import editReducer from './scenes/Edit/reducer'
 
 const scenesReducer = combineReducers({
-  create: createReducer,
-  recovery: recoveryReducer
+  edit: editReducer
 })
 
 export default (state, action) => {
