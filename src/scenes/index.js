@@ -9,6 +9,12 @@ class Scenes extends React.Component {
     return (
       <div>
         <div>
+          Wallet phrase: remnant punisher sarcasm chapped epidemic deviation oxidize glaring pantry paltry raving hesitancy
+        </div>
+
+        <hr />
+
+        <div>
           <Link to="/Login">Login</Link>&nbsp;|&nbsp;
           <Link to="/Profile">Profile</Link>&nbsp;|&nbsp;
           <Link to="/wallet">Wallet</Link>

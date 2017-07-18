@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import LoginForm from './components/Form'
 
@@ -16,6 +17,9 @@ class Login extends React.Component {
         </h3>
 
         <LoginForm onSubmit={this.props.handleSubmit} />
+
+        <Link to="/wallet/create">Create new wallet</Link>&nbsp;|&nbsp;
+        <Link to="/wallet/recovery">Recover wallet</Link>
       </div>
     )
   }

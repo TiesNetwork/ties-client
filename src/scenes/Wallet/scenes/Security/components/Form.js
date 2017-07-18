@@ -1,20 +1,33 @@
 import { Field, reduxForm } from 'redux-form'
 
 class WalletSecurityForm extends React.Component {
+  static propTypes = {
+    hasPassword: PropTypes.bool
+  }
+
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
+        {this.props.hasPassword && (
+          <Field
+            component="input"
+            name="oldPassword"
+            placeholder="Old password"
+            type="password"
+          />
+        )}
+
         <Field
           component="input"
-          name="password"
-          placeholder="Password"
+          name="newPassword"
+          placeholder="New password"
           type="password"
         />
 
         <Field
           component="input"
-          name="password_confirm"
-          placeholder="Confirm password"
+          name="newPasswordConfirm"
+          placeholder="New password confirm"
           type="password"
         />
 
