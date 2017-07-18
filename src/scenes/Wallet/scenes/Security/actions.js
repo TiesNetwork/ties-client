@@ -1,3 +1,5 @@
+import { setToken } from '../../../../redux/access'
+
 export const WALLET_SET_PASSWORD_FAILURE = 'WALLET/SET_PASSWORD_FAILURE'
 export const WALLET_SET_PASSWORD_REQUEST = 'WALLET/SET_PASSWORD_REQUEST'
 export const WALLET_SET_PASSWORD_SUCCESS = 'WALLET/SET_PASSWORD_SUCCESS'
@@ -8,8 +10,8 @@ export const walletSetPassword = (newPassword, oldPassword) => async dispatch =>
   try {
     await Client.wallet.setPassword(newPassword, oldPassword)
     const response = await Client.wallet.encrypt()
-console.log(response)
-    //dispatch(setWallet(response.wallet))
+
+    dispatch(setToken(response))
     dispatch({ type: WALLET_SET_PASSWORD_SUCCESS })
   } catch (e) {
     console.error(e)

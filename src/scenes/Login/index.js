@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { login } from './actions'
 import LoginForm from './components/Form'
 
 class Login extends React.Component {
@@ -28,6 +29,6 @@ class Login extends React.Component {
 export default connect(
   state => ({ ...state.scenes.login }),
   dispatch => ({
-    handleSubmit: null
+    handleSubmit: values => dispatch(login(values.password))
   })
 )(Login)

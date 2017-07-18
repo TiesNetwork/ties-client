@@ -1,4 +1,4 @@
-import { updateEntities } from '../../../../entities/actions'
+import { updateEntities } from '../../../../redux/entities'
 
 export const WALLET_CREATE_FAILURE = 'WALLET/CREATE_FAILURE'
 export const WALLET_CREATE_REQUEST = 'WALLET/CREATE_REQUEST'

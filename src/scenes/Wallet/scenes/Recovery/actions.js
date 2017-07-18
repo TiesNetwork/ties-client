@@ -1,4 +1,4 @@
-import { updateEntities } from '../../../../entities/actions'
+import { updateEntities } from '../../../../redux/entities'
 
 export const WALLET_RECOVERY_FAILURE = 'WALLET/RECOVERY_FAILURE'
 export const WALLET_RECOVERY_REQUEST = 'WALLET/RECOVERY_REQUEST'
