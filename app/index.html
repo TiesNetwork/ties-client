@@ -6,41 +6,10 @@
   </head>
 
   <body>
-    <div id="status">Connecting to the database</div>
-    <div id="app" style="display: none;"></div>
+    <div id="app">Connecting to the database</div>
 
     <script>
-      {
-        var Client = require('@ties-network/ties-client-base')
-
-        Client.setConfig({
-          connection: {
-            login: 'reader',
-            password: 'reader',
-            keyspace: 'ties',
-            address: 'hosting.krawlly.com',
-            port: 9042
-          },
-          tiesdb: {
-            host: 'http://mock.db.ties.network/db/',
-          },
-          blockchain: {
-            host: 'https://kovan.infura.io/biP9YQcNXTag7nvAELQJ'
-          },
-        })
-
-        Client.connect()
-          .then(() => {
-            const $app = document.getElementById('app')
-                , $status = document.getElementById('status')
-
-            $status.parentNode.removeChild($status)
-            $app.style.display = 'block'
-
-          }).catch(error => {
-            alert(error)
-          });
-      }
+      var Client = require('@ties-network/ties-client-base')
 
       const scripts = []
 

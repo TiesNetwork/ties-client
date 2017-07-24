@@ -1,15 +1,27 @@
 import createHistory from 'history/createHashHistory'
-
-import { push, routerMiddleware } from 'react-router-redux'
-import { applyMiddleware, createStore } from 'redux'
-import loggerMiddleware from 'redux-logger'
-import thunkMiddleware from 'redux-thunk'
-
 import App from './App'
-import reducer from './reducer'
 
-const history = createHistory()
-    , store = createStore(reducer, applyMiddleware(
-        thunkMiddleware.withExtraArgument({ push }), loggerMiddleware, routerMiddleware(history)))
+Client.setConfig({
+  connection: {
+    login: 'reader',
+    password: 'reader',
+    keyspace: 'ties',
+    address: 'hosting.krawlly.com',
+    port: 9042
+  },
+  tiesdb: {
+    host: 'http://mock.db.ties.network/db/',
+  },
+  blockchain: {
+    host: 'https://kovan.infura.io/biP9YQcNXTag7nvAELQJ'
+  },
+})
 
-ReactDOM.render(<App history={history} store={store} />, document.getElementById('app'))
+Client.connect()
+  .then(() => {
+    ReactDOM.render(<App history={createHistory()} />, document.getElementById('app'))
+  }).catch(error => {
+  alert(error)
+});
+
+

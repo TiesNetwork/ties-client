@@ -11,7 +11,7 @@ export const login = password => async (dispatch, getState, { push }) => {
     const response = await Client.createUserDecrypt(localStorage.getItem('token'), password)
 
     dispatch(push('/profile/edit'))
-    dispatch(updateEntities(response))
+    dispatch(updateEntities({ users: [response.user], wallet: response.wallet }))
     dispatch({ type: LOGIN_SUCCESS })
   } catch (e) {
     console.error(e)

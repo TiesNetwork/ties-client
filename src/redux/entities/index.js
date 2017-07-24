@@ -1,11 +1,11 @@
 import { merge } from 'lodash'
 import { combineReducers } from 'redux'
 
-import userReducer from './user'
+import usersReducer from './users'
 import walletReducer from './wallet'
 
 const modelsReducer = combineReducers({
-  user: userReducer,
+  users: usersReducer,
   wallet: walletReducer
 })
 

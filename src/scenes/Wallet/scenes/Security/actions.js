@@ -1,4 +1,4 @@
-import { setToken } from '../../../../redux/access'
+import { setToken } from '../../../../redux/session'
 
 export const WALLET_SET_PASSWORD_FAILURE = 'WALLET/SET_PASSWORD_FAILURE'
 export const WALLET_SET_PASSWORD_REQUEST = 'WALLET/SET_PASSWORD_REQUEST'

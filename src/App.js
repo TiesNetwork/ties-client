@@ -2,11 +2,12 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter as Router } from 'react-router-redux'
 
 import Scenes from './scenes'
+import createStore from './store'
 
 class App extends React.Component {
   render() {
     return (
-      <Provider store={this.props.store}>
+      <Provider store={createStore(this.props.history)}>
         <Router history={this.props.history}>
           <Scenes />
         </Router>
@@ -16,8 +17,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired
 }
 
 export default App
