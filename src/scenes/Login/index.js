@@ -1,4 +1,3 @@
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { login } from './actions'
@@ -13,11 +12,11 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h3>
-          Login
-        </h3>
+        <h3>Login</h3>
 
         <LoginForm onSubmit={this.props.handleSubmit} />
+
+        <br />
 
         <Link to="/wallet/create">Create new wallet</Link>&nbsp;|&nbsp;
         <Link to="/wallet/recovery">Recover wallet</Link>

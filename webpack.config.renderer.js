@@ -64,6 +64,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
 
     new webpack.ProvidePlugin({
+      _: 'lodash',
       PropTypes: 'prop-types',
       React: 'react',
       ReactDOM: 'react-dom'

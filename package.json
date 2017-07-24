@@ -4,6 +4,7 @@
     "@ties-network/ties-client-base": "^1.1.4",
     "history": "^4.6.3",
     "lodash": "^4.17.4",
+    "normalizr": "^3.2.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

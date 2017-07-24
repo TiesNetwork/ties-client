@@ -1,26 +1,50 @@
 import { push, routerMiddleware, routerReducer } from 'react-router-redux'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { reducer as formReducer } from 'redux-form'
+
+import Api from './api'
+import * as schema from './api/schema'
+
+/** Middleware **/
 import loggerMiddleware from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
-import entitiesReducer from './redux/entities'
-import sessionReducer from './redux/session'
+/** Reducers **/
+import entitiesReducer from './entities'
 import scenesReducer from './scenes/reducer'
-
-import Client from './utils/client'
 
 const reducer = combineReducers({
   entities: entitiesReducer,
-  session: sessionReducer,
   scenes: scenesReducer,
 
   form: formReducer,
   router: routerReducer
 })
 
+const promiseMiddleware = store => next => action => {
+  if (action.promise && action.types) {
+    const [ REQUESTED, RESOLVED, REJECTED ] = action.types
+
+    store.dispatch({ type: REQUESTED })
+
+    action.promise.then(
+      result => store.dispatch({ type: RESOLVED }),
+      error => {
+        console.error(error)
+        store.dispatch({ type: REJECTED })
+      }
+    )
+  }
+
+  return next(action)
+}
+
 export default history => createStore(reducer, applyMiddleware(
-  thunkMiddleware.withExtraArgument({ client: new Client(), push: push }),
+  thunkMiddleware.withExtraArgument({
+    api: new Api(),
+    push, schema
+  }),
   loggerMiddleware,
-  routerMiddleware(history)
+  routerMiddleware(history),
+  promiseMiddleware
 ))

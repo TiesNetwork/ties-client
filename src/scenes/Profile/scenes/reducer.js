@@ -6,7 +6,7 @@ const scenesReducer = combineReducers({
   edit: editReducer
 })
 
-export default (state = {}, action) => {
+export default (state = { edit: null }, action) => {
   switch (action.type) {
     default:
       return scenesReducer(state, action)

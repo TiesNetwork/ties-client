@@ -1,6 +1,10 @@
 import { Field, reduxForm } from 'redux-form'
 
 class SearchForm extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func
+  }
+
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>

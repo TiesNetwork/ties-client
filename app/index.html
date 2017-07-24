@@ -9,6 +9,10 @@
     <div id="app">Connecting to the database</div>
 
     <script>
+      // @todo - Provide connect by Webpack
+      var connect = require('react-redux').connect
+      var normalize = require('normalizr').normalize
+
       var Client = require('@ties-network/ties-client-base')
 
       const scripts = []

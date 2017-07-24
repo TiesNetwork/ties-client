@@ -27,12 +27,14 @@ class Scenes extends React.Component {
         <div>
           <Route component={Login} path="/login" />
           <Route component={Profile} path="/profile" />
-          <Route component={Search} path="/search" />
-          <Route component={Wallet} path="/wallet" />
         </div>
       </div>
     )
   }
 }
+
+
+// <Route component={Search} path="/search" />
+//   <Route component={Wallet} path="/wallet" />
 
 export default Scenes

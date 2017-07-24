@@ -1,7 +1,8 @@
-export const SEARCH_FAILURE = 'SEARCH/FAILURE'
-export const SEARCH_REQUEST = 'SEARCH/REQUEST'
-export const SEARCH_SUCCESS = 'SEARCH/SUCCESS'
+export const SEARCH_FAILURE = 'SCENES/SEARCH_FAILURE'
+export const SEARCH_REQUEST = 'SCENES/SEARCH_REQUEST'
+export const SEARCH_SUCCESS = 'SCENES/SEARCH_SUCCESS'
 
-export const search = searchString => async (dispatch, getState, { client, push }) => {
-
-}
+export const search = keywords => (dispatch, getState, { client, push }) => ({
+  types: [ SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE ],
+  promise: client.search(keywords)
+})
