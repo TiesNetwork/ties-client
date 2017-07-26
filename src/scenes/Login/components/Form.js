@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
           component="input"
           name="password"
           placeholder="Password"
+          type="password"
         />
 
         <button>

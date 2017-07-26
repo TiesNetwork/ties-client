@@ -17,6 +17,7 @@ class Api {
     const response = await Client.createUserDecrypt(localStorage.getItem('token'), password)
 
     return {
+      users: [{ ...response.user }],
       wallets: [{ ...response.wallet }]
     }
   }
