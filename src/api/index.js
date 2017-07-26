@@ -21,6 +21,15 @@ class Api {
       wallets: [{ ...response.wallet }]
     }
   }
+
+  /**
+   * @param {string} text
+   */
+  async search(text) {
+    const response = await Client.User.search(text)
+
+    console.log(response)
+  }
 }
 
 export default Api

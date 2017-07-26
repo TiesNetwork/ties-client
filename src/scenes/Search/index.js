@@ -1,5 +1,3 @@
-import { connect } from 'react-redux'
-
 import { search } from './actions'
 import SearchForm from './components/Form'
 
@@ -12,7 +10,9 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <SearchForm onSubmit={this.props.handleSubmit} />
+        <SearchForm
+          onSubmit={this.props.handleSubmit}
+        />
       </div>
     )
   }
@@ -21,6 +21,11 @@ class Search extends React.Component {
 export default connect(
   state => ({ ...state.scenes.search }),
   dispatch => ({
-    handleSubmit: values => dispatch(search(values.search))
+    /**
+     * @param {{
+     *   text: (string)
+     * }} values
+     */
+    handleSubmit: values => dispatch(search(values.text))
   })
 )(Search)

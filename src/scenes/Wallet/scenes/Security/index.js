@@ -45,7 +45,7 @@ export default connect(
      * @param {{
      *   newPassword: (string),
      *   oldPassword: (string)
-     * }}values
+     * }} values
      */
     handleSubmit: values => dispatch(walletSetPassword(values.newPassword, values.oldPassword))
   })

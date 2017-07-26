@@ -10,7 +10,7 @@ class SearchForm extends React.Component {
       <form onSubmit={this.props.handleSubmit}>
         <Field
           component="input"
-          name="search"
+          name="text"
           placeholder="Search string"
         />
 

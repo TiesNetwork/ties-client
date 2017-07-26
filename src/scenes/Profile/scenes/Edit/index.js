@@ -1,3 +1,4 @@
+import { editProfile } from './actions'
 import ProfileEditForm from './components/Form'
 
 class ProfileEdit extends React.Component {
@@ -13,7 +14,10 @@ class ProfileEdit extends React.Component {
         <h3>Profile Edit</h3>
 
         {this.props.user && (
-          <ProfileEditForm initialValues={this.props.user} />
+          <ProfileEditForm
+            initialValues={this.props.user}
+            onSubmit={this.props.handleSubmit}
+          />
         )}
       </div>
     )
@@ -26,6 +30,6 @@ export default connect(
     user: state.entities.users[state.services.session.userId]
   }),
   dispatch => ({
-    handleSubmit: values => null
+    handleSubmit: values => dispatch(editProfile(values))
   })
 )(ProfileEdit)
