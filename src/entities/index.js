@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux'
 
+/** Model reducers **/
+import usersReducer from './models/users'
 import walletsReducer from './models/wallets'
 
 const modelsReducer = combineReducers({
+  users: usersReducer,
   wallets: walletsReducer
 })
 

@@ -12,9 +12,43 @@ class ProfileEditForm extends React.Component {
 
         <Field
           component="input"
-          name="surnname"
+          name="surname"
           placeholder="Surname"
         />
+
+        <br />
+
+        <Field
+          component="input"
+          name="country"
+          placeholder="Country"
+        />
+
+        <br />
+
+        <Field
+          component="input"
+          name="company"
+          placeholder="Company"
+        />
+
+        <br />
+
+        <Field
+          component="input"
+          name="position"
+          placeholder="Position"
+        />
+
+        <br />
+
+        <Field
+          component="textarea"
+          name="description"
+          placeholder="Description"
+        />
+
+        <br />
 
         <button>
           Save
