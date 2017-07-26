@@ -1,4 +1,3 @@
-import { connect } from 'react-redux'
 import { walletSetPassword } from './actions'
 import WalletSecurityForm from './components/Form'
 
@@ -18,12 +17,19 @@ class WalletSecurity extends React.Component {
       <div>
         <h3>Wallet Security</h3>
 
-        <span>Address: {this.props.wallet.address}</span>
+        {this.props.wallet && (
+          <div>
+            <span>Address: {this.props.wallet.address}</span>
 
-        <WalletSecurityForm
-          hasPassword={!!this.props.wallet.password}
-          onSubmit={this.props.handleSubmit}
-        />
+            <br />
+            <br />
+
+            <WalletSecurityForm
+              hasPassword={!!this.props.wallet.password}
+              onSubmit={this.props.handleSubmit}
+            />
+          </div>
+        )}
       </div>
     )
   }
@@ -31,10 +37,16 @@ class WalletSecurity extends React.Component {
 
 export default connect(
   state => ({
-    ...state.scenes.wallet.scenes.recovery,
-    wallet: state.entities.wallet
+    ...state.scenes.wallet.scenes.security,
+    wallet: state.entities.wallets[state.services.session.userId]
   }),
   dispatch => ({
+    /**
+     * @param {{
+     *   newPassword: (string),
+     *   oldPassword: (string)
+     * }}values
+     */
     handleSubmit: values => dispatch(walletSetPassword(values.newPassword, values.oldPassword))
   })
 )(WalletSecurity)

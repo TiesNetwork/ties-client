@@ -73,7 +73,7 @@ export default {
 
   resolve: {
     extensions: ['.js'],
-    modules: ['node_modules']
+    modules: ['node_modules', 'src']
   },
 
   target: 'electron-renderer'

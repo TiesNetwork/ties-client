@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 
 import createReducer from './scenes/Create/reducer'
 import recoveryReducer from './scenes/Recovery/reducer'
+import securityReducer from './scenes/Security/reducer'
 
 const scenesReducer = combineReducers({
   create: createReducer,
-  recovery: recoveryReducer
+  recovery: recoveryReducer,
+  security: securityReducer
 })
 
 export default (state, action) => {

@@ -11,10 +11,12 @@ import thunkMiddleware from 'redux-thunk'
 
 /** Reducers **/
 import entitiesReducer from './entities'
+import servicesReducer from './services'
 import scenesReducer from './scenes/reducer'
 
 const reducer = combineReducers({
   entities: entitiesReducer,
+  services: servicesReducer,
   scenes: scenesReducer,
 
   form: formReducer,
@@ -34,9 +36,9 @@ const promiseMiddleware = store => next => action => {
         store.dispatch({ type: REJECTED })
       }
     )
+  } else {
+    return next(action)
   }
-
-  return next(action)
 }
 
 export default history => createStore(reducer, applyMiddleware(
