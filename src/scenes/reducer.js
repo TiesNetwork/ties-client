@@ -6,8 +6,8 @@ import walletReducer from './Wallet/reducer'
 
 const scenesReducer = combineReducers({
   login: loginReducer,
-  // profile: profileReducer,
-  // wallet: walletReducer
+  profile: profileReducer,
+  wallet: walletReducer
 })
 
 export default (state = {}, action) => {

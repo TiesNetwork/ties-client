@@ -1,17 +1,19 @@
-export const WALLET_RECOVERY_FAILURE = 'WALLET/RECOVERY_FAILURE'
-export const WALLET_RECOVERY_REQUEST = 'WALLET/RECOVERY_REQUEST'
-export const WALLET_RECOVERY_SUCCESS = 'WALLET/RECOVERY_SUCCESS'
+import { normalize } from 'normalizr'
+import { updateEntities } from '../../../../entities'
 
-export const walletRecovery = phrase => async (dispatch, getState, { push }) => {
-  dispatch({ type: WALLET_RECOVERY_REQUEST })
+export const WALLET_RECOVERY_FAILURE = 'SCENES/WALLET/SCENES/RECOVERY_FAILURE'
+export const WALLET_RECOVERY_REQUEST = 'SCENES/WALLET/SCENES/RECOVERY_REQUEST'
+export const WALLET_RECOVERY_SUCCESS = 'SCENES/WALLET/SCENES/RECOVERY_SUCCESS'
 
-  try {
-    const response = await Client.createUserFromPrivateKey(phrase)
+export const walletRecovery = phrase => (dispatch, getState, { api, push, schema }) => ({
+  types: [WALLET_RECOVERY_REQUEST, WALLET_RECOVERY_SUCCESS, WALLET_RECOVERY_FAILURE],
+  promise: api.wallets.recovery(phrase)
+    .then(response => {
+      const data = normalize(response, {
+        users: [schema.user],
+        wallets: [schema.wallet]
+      })
 
-    dispatch(push('/wallet/security'))
-    dispatch({ type: WALLET_RECOVERY_SUCCESS })
-  } catch (e) {
-    console.error(e)
-    dispatch({ type: WALLET_RECOVERY_FAILURE })
-  }
-}
+      dispatch(updateEntities(data))
+    })
+})

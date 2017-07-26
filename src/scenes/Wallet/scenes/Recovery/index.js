@@ -1,4 +1,3 @@
-import { connect } from 'react-redux'
 import { walletRecovery } from './actions'
 import WalletRecoveryForm from './components/Form'
 

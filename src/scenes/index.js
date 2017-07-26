@@ -10,7 +10,7 @@ class Scenes extends React.Component {
     return (
       <div>
         <div>
-          Wallet phrase: remnant punisher sarcasm chapped epidemic deviation oxidize glaring pantry paltry raving hesitancy
+          Wallet phrase: crunchy protozoan magazine punctured unicycle overrate antacid jokester salami platypus fracture mute
         </div>
 
         <hr />
@@ -27,6 +27,8 @@ class Scenes extends React.Component {
         <div>
           <Route component={Login} path="/login" />
           <Route component={Profile} path="/profile" />
+          <Route component={Search} path="/search" />
+          <Route component={Wallet} path="/wallet" />
         </div>
       </div>
     )
@@ -34,7 +36,5 @@ class Scenes extends React.Component {
 }
 
 
-// <Route component={Search} path="/search" />
-//   <Route component={Wallet} path="/wallet" />
 
 export default Scenes
