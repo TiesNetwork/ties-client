@@ -40,7 +40,7 @@ export default {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader?cacheDirectory!baggage-loader?styles.styl=styles'
+        loader: 'babel-loader?cacheDirectory!baggage-loader?[file].styl=styles'
       },
       {
         test: /\.styl$/,
@@ -74,9 +74,12 @@ export default {
       _: 'lodash',
       classNames: 'classnames',
       connect: ['react-redux', 'connect'],
+      reduxForm: ['redux-form', 'reduxForm'],
+      Component: ['react', 'Component'],
       PropTypes: 'prop-types',
       React: 'react',
-      ReactDOM: 'react-dom'
+      ReactDOM: 'react-dom',
+      Route: ['react-router-dom', 'Route']
     })
   ],
 

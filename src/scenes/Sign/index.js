@@ -1,4 +1,8 @@
+/** Components **/
 import Button from '../../components/Button'
+
+/** Scenes **/
+import SignLogin from './scenes/Login'
 
 class Sign extends React.Component {
   render() {
@@ -41,8 +45,8 @@ class Sign extends React.Component {
           </div>
         </div>
 
-        <div>
-
+        <div className={styles.SignContainer}>
+          <Route component={SignLogin} path="/" exact />
         </div>
       </div>
     )
