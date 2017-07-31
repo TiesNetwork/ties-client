@@ -10,7 +10,7 @@ Client.setConfig({
     port: 9042
   },
   tiesdb: {
-    host: 'http://mock.db.ties.network/db/',
+    host: 'http://mock.db.ties.network/',
   },
   blockchain: {
     host: 'https://kovan.infura.io/biP9YQcNXTag7nvAELQJ'

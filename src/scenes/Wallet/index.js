@@ -14,6 +14,8 @@ class Wallet extends React.Component {
           <Link to="/wallet/security">Wallet security</Link>
         </div>
 
+        <hr />
+
         <div>
           <Route component={WalletCreate} path="/wallet/create" />
           <Route component={WalletRecovery} path="/wallet/recovery" />

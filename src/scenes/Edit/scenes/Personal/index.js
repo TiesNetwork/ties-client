@@ -1,7 +1,7 @@
-import { editProfile } from './actions'
-import ProfileEditForm from './components/Form'
+import { editPersonal } from './actions'
+import EditPersonalForm from './components/Form'
 
-class ProfileEdit extends React.Component {
+class EditPersonal extends React.Component {
   static propTypes = {
     isFetching: PropTypes.bool,
     handleSubmit: PropTypes.func,
@@ -14,7 +14,7 @@ class ProfileEdit extends React.Component {
         <h3>Profile Edit</h3>
 
         {this.props.user && (
-          <ProfileEditForm
+          <EditPersonalForm
             initialValues={this.props.user}
             onSubmit={this.props.handleSubmit}
           />
@@ -26,10 +26,10 @@ class ProfileEdit extends React.Component {
 
 export default connect(
   state => ({
-    ...state.scenes.profile.scenes.edit,
+    ...state.scenes.edit.scenes.personal,
     user: state.entities.users[state.services.session.userId]
   }),
   dispatch => ({
-    handleSubmit: values => dispatch(editProfile(values))
+    handleSubmit: values => dispatch(editPersonal(values))
   })
-)(ProfileEdit)
+)(EditPersonal)

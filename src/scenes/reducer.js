@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
 import loginReducer from './Login/reducer'
-import profileReducer from './Profile/reducer'
+import editReducer from './Edit/reducer'
 import walletReducer from './Wallet/reducer'
 
 const scenesReducer = combineReducers({
+  edit: editReducer,
   login: loginReducer,
-  profile: profileReducer,
   wallet: walletReducer
 })
 

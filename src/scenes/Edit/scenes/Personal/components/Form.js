@@ -1,6 +1,6 @@
 import { Field, reduxForm } from 'redux-form'
 
-class ProfileEditForm extends React.Component {
+class EditPersonalForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
@@ -59,5 +59,5 @@ class ProfileEditForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'ProfileEditForm'
-})(ProfileEditForm)
+  form: 'EditPersonalForm'
+})(EditPersonalForm)

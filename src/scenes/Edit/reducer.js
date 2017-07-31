@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import editReducer from './scenes/Edit/reducer'
+import personalReducer from './scenes/Personal/reducer'
 
 const scenesReducer = combineReducers({
-  edit: editReducer
+  personal: personalReducer
 })
 
 export default (state = {}, action) => {

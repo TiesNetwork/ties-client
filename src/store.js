@@ -23,18 +23,15 @@ const reducer = combineReducers({
   router: routerReducer
 })
 
-const promiseMiddleware = store => next => action => {
+const clientMiddleware = store => next => action => {
   if (action.promise && action.types) {
     const [ REQUESTED, RESOLVED, REJECTED ] = action.types
 
-    store.dispatch({ type: REQUESTED })
+    next({ ...action, type: REQUESTED })
 
-    action.promise.then(
-      result => store.dispatch({ type: RESOLVED }),
-      error => {
-        console.error(error)
-        store.dispatch({ type: REJECTED })
-      }
+    return action.promise.then(
+      result => next({ ...action, type: RESOLVED }),
+      error => next({ action, type: REJECTED })
     )
   } else {
     return next(action)
@@ -48,5 +45,5 @@ export default history => createStore(reducer, applyMiddleware(
   }),
   loggerMiddleware,
   routerMiddleware(history),
-  promiseMiddleware
+  clientMiddleware
 ))

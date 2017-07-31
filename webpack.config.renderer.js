@@ -40,12 +40,19 @@ export default {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
-          }
-        }
+        loader: 'babel-loader?cacheDirectory!baggage-loader?styles.styl=styles'
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=2&localIndentName=[name]!stylus-loader?outputStyle=expanded&sourceMap&sourceMapContents'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'url-loader?limit=65000&name=public/images/[name].[ext]'
+      },
+      {
+        test: /\.[ot]tf$/,
+        loader: 'url-loader?limit=65000&name=public/fonts/[name].[ext]'
       }
     ]
   },
@@ -65,6 +72,8 @@ export default {
 
     new webpack.ProvidePlugin({
       _: 'lodash',
+      classNames: 'classnames',
+      connect: ['react-redux', 'connect'],
       PropTypes: 'prop-types',
       React: 'react',
       ReactDOM: 'react-dom'
@@ -72,7 +81,7 @@ export default {
   ],
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.scss'],
     modules: ['node_modules', 'src']
   },
 

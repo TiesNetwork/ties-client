@@ -1,0 +1,56 @@
+color-primary = #174DA1
+color-white = #FFF
+
+.Sign
+  display: flex
+  height: 100%
+  position: fixed
+  width: 100%
+
+.SignAbout
+  align-items: center
+  background: color-primary
+  color: color-white
+  display: flex
+  flex: 0 0 400px
+  flex-direction: column
+  justify-content: center
+
+.SignAboutAction
+  &:not(:first-child)
+    margin-left: 12px
+
+.SignAboutActions
+  margin-top: 28px
+
+.SignAboutLogo
+  align-items: center
+  display: flex
+
+.SignAboutLogoImage
+  background: url('../../../static/images/logo.svg')
+  height: 26px
+  width: 22px
+
+.SignAboutLogoTitle
+  font-family: Moderat
+  font-size: 15px
+  font-weight: 700
+
+.SignAboutItem
+  height: 30px
+  line-height: 30px
+  padding: 0 12px
+
+  &:not(:first-child)
+    border-left: 1px solid color-white
+
+.SignAboutItems
+  display: flex
+  text-align: center
+
+
+.SignAboutTitle
+  font-size: 24px
+  font-weight: 200
+  text-align: center
