@@ -1,4 +1,5 @@
 color-primary = #174DA1
+color-secondary = rgba(0, 0, 0, .43)
 color-white = #FFF
 
 .Button
@@ -11,8 +12,27 @@ color-white = #FFF
   min-width: 72px
   padding: 0 16px
 
+  &:focus
+    outline: none
+
   &:hover
     cursor: pointer
+
+.ButtonSecondary
+  border-color: color-secondary
+  color: color-secondary
+
+  &:hover
+    background: color-secondary
+    color: color-white
+
+  &.ButtonSolid
+    background: color-secondary
+    color: color-white
+
+    &:hover
+      background: transparent
+      color: color-secondary
 
 .ButtonPrimary
   border-color: color-primary

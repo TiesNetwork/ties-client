@@ -1,4 +1,4 @@
-import { Link, Route } from 'react-router-dom'
+import { Link, Redirect, Route } from 'react-router-dom'
 
 import Sign from './Sign'
 
@@ -6,12 +6,13 @@ class Scenes extends React.Component {
   render() {
     return (
       <div>
+        <Redirect to={ROUTES.SIGN.CREATE}/>
         <div>
 
         </div>
 
         <div>
-          <Route component={Sign} path="/"/>
+          <Route component={Sign} path={ROUTES.SIGN.toString()}/>
         </div>
       </div>
     )
