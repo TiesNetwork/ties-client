@@ -36,7 +36,11 @@ class Input extends Component {
         <div className={styles.InputContainer}>
           {this.props.label && (
             <label
-              className={styles.InputLabel}
+              className={classNames(
+                styles.InputLabel,
+                this.state.isFocused && styles.InputLabelFocused,
+                (this.state.isFocused || this.props.value) && styles.InputLabelDensed
+              )}
               htmlFor={this.props.id}
             >
               {this.props.label}
@@ -44,9 +48,15 @@ class Input extends Component {
           )}
 
           <input
-            className={styles.InputControl}
+            className={classNames(
+              styles.InputControl,
+              this.state.isFocused && styles.InputControlFocused
+            )}
             id={this.props.id}
             name={this.props.name}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
             type={this.props.type}
             value={this.props.value}
           />

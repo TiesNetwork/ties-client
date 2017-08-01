@@ -2,21 +2,41 @@ color-primary = #174DA1
 color-white = #FFF
 
 .Button
+  background: transparent
+  border: 1px solid
   font-family: Avenir
   font-size: 14px
   height: 26px
   margin: 0
+  min-width: 72px
   padding: 0 16px
 
+  &:hover
+    cursor: pointer
+
+.ButtonPrimary
+  border-color: color-primary
+  color: color-primary
+
+  &:hover
+    background: color-primary
+    color: color-white
+
+  &.ButtonSolid
+    background: color-primary
+    color: color-white
+
+    &:hover
+      background: transparent
+      color: color-primary
+
 .ButtonWhite
-  background: transparent
-  border: 1px solid color-white
+  border-color: color-white
   color: color-white
 
   &:hover
     background: color-white
     color: color-primary
-    cursor: pointer
 
   &.ButtonSolid
     background: color-white

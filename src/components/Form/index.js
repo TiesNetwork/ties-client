@@ -73,7 +73,7 @@ class Form extends Component {
 
 export const Input = props => (
   <Field {...props} className={styles.FormFieldInput}>
-    <InputComponent />
+    <InputComponent {...props} />
   </Field>
 )
 

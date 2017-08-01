@@ -1,14 +1,40 @@
+color-primary = #174DA1
 color-text-secondary = rgba(0, 0, 0, .43)
+
+.InputContainer
+  box-sizing: border-box
+  margin-bottom: 8px
+  padding-top: 22px
+  position: relative
 
 .InputControl
   background: transparent
   border: 0
   border-bottom: 1px solid rgba(0, 0, 0, .12)
-  height: 26px
+  font-family: inherit
+  font-size: 16px
+  height: 27px
+  padding: 0
+  width: 100%
+
+  &Focused
+    border-color: color-primary
 
   &:focus
     outline: none
 
 .InputLabel
   color: color-text-secondary
-  font-size: 12px
+  font-size: 16px
+  left: 0
+  line-height: 24px
+  position: absolute
+  top: 22px
+
+  &Densed
+    font-size: 12px
+    line-height: 14px
+    top: 8px
+
+  &Focused
+    color: color-primary
