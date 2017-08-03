@@ -5,11 +5,12 @@ import Button from '../../components/Button'
 import SignCreate from './scenes/Create'
 import SignLogin from './scenes/Login'
 import SignRecover from './scenes/Recover'
+import SignRecovery from './scenes/Recovery'
 
 class Sign extends React.Component {
-  handleCreateClick = () => this.props.history.push(ROUTES.SIGN.CREATE)
-  handleLoginClick = () => this.props.history.push(ROUTES.SIGN.LOGIN)
-  handleRecoverClick = () => this.props.history.push(ROUTES.SIGN.RECOVER)
+  handleCreateClick = () => this.props.history.push(ROUTES.SIGN.CREATE.path)
+  handleLoginClick = () => this.props.history.push(ROUTES.SIGN.LOGIN.path)
+  handleRecoverClick = () => this.props.history.push(ROUTES.SIGN.RECOVER.path)
 
   render() {
     return (
@@ -33,44 +34,47 @@ class Sign extends React.Component {
             <div className={styles.SignAboutItem}>ICO Due Dilligence</div>
           </div>
 
-          <div className={styles.SignAboutActions}>
-            {this.props.location.pathname != ROUTES.SIGN.LOGIN && (
-              <Button
-                className={styles.SignAboutAction}
-                color={Button.color.WHITE}
-                onClick={this.handleLoginClick}
-              >
-                Login
-              </Button>
-            )}
+          {this.props.location.pathname != ROUTES.SIGN.RECOVERY.path && (
+            <div className={styles.SignAboutActions}>
+              {this.props.location.pathname != ROUTES.SIGN.LOGIN.path && (
+                <Button
+                  className={styles.SignAboutAction}
+                  color={Button.color.WHITE}
+                  onClick={this.handleLoginClick}
+                >
+                  Login
+                </Button>
+              )}
 
-            {this.props.location.pathname != ROUTES.SIGN.RECOVER && (
-              <Button
-                className={styles.SignAboutAction}
-                color={Button.color.WHITE}
-                onClick={this.handleRecoverClick}
-              >
-                Recover
-              </Button>
-            )}
+              {this.props.location.pathname != ROUTES.SIGN.RECOVER.path && (
+                <Button
+                  className={styles.SignAboutAction}
+                  color={Button.color.WHITE}
+                  onClick={this.handleRecoverClick}
+                >
+                  Recover
+                </Button>
+              )}
 
-            {this.props.location.pathname != ROUTES.SIGN.CREATE && (
-              <Button
-                className={styles.SignAboutAction}
-                color={Button.color.WHITE}
-                onClick={this.handleCreateClick}
-                solid={true}
-              >
-                Create New
-              </Button>
-            )}
-          </div>
+              {this.props.location.pathname != ROUTES.SIGN.CREATE.path && (
+                <Button
+                  className={styles.SignAboutAction}
+                  color={Button.color.WHITE}
+                  onClick={this.handleCreateClick}
+                  solid={true}
+                >
+                  Create New
+                </Button>
+              )}
+            </div>
+          )}
         </div>
 
         <div className={styles.SignContainer}>
-          <Route component={SignCreate} path={ROUTES.SIGN.CREATE} />
-          <Route component={SignLogin} path={ROUTES.SIGN.LOGIN} />
-          <Route component={SignRecover} path={ROUTES.SIGN.RECOVER} />
+          <Route component={SignCreate} path={ROUTES.SIGN.CREATE.path} />
+          <Route component={SignLogin} path={ROUTES.SIGN.LOGIN.path} />
+          <Route component={SignRecover} path={ROUTES.SIGN.RECOVER.path} />
+          <Route component={SignRecovery} path={ROUTES.SIGN.RECOVERY.path} />
         </div>
       </div>
     )

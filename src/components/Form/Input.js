@@ -1,5 +1,9 @@
 class Input extends Component {
   static propTypes = {
+    error: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string
+    ]),
     id: PropTypes.string,
     label: PropTypes.string,
     name: PropTypes.string,
@@ -38,8 +42,10 @@ class Input extends Component {
             <label
               className={classNames(
                 styles.InputLabel,
+
+               (this.state.isFocused || this.props.value) && styles.InputLabelDensed,
+                this.props.error && styles.InputLabelError,
                 this.state.isFocused && styles.InputLabelFocused,
-                (this.state.isFocused || this.props.value) && styles.InputLabelDensed
               )}
               htmlFor={this.props.id}
             >
@@ -61,8 +67,19 @@ class Input extends Component {
             value={this.props.value}
           />
 
-          <div className={classNames(styles.InputDivider, this.state.isFocused && styles.InputDividerFocused)} />
+          <div className={classNames(
+            styles.InputDivider,
+
+            this.props.error && styles.InputDividerError,
+            this.state.isFocused && styles.InputDividerFocused
+          )}/>
         </div>
+
+        {this.props.error && (
+          <div className={styles.InputError}>
+            {this.props.error}
+          </div>
+        )}
       </div>
     )
   }

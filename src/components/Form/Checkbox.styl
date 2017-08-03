@@ -1,0 +1,24 @@
+color-checkbox = rgba(0, 0, 0, .38)
+color-primary = #174DA1
+
+.CheckboxControl
+  border: 1px solid color-checkbox
+  box-sizing: border-box
+  height: 10px
+  margin: 4px 4px 4px 0
+  width: 10px
+
+  &Checked
+    border-color: color-primary
+
+.CheckboxInput
+  display: none
+
+.CheckboxLabel
+  color: color-checkbox
+  display: flex
+  font-size: 10px
+  line-height: 18px
+
+  &:hover
+    cursor: pointer

@@ -1,6 +1,10 @@
 import SignLoginForm from './components/Form'
 
 class SignLogin extends React.Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func
+  }
+
   render() {
     return (
       <div className={styles.SignLogin}>
@@ -8,18 +12,24 @@ class SignLogin extends React.Component {
           Login
         </div>
 
-        <div className={styles.SignLoginDescription}>
-          Enter password to your wallet
+        <div className={styles.SignLoginBlock}>
+          <div className={styles.SignLoginBlockTitle}>
+            Enter password to your wallet
+          </div>
+
+          <div>
+            87ajw408ha0g456y3485asiedfalskje54932aJDKEFJ
+          </div>
         </div>
 
-        <div className={styles.SignLoginAddress}>
-          87ajw408ha0g456y3485asiedfalskje54932aJDKEFJ
-        </div>
-
-        <SignLoginForm />
+        <SignLoginForm onSubmit={this.props.handleSubmit} />
       </div>
     )
   }
 }
 
-export default SignLogin
+export default connect(null,
+  dispatch => ({
+    handleSubmit: values => { console.log(values) }
+  })
+)(SignLogin)

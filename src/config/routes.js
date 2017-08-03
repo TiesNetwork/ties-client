@@ -1,5 +1,7 @@
 export default {
   SIGN: {
+    path: '/sign',
+
     CREATE: {
       path: '/sign/create'
     },
@@ -8,6 +10,9 @@ export default {
     },
     RECOVER: {
       path: '/sign/recover'
+    },
+    RECOVERY: {
+      path: '/sign/recovery'
     }
   }
 }

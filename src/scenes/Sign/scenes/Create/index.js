@@ -1,22 +1,37 @@
 import SignCreateForm from './components/Form'
 
 class SignCreate extends React.Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func
+  }
+
   render() {
     return (
       <div className={styles.SignCreate}>
-        <h1 className={styles.SignCreateTitle}>
+        <div className={styles.SignCreateTitle}>
           Creation of new TIE wallet
-        </h1>
-
-        <div className={styles.SignCreateDescription}>
-          Public and private key will be generated automatically<br />
-          Your wallet will be a valid Ethereum account
         </div>
 
-        <SignCreateForm />
+        <div className={styles.SignCreateBlock}>
+          <div className={styles.SignCreateBlockTitle}>
+            Public and private key will be generated automatically<br />
+            Your wallet will be a valid Ethereum account
+          </div>
+        </div>
+
+        <div className={styles.SignCreateBlock}>
+          Enter password to access your wallet later<br />
+          Please use strong password <i>(min 8 characters)</i>
+        </div>
+
+        <SignCreateForm onSubmit={this.props.handleSubmit}/>
       </div>
     )
   }
 }
 
-export default SignCreate
+export default connect(null,
+  dispatch => ({
+    handleSubmit: values => { console.log(values) }
+  })
+)(SignCreate)

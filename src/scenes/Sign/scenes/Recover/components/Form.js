@@ -1,5 +1,5 @@
 import Button from '../../../../../components/Button'
-import Form, { Actions, Input } from '../../../../../components/Form'
+import Form, { Actions, Checkbox, Input } from '../../../../../components/Form'
 
 class SignRecoverForm extends Component {
   render() {
@@ -28,6 +28,11 @@ class SignRecoverForm extends Component {
           label="Confirm Password"
           name="passwordConfirm"
           type="password"
+        />
+
+        <Checkbox
+          label="I agree with the platform terms"
+          name="terms"
         />
 
         <Actions>

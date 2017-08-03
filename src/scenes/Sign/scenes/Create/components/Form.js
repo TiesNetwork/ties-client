@@ -1,5 +1,5 @@
 import Button from '../../../../../components/Button'
-import Form, { Actions, Input } from '../../../../../components/Form'
+import Form, { Actions, Checkbox, Input } from '../../../../../components/Form'
 
 class SignCreateForm extends Component {
   render() {
@@ -8,11 +8,6 @@ class SignCreateForm extends Component {
         className={styles.SignCreateForm}
         onSubmit={this.props.handleSubmit}
       >
-        <div className={styles.SignCreateFormProtect}>
-          Protect your wallet with a password<br />
-          Please use strong password <i>(min 8 characters)</i>
-        </div>
-
         <Input
           label="Password"
           name="password"
@@ -25,12 +20,13 @@ class SignCreateForm extends Component {
           type="password"
         />
 
-        <Actions>
-          <Button color={Button.color.SECONDARY}>
-            Back
-          </Button>
+        <Checkbox
+          label="I agree with the platform terms"
+          name="terms"
+        />
 
-          <Button solid>
+        <Actions>
+          <Button solid type="submit">
             Create your wallet
           </Button>
         </Actions>
@@ -39,6 +35,21 @@ class SignCreateForm extends Component {
   }
 }
 
+const validate = values => {
+  const errors = {}
+
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+
+  if (!values.passwordConfirm) {
+    errors.passwordConfirm = 'Required'
+  }
+
+  return errors
+}
+
 export default reduxForm({
-  form: 'SignCreateForm'
+  form: 'SignCreateForm',
+  validate
 })(SignCreateForm)

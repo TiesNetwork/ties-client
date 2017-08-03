@@ -11,7 +11,7 @@ class SignLoginForm extends Component {
         <Input label="Password" name="password" type="password" />
 
         <Actions>
-          <Button className={styles.SignLoginFormButton} solid>
+          <Button className={styles.SignLoginFormButton} solid type="submit">
             Login
           </Button>
         </Actions>
@@ -20,6 +20,17 @@ class SignLoginForm extends Component {
   }
 }
 
+const validate = values => {
+  const errors = {}
+
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+
+  return errors
+}
+
 export default reduxForm({
-  form: 'LoginForm'
+  form: 'SignLoginForm',
+  validate
 })(SignLoginForm)

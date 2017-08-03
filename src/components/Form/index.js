@@ -1,5 +1,6 @@
 import { Field as ReduxField } from 'redux-form'
 
+import CheckboxComponent from './Checkbox'
 import InputComponent from './Input'
 
 const ReduxFieldAdapter = props => {
@@ -72,6 +73,12 @@ class Form extends Component {
     )
   }
 }
+
+export const Checkbox = props => (
+  <Field {...props} className={styles.FormFieldCheckbox}>
+    <CheckboxComponent {...props} />
+  </Field>
+)
 
 export const Input = props => (
   <Field {...props} className={styles.FormFieldInput}>

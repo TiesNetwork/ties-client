@@ -44,7 +44,7 @@ export default {
       },
       {
         test: /\.styl$/,
-        loader: 'style-loader!css-loader?modules&importLoaders=2&localIndentName=[name]!stylus-loader?outputStyle=expanded&sourceMap&sourceMapContents'
+        loader: 'style-loader!css-loader?modules&importLoaders=2&localIndentName=[name]!stylus-loader?outputStyle=expanded&sourceMap&sourceMapContents&paths=static'
       },
       {
         test: /\.svg$/,
@@ -80,13 +80,13 @@ export default {
       React: 'react',
       ReactDOM: 'react-dom',
       Route: ['react-router-dom', 'Route'],
-      ROUTES: path.join(__dirname, 'src/scenes/routes')
+      ROUTES: path.join(__dirname, 'src/config/routes')
     })
   ],
 
   resolve: {
     extensions: ['.js', '.scss'],
-    modules: ['node_modules', 'src']
+    modules: ['node_modules', path.join(__dirname, 'src'), path.join(__dirname, 'static')]
   },
 
   target: 'electron-renderer'
