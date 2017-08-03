@@ -60,6 +60,8 @@ class Input extends Component {
             type={this.props.type}
             value={this.props.value}
           />
+
+          <div className={classNames(styles.InputDivider, this.state.isFocused && styles.InputDividerFocused)} />
         </div>
       </div>
     )

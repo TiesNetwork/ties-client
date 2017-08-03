@@ -4,16 +4,15 @@ color-text-secondary = rgba(0, 0, 0, .43)
 .InputContainer
   box-sizing: border-box
   margin-bottom: 8px
-  padding-top: 22px
+  padding-top: 12px
   position: relative
 
 .InputControl
   background: transparent
   border: 0
-  border-bottom: 1px solid rgba(0, 0, 0, .12)
   font-family: inherit
   font-size: 16px
-  height: 27px
+  height: 24px
   padding: 0
   width: 100%
 
@@ -23,18 +22,26 @@ color-text-secondary = rgba(0, 0, 0, .43)
   &:focus
     outline: none
 
+.InputDivider
+  background: rgba(0, 0, 0, .12)
+  height: 1px
+  width: 100%
+
+  &Focused
+    background: color-primary
+
 .InputLabel
   color: color-text-secondary
   font-size: 16px
   left: 0
   line-height: 24px
   position: absolute
-  top: 22px
+  top: 12px
 
   &Densed
     font-size: 12px
-    line-height: 14px
-    top: 8px
+    line-height: 16px
+    top: 0
 
   &Focused
     color: color-primary

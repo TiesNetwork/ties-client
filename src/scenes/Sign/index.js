@@ -23,9 +23,9 @@ class Sign extends React.Component {
             </div>
           </div>
 
-          <h1 className={styles.SignAboutTitle}>
+          <div className={styles.SignAboutTitle}>
             Social business-platform for&nbsp;cryptocommunity
-          </h1>
+          </div>
 
           <div className={styles.SignAboutItems}>
             <div className={styles.SignAboutItem}>Partners search</div>

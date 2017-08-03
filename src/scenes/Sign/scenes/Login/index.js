@@ -4,9 +4,9 @@ class SignLogin extends React.Component {
   render() {
     return (
       <div className={styles.SignLogin}>
-        <h1 className={styles.SignLoginTitle}>
+        <div className={styles.SignLoginTitle}>
           Login
-        </h1>
+        </div>
 
         <div className={styles.SignLoginDescription}>
           Enter password to your wallet
