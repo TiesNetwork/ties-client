@@ -27,7 +27,7 @@ class SignRecovery extends Component {
                 </div>
 
                 <Button>
-                  87ajw408ha0g456y3485asiedfalskje54932aJDKEFJ
+                  {this.props.wallet.address}
                 </Button>
               </div>
             )}

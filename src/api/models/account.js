@@ -62,7 +62,8 @@ class Account {
   static async setPassword(newPassword, oldPassword) {
     await Client.wallet.setPassword(newPassword, oldPassword)
     const response = await Client.wallet.encrypt()
-
+console.log(Client.wallet)
+    localStorage.setItem('address', Client.wallet.address)
     localStorage.setItem('token', response)
 
     return {

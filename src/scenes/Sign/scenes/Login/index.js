@@ -20,7 +20,7 @@ class SignLogin extends React.Component {
           </div>
 
           <div>
-            87ajw408ha0g456y3485asiedfalskje54932aJDKEFJ
+            {localStorage.getItem('address')}
           </div>
         </div>
 
