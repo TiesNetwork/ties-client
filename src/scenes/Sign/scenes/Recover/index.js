@@ -1,6 +1,12 @@
 import SignRecoverForm from './components/Form'
 
+import { recover } from './actions'
+
 class SignRecover extends React.Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func
+  }
+
   render() {
     return (
       <div>
@@ -16,10 +22,15 @@ class SignRecover extends React.Component {
 
         </div>
 
-        <SignRecoverForm />
+        <SignRecoverForm onSubmit={this.props.handleSubmit} />
       </div>
     )
   }
 }
 
-export default SignRecover
+export default connect(
+  null,
+  dispatch => ({
+    handleSubmit: values => dispatch(recover(values.phrase, values.password))
+  })
+)(SignRecover)

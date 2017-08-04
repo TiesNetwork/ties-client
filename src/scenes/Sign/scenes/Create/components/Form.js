@@ -26,7 +26,11 @@ class SignCreateForm extends Component {
         />
 
         <Actions>
-          <Button solid type="submit">
+          <Button
+            disabled={this.props.invalid || this.props.submitting}
+            solid={true}
+            type="submit"
+          >
             Create your wallet
           </Button>
         </Actions>
@@ -37,13 +41,16 @@ class SignCreateForm extends Component {
 
 const validate = values => {
   const errors = {}
+      , required = ['password', 'passwordConfirm']
 
-  if (!values.password) {
-    errors.password = 'Required'
-  }
+  required.map(key => {
+    if (!values[key]) {
+      errors[key] = 'Required'
+    }
+  })
 
-  if (!values.passwordConfirm) {
-    errors.passwordConfirm = 'Required'
+  if (values.password != values.passwordConfirm) {
+    errors.passwordConfirm = 'Password do not match'
   }
 
   return errors

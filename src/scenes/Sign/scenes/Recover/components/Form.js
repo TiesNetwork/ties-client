@@ -36,11 +36,12 @@ class SignRecoverForm extends Component {
         />
 
         <Actions>
-          <Button color={Button.color.SECONDARY}>
-            Back
-          </Button>
-
-          <Button className={styles.SignRecoverFormButton} solid>
+          <Button
+            className={styles.SignRecoverFormButton}
+            disabled={this.props.invalid || this.props.submitting}
+            solid={true}
+            type="submit"
+          >
             Recover
           </Button>
         </Actions>
@@ -49,6 +50,24 @@ class SignRecoverForm extends Component {
   }
 }
 
+const validate = values => {
+  const errors = {}
+  const required = ['phrase', 'password', 'passwordConfirm']
+
+  required.map(key => {
+    if (!values[key]) {
+      errors[key] = 'Required'
+    }
+  })
+
+  if (values.password != values.passwordConfirm) {
+    errors.passwordConfirm = 'Password do not match'
+  }
+
+  return errors
+}
+
 export default reduxForm({
-  form: 'SignRecoverForm'
+  form: 'SignRecoverForm',
+  validate
 })(SignRecoverForm)

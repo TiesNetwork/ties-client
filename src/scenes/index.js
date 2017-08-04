@@ -6,7 +6,7 @@ class Scenes extends React.Component {
   render() {
     return (
       <div>
-        <Redirect to={ROUTES.SIGN.LOGIN.path}/>
+        <Redirect to={ROUTES.SIGN.path}/>
         <div>
 
         </div>

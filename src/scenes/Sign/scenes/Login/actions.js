@@ -8,15 +8,15 @@ export const SIGN_RECOVER_FAILURE = 'SCENES/SIGN/RECOVER_REQUEST'
 export const SIGN_RECOVER_REQUEST = 'SCENES/SIGN/RECOVER_REQUEST'
 export const SIGN_RECOVER_SUCCESS = 'SCENES/SIGN/RECOVER_REQUEST'
 
-export const recover = (phrase, password) => (dispatch, getState, { api, push, schema }) => dispatch({
+export const login = password => (dispatch, getState, { api, push, schema }) => dispatch({
   types: [SIGN_RECOVER_REQUEST, SIGN_RECOVER_SUCCESS, SIGN_RECOVER_FAILURE],
-  promise: api.account.recover(phrase, password)
+  promise: api.account.login(password)
     .then(response => {
       const data = normalize(response, {
         users: [schema.user],
         wallets: [schema.wallet]
       })
-console.log(data)
+
       dispatch(push(ROUTES.SIGN.RECOVERY.path))
       dispatch(setCurrentUserId(data.result.wallets[0]))
       dispatch(updateEntities(data))

@@ -3,38 +3,55 @@ import Button from '../../../../components/Button'
 const phrase = 'remnant punisher sarcasm chapped epidemic deviation oxidize glaring pantry paltry raving hesitancy'
 
 class SignRecovery extends Component {
-  handleAddressClick = () => alert('Copy to clipboard')
+  static propTypes = {
+    wallet: PropTypes.shape({
+      address: PropTypes.string,
+      phrase: PropTypes.string
+    })
+  }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className={styles.SignRecoveryTitle}>
           Recovery Information
         </div>
 
-        <div className={styles.SignRecoveryBlock}>
-          <div className={styles.SignRecoveryBlockTitle}>
-            Your wallet address / Ties.Network login
-          </div>
+        {this.props.wallet && (
+          <div>
+            {this.props.wallet.address && (
+              <div className={styles.SignRecoveryBlock}>
+                <div className={styles.SignRecoveryBlockTitle}>
+                  Your wallet address / Ties.Network login
+                </div>
 
-          <Button onClick={this.handleAddressClick}>
-            87ajw408ha0g456y3485asiedfalskje54932aJDKEFJ
-          </Button>
-        </div>
-
-        <div className={styles.SignRecoveryBlock}>
-          <div className={styles.SignRecoveryBlockTitle}>
-            Wallet recovery phrase <i>(12 words)</i>
-          </div>
-
-          <div className={styles.SignRecoveryPhrase}>
-            {phrase.split(' ').map(word => (
-              <div className={styles.SignRecoveryPhraseWord}>
-                {word}
+                <Button>
+                  87ajw408ha0g456y3485asiedfalskje54932aJDKEFJ
+                </Button>
               </div>
-            ))}
+            )}
+
+            {this.props.wallet.phrase && (
+              <div className={styles.SignRecoveryBlock}>
+                <div className={styles.SignRecoveryBlockTitle}>
+                  Wallet recovery phrase <i>(12 words)</i>
+                </div>
+
+                <div className={styles.SignRecoveryPhrase}>
+                  {this.props.wallet.phrase.split(' ').map((word, index) => (
+                    <div
+                      className={styles.SignRecoveryPhraseWord}
+                      key={index}
+                    >
+                      {word}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
+        )}
 
         <div className={styles.SignRecoveryBlock}>
           <strong>Attention!</strong> Keep your phrase safe!
@@ -51,4 +68,6 @@ class SignRecovery extends Component {
   }
 }
 
-export default SignRecovery
+export default connect(
+  state => ({ wallet: state.entities.wallets[state.services.session.userId] })
+)(SignRecovery)

@@ -1,3 +1,5 @@
+import { Redirect } from 'react-router-dom'
+
 /** Components **/
 import Button from '../../components/Button'
 
@@ -15,6 +17,13 @@ class Sign extends React.Component {
   render() {
     return (
       <div className={styles.Sign}>
+        {this.props.location.pathname == ROUTES.SIGN.path && (
+          <Redirect to={!!localStorage.getItem('token')
+            ? ROUTES.SIGN.LOGIN.path
+            : ROUTES.SIGN.CREATE.path
+          }/>
+        )}
+
         <div className={styles.SignAbout}>
           <div className={styles.SignAboutLogo}>
             <div className={styles.SignAboutLogoImage} />

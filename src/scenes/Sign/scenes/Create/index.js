@@ -1,3 +1,7 @@
+/** Actions **/
+import { create } from './actions'
+
+/** Components **/
 import SignCreateForm from './components/Form'
 
 class SignCreate extends React.Component {
@@ -32,6 +36,6 @@ class SignCreate extends React.Component {
 
 export default connect(null,
   dispatch => ({
-    handleSubmit: values => { console.log(values) }
+    handleSubmit: values => dispatch(create(values.password))
   })
 )(SignCreate)

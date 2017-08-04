@@ -1,5 +1,7 @@
 import SignLoginForm from './components/Form'
 
+import { login } from './actions'
+
 class SignLogin extends React.Component {
   static propTypes = {
     handleSubmit: PropTypes.func
@@ -30,6 +32,6 @@ class SignLogin extends React.Component {
 
 export default connect(null,
   dispatch => ({
-    handleSubmit: values => { console.log(values) }
+    handleSubmit: values => dispatch(login(values.password))
   })
 )(SignLogin)

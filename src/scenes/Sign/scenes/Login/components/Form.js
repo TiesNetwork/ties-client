@@ -11,7 +11,12 @@ class SignLoginForm extends Component {
         <Input label="Password" name="password" type="password" />
 
         <Actions>
-          <Button className={styles.SignLoginFormButton} solid type="submit">
+          <Button
+            className={styles.SignLoginFormButton}
+            disabled={this.props.invalid || this.props.submitting}
+            solid={true}
+            type="submit"
+          >
             Login
           </Button>
         </Actions>
