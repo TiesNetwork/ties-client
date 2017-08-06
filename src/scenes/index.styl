@@ -1,6 +1,21 @@
 color-text = rgba(0, 0, 0, .87)
 
+.App
+  display: flex
+  flex: 1 1 auto
+  flex-direction: column
+
+.AppBody
+  display: flex
+  flex: 1 1 auto
+
+html
+  display: flex
+  min-height: 100%
+  min-width: 100%
+
 body
+  background: #F9F9F9
   color: color-text
   font-family: Avenir
   font-size: 14px
@@ -11,6 +26,10 @@ body
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility:    hidden;
   -ms-backface-visibility:     hidden;
+
+body, body > div
+  display: flex
+  flex: 1 1 auto
 
 @font-face
   font-family: Avenir

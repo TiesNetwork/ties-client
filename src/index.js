@@ -20,8 +20,6 @@ Client.setConfig({
 Client.connect()
   .then(() => {
     ReactDOM.render(<App history={createHistory()} />, document.getElementById('app'))
-  }).catch(error => {
-  alert(error)
-});
+  }).catch(error => alert(error));
 
 

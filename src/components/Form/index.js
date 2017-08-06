@@ -1,7 +1,7 @@
 import { Field as ReduxField } from 'redux-form'
 
-import CheckboxComponent from './Checkbox'
-import InputComponent from './Input'
+import CheckboxComponent from './components/Checkbox'
+import InputComponent from './components/Input'
 
 const ReduxFieldAdapter = props => {
   const {

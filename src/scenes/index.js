@@ -1,18 +1,22 @@
 import { Link, Redirect, Route } from 'react-router-dom'
 
+/** Scenes **/
+import Header from './Header'
+import Sidebar from './Sidebar'
 import Sign from './Sign'
 
 class Scenes extends React.Component {
   render() {
     return (
-      <div>
-        <Redirect to={ROUTES.SIGN.path}/>
-        <div>
+      <div className={styles.App}>
+        <Header />
 
-        </div>
+        <div className={styles.AppBody}>
+          <Sidebar />
 
-        <div>
-          <Route component={Sign} path={ROUTES.SIGN.path}/>
+          <div className={styles.AppContainer}>
+
+          </div>
         </div>
       </div>
     )
