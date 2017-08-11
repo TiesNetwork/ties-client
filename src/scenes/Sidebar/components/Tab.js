@@ -7,12 +7,6 @@ class SidebarTab extends Component {
   render() {
     return (
       <div className={styles.SidebarTab}>
-        {this.props.icon && (
-          <div>
-
-          </div>
-        )}
-
         {this.props.title && (
           <div className={styles.SidebarTabTitle}>
             {this.props.title}
@@ -22,5 +16,12 @@ class SidebarTab extends Component {
     )
   }
 }
+
+{/*<div*/}
+  {/*className={classNames(*/}
+    {/*styles.SidebarTabIcon,*/}
+    {/*styles[`SidebarTabIcon${this.props.title}`]*/}
+  {/*)}*/}
+{/*/>*/}
 
 export default SidebarTab
