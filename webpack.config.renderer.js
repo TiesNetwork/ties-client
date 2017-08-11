@@ -74,6 +74,7 @@ export default {
       _: 'lodash',
       classNames: 'classnames',
       connect: ['react-redux', 'connect'],
+      moment: 'moment',
       reduxForm: ['redux-form', 'reduxForm'],
       Component: ['react', 'Component'],
       PropTypes: 'prop-types',

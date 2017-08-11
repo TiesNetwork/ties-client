@@ -2,6 +2,8 @@ import { push, routerMiddleware, routerReducer } from 'react-router-redux'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 
+import demoState from './demo'
+
 import Api from './api'
 import * as schema from './api/schema'
 
@@ -38,7 +40,7 @@ const clientMiddleware = store => next => action => {
   }
 }
 
-export default history => createStore(reducer, applyMiddleware(
+export default history => createStore(reducer, demoState, applyMiddleware(
   thunkMiddleware.withExtraArgument({
     api: new Api(),
     push, schema
