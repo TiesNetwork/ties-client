@@ -1,4 +1,5 @@
 const ButtonColor = {
+  CUSTOM: 'Custom',
   DANGER: 'Danger',
   PRIMARY: 'Primary',
   SECONDARY: 'Secondary',

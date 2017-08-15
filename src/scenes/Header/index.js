@@ -1,8 +1,21 @@
+import { withRouter } from 'react-router-dom'
+
 /** Components **/
+import Avatar from '../../components/Avatar'
 import Button from '../../components/Button'
 import HeaderAccount from './components/Account'
 
 class Header extends Component {
+  static propTypes = {
+    user: PropTypes.shape({
+      photo: PropTypes.string
+    })
+  }
+
+  handleUserClick = () => this.props.user && this.props.history.push({
+    pathname: `/edit/personal`
+  })
+
   render() {
     return (
       <div className={styles.Header}>
@@ -15,9 +28,26 @@ class Header extends Component {
           <HeaderAccount amount="100.28" currency="ETH"/>
           <HeaderAccount amount="100" currency="HMQ"/>
         </div>
+
+        {this.props.user && (
+          <div className={styles.HeaderUser}>
+            <Button
+              className={styles.HeaderUserButton}
+              color={Button.color.CUSTOM}
+              onClick={this.handleUserClick}
+            >
+              <Avatar
+                className={styles.HeaderUserAvatar}
+                src={this.props.user.photo}
+              />
+            </Button>
+          </div>
+        )}
       </div>
     )
   }
 }
 
-export default Header
+export default connect(state => ({
+  user: state.entities.users[state.services.session.userId]
+}))(withRouter(Header))

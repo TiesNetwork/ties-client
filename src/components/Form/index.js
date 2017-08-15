@@ -2,6 +2,7 @@ import { Field as ReduxField } from 'redux-form'
 
 import CheckboxComponent from './components/Checkbox'
 import InputComponent from './components/Input'
+import TagsComponent from './components/Tags'
 
 const ReduxFieldAdapter = props => {
   const {
@@ -74,17 +75,40 @@ class Form extends Component {
   }
 }
 
+class Group extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  }
+
+  render() {
+    return (
+      <div className={styles.FormGroup}>
+        {React.Children.map(this.props.children, child => React.cloneElement(child, {
+          className: classNames(child.props.className, styles.FormGroupField)
+        }))}
+      </div>
+    )
+  }
+}
+
 export const Checkbox = props => (
-  <Field {...props} className={styles.FormFieldCheckbox}>
+  <Field {...props}>
     <CheckboxComponent {...props} />
   </Field>
 )
 
 export const Input = props => (
-  <Field {...props} className={styles.FormFieldInput}>
+  <Field {...props}>
     <InputComponent {...props} />
   </Field>
 )
 
+export const Tags = props => (
+  <Field {...props}>
+    <TagsComponent {...props} />
+  </Field>
+)
+
+
 export default Form
-export { Actions }
+export { Actions, Group }

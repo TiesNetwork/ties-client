@@ -1,5 +1,6 @@
 class Input extends Component {
   static propTypes = {
+    className: PropTypes.string,
     error: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.string
@@ -10,6 +11,7 @@ class Input extends Component {
     onBlur: PropTypes.func,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
+    onKeyPress: PropTypes.func,
     type: PropTypes.string,
     value: PropTypes.string
   }
@@ -36,7 +38,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div className={styles.Input}>
+      <div className={classNames(this.props.className, styles.Input)}>
         <div className={styles.InputContainer}>
           {this.props.label && (
             <label
@@ -63,6 +65,7 @@ class Input extends Component {
             onBlur={this.handleBlur}
             onChange={this.handleChange}
             onFocus={this.handleFocus}
+            onKeyPress={this.props.onKeyPress}
             type={this.props.type}
             value={this.props.value}
           />

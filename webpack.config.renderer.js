@@ -80,8 +80,7 @@ export default {
       PropTypes: 'prop-types',
       React: 'react',
       ReactDOM: 'react-dom',
-      Route: ['react-router-dom', 'Route'],
-      ROUTES: path.join(__dirname, 'src/config/routes')
+      Route: ['react-router-dom', 'Route']
     })
   ],
 
