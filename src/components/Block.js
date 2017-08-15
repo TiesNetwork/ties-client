@@ -8,9 +8,21 @@ class Block extends Component {
   render() {
     return (
       <div className={classNames(this.props.className, styles.Block)}>
-        {this.props.title && (
-          <div className={styles.BlockTitle}>
-            {this.props.title}
+        {(this.props.actions || this.props.title) && (
+          <div className={styles.BlockHeader}>
+            {this.props.title && (
+              <div className={styles.BlockTitle}>
+                {this.props.title}
+              </div>
+            )}
+
+            {this.props.actions && (
+              <div className={styles.BlockActions}>
+                {React.Children.map(this.props.actions, child => React.cloneElement(child, {
+                  className: classNames(child.props.className, styles.BlockAction)
+                }))}
+              </div>
+            )}
           </div>
         )}
 

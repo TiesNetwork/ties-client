@@ -13,7 +13,7 @@ class Header extends Component {
   }
 
   handleUserClick = () => this.props.user && this.props.history.push({
-    pathname: `/edit/personal`
+    pathname: `/user/${this.props.user.id}`
   })
 
   render() {

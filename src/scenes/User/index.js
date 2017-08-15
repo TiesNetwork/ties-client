@@ -1,5 +1,7 @@
+/** Components **/
 import Avatar from '../../components/Avatar'
 import Block from '../../components/Block'
+import Button from '../../components/Button'
 
 import UserContact from './components/Contact'
 import UserProject from './components/Project'
@@ -24,6 +26,9 @@ class User extends Component {
     })
   }
 
+  handlePersonalEditClick = () => this.props.history.push('/edit/personal')
+  handleExperienceEditClick = () => this.props.history.push('/edit/experience')
+
   render() {
     const { contacts, personal, projects } = this.props
 
@@ -31,6 +36,7 @@ class User extends Component {
       <div>
         {personal && (
           <Block
+            actions={<Button onClick={this.handlePersonalEditClick}>Edit</Button>}
             className={styles.UserPersonal}
             title="Personal Information"
           >
@@ -66,7 +72,10 @@ class User extends Component {
         )}
 
         {projects && projects.length > 0 && (
-          <Block title="Experience">
+          <Block
+            actions={<Button onClick={this.handleExperienceEditClick}>Edit</Button>}
+            title="Experience"
+          >
             {projects.map(project => (
               <UserProject {...project} key={project.id} />
             ))}
