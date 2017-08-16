@@ -10,17 +10,17 @@ import SignRecover from './scenes/Recover'
 import SignRecovery from './scenes/Recovery'
 
 class Sign extends React.Component {
-  handleCreateClick = () => this.props.history.push(ROUTES.SIGN.CREATE.path)
-  handleLoginClick = () => this.props.history.push(ROUTES.SIGN.LOGIN.path)
-  handleRecoverClick = () => this.props.history.push(ROUTES.SIGN.RECOVER.path)
+  handleCreateClick = () => this.props.history.push('/sign/create')
+  handleLoginClick = () => this.props.history.push('/sign/login')
+  handleRecoverClick = () => this.props.history.push('/sign/recover')
 
   render() {
     return (
       <div className={styles.Sign}>
-        {this.props.location.pathname == ROUTES.SIGN.path && (
+        {this.props.location.pathname == '/sign' && (
           <Redirect to={!!localStorage.getItem('token')
-            ? ROUTES.SIGN.LOGIN.path
-            : ROUTES.SIGN.CREATE.path
+            ? '/sign/login'
+            : '/sign/create'
           }/>
         )}
 
@@ -43,9 +43,9 @@ class Sign extends React.Component {
             <div className={styles.SignAboutItem}>ICO Due Dilligence</div>
           </div>
 
-          {this.props.location.pathname != ROUTES.SIGN.RECOVERY.path && (
+          {this.props.location.pathname != '/sign/recovery' && (
             <div className={styles.SignAboutActions}>
-              {this.props.location.pathname != ROUTES.SIGN.LOGIN.path && (
+              {this.props.location.pathname != '/sign/login' && (
                 <Button
                   className={styles.SignAboutAction}
                   color={Button.color.WHITE}
@@ -55,7 +55,7 @@ class Sign extends React.Component {
                 </Button>
               )}
 
-              {this.props.location.pathname != ROUTES.SIGN.RECOVER.path && (
+              {this.props.location.pathname != '/sign/recover' && (
                 <Button
                   className={styles.SignAboutAction}
                   color={Button.color.WHITE}
@@ -65,7 +65,7 @@ class Sign extends React.Component {
                 </Button>
               )}
 
-              {this.props.location.pathname != ROUTES.SIGN.CREATE.path && (
+              {this.props.location.pathname != '/sign/create' && (
                 <Button
                   className={styles.SignAboutAction}
                   color={Button.color.WHITE}
@@ -80,10 +80,10 @@ class Sign extends React.Component {
         </div>
 
         <div className={styles.SignContainer}>
-          <Route component={SignCreate} path={ROUTES.SIGN.CREATE.path} />
-          <Route component={SignLogin} path={ROUTES.SIGN.LOGIN.path} />
-          <Route component={SignRecover} path={ROUTES.SIGN.RECOVER.path} />
-          <Route component={SignRecovery} path={ROUTES.SIGN.RECOVERY.path} />
+          <Route component={SignCreate} path="/sign/create" />
+          <Route component={SignLogin} path="/sign/login" />
+          <Route component={SignRecover} path="/sign/recover" />
+          <Route component={SignRecovery} path="/sign/recovery" />
         </div>
       </div>
     )

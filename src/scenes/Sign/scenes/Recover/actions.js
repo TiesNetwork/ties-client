@@ -16,9 +16,10 @@ export const recover = (phrase, password) => (dispatch, getState, { api, push, s
         users: [schema.user],
         wallets: [schema.wallet]
       })
-console.log(data)
-      dispatch(push(ROUTES.SIGN.RECOVERY.path))
+
       dispatch(setCurrentUserId(data.result.wallets[0]))
       dispatch(updateEntities(data))
+
+      dispatch(push('/sign/recovery'))
     })
 })

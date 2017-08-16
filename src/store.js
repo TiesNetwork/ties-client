@@ -33,14 +33,17 @@ const clientMiddleware = store => next => action => {
 
     return action.promise.then(
       result => next({ ...action, type: RESOLVED }),
-      error => next({ action, type: REJECTED })
+      error => {
+        console.error(error)
+        next({ action, type: REJECTED })
+      }
     )
   } else {
     return next(action)
   }
 }
 
-export default history => createStore(reducer, demoState, applyMiddleware(
+export default history => createStore(reducer, applyMiddleware(
   thunkMiddleware.withExtraArgument({
     api: new Api(),
     push, schema

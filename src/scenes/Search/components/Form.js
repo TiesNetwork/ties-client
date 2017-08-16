@@ -19,7 +19,7 @@ class SearchForm extends Component {
 
         <Input
           className={styles.SearchFormInput}
-          name="search"
+          name="text"
           placeholder="Search"
         />
       </Form>

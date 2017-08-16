@@ -17,8 +17,9 @@ export const login = password => (dispatch, getState, { api, push, schema }) => 
         wallets: [schema.wallet]
       })
 
-      dispatch(push(ROUTES.SIGN.RECOVERY.path))
       dispatch(setCurrentUserId(data.result.wallets[0]))
       dispatch(updateEntities(data))
+
+      dispatch(push(`/users/${data.result.wallets[0]}`))
     })
 })

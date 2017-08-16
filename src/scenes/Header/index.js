@@ -14,7 +14,7 @@ class Header extends Component {
   }
 
   handleSearchClick = () => this.props.history.push('/search/users')
-  handleUserClick = () => this.props.user && this.props.history.push(`/user/${this.props.user.id}`)
+  handleUserClick = () => this.props.user && this.props.history.push(`/users/${this.props.user.__address}`)
 
   render() {
     return (

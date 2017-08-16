@@ -1,7 +1,5 @@
 import Button from '../../../../components/Button'
 
-const phrase = 'remnant punisher sarcasm chapped epidemic deviation oxidize glaring pantry paltry raving hesitancy'
-
 class SignRecovery extends Component {
   static propTypes = {
     wallet: PropTypes.shape({
@@ -11,7 +9,6 @@ class SignRecovery extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className={styles.SignRecoveryTitle}>

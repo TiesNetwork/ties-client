@@ -9,7 +9,6 @@ import UserTag from './components/Tag'
 
 class User extends Component {
   static propTypes = {
-    contacts: PropTypes.array,
     projects: PropTypes.arrayOf(
       PropTypes.shape(UserProject.propTypes)
     ),
@@ -30,13 +29,13 @@ class User extends Component {
   handleExperienceEditClick = () => this.props.history.push('/edit/experience')
 
   render() {
-    const { contacts, personal, projects } = this.props
+    const { personal, projects } = this.props
 
     return (
       <div>
         {personal && (
           <Block
-            actions={<Button onClick={this.handlePersonalEditClick}>Edit</Button>}
+            actions={this.props.isCurrentUser && <Button onClick={this.handlePersonalEditClick}>Edit</Button>}
             className={styles.UserPersonal}
             title="Personal Information"
           >
@@ -71,25 +70,24 @@ class User extends Component {
           </Block>
         )}
 
-        {projects && projects.length > 0 && (
-          <Block
-            actions={<Button onClick={this.handleExperienceEditClick}>Edit</Button>}
-            title="Experience"
-          >
-            {projects.map(project => (
-              <UserProject {...project} key={project.id} />
-            ))}
-          </Block>
-        )}
+        <Block
+          actions={this.props.isCurrentUser && <Button onClick={this.handleExperienceEditClick}>Edit</Button>}
+          title="Experience"
+        >
+          {projects && projects.length > 0 &&projects.map(project => (
+            <UserProject {...project} key={project.id} />
+          ))}
+        </Block>
       </div>
     )
   }
 }
 
-export default connect(state => {
+export default connect((state, ownProps) => {
   const user = state.entities.users[state.services.session.userId]
 
   return {
+    isCurrentUser: state.services.session.userId === ownProps.match.userId,
     personal: { ...user },
     projects: (user.projects || []).map(projectId => state.entities.projects[projectId])
   }

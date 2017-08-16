@@ -14,7 +14,9 @@ class Api {
   async search(text) {
     const response = await Client.User.search(text)
 
-    console.log(response)
+    return {
+      users: response.map(user => ({ ...user.user }))
+    }
   }
 }
 

@@ -93,10 +93,5 @@ export default {
         surname: 'Ryan'
       }
     }
-  },
-  services: {
-    session: {
-      userId: 1
-    }
   }
 }
