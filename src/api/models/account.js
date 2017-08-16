@@ -50,9 +50,7 @@ class Account {
     user.user = { ...user.user, ...values }
     await user.saveToDB()
 
-    return {
-      users: [{ ...user.user }]
-    }
+    return { ...user.user }
   }
 
   /**
@@ -62,7 +60,7 @@ class Account {
   static async setPassword(newPassword, oldPassword) {
     await Client.wallet.setPassword(newPassword, oldPassword)
     const response = await Client.wallet.encrypt()
-console.log(Client.wallet)
+
     localStorage.setItem('address', Client.wallet.address)
     localStorage.setItem('token', response)
 

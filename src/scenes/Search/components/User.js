@@ -4,8 +4,7 @@ import Personal from '../../../components/Personal'
 
 class SearchUser extends Component {
   static propTypes = {
-    id: PropTypes.string.isRequired,
-    photo: PropTypes.string
+    id: PropTypes.string.isRequired
   }
 
   render() {

@@ -8,8 +8,6 @@ class Avatar extends Component {
     str.replace(/^0x/, '').replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")))
 
   render() {
-    console.log(this.props.src)
-
     return (
       <div className={classNames(this.props.className, styles.Avatar)}>
         {this.props.src && (

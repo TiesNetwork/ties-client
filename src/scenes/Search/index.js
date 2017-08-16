@@ -27,7 +27,7 @@ class Search extends Component {
             </div>
 
             <div>
-              {this.props.result.users.map(userId => <SearchUser id={userId} />)}
+              {this.props.result.users.map(userId => <SearchUser id={userId} key={userId} />)}
             </div>
           </div>
         )}

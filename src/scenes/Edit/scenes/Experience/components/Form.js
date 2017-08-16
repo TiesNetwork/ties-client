@@ -8,7 +8,6 @@ class EditExperienceForm extends Component {
   handleCloseClick = () => this.props.history.push('/edit/experience')
 
   render() {
-    console.log(this.props)
     return (
       <Form onSubmit={this.props.handleSubmit}>
         <Input label="Project name" name="name" />

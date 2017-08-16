@@ -9,6 +9,7 @@ import UserTag from './components/Tag'
 
 class User extends Component {
   static propTypes = {
+    isCurrentUser: PropTypes.bool,
     projects: PropTypes.arrayOf(
       PropTypes.shape(UserProject.propTypes)
     ),
@@ -87,7 +88,7 @@ export default connect((state, ownProps) => {
   const user = state.entities.users[state.services.session.userId]
 
   return {
-    isCurrentUser: state.services.session.userId === ownProps.match.userId,
+    isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
     personal: { ...user },
     projects: (user.projects || []).map(projectId => state.entities.projects[projectId])
   }

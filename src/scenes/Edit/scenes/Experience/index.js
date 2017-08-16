@@ -20,7 +20,6 @@ class EditExperience extends Component {
   handleCreateClick = () => this.props.history.push(`${this.props.match.url}/create`)
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <Switch>
