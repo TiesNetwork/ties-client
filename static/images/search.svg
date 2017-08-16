@@ -1,0 +1,42 @@
+<svg width="20" height="20" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shape</title>
+    <desc>Created using Figma</desc>
+    <g id="Canvas" transform="translate(99 -2436)">
+        <rect x="-99" y="2436" width="20" height="20" fill="#E5E5E5"/>
+        <clipPath id="clip-0" clip-rule="evenodd">
+            <path d="M -408 2355L 620 2355L 620 3123L -408 3123L -408 2355Z" fill="#FFFFFF"/>
+        </clipPath>
+        <g id="03_01_search" clip-path="url(#clip-0)">
+            <path d="M -408 2355L 620 2355L 620 3123L -408 3123L -408 2355Z" fill="#FFFFFF"/>
+            <g id="Rectangle 16">
+                <use xlink:href="#path0_fill" transform="translate(-408 2355)" fill="#F9F9F9"/>
+            </g>
+            <g id="search bar">
+                <g id="app bar bg" filter="url(#filter0_d)">
+                    <use xlink:href="#path1_fill" transform="translate(-170 2415)" fill="#FFFFFF"/>
+                </g>
+                <g id="Search">
+                    <g id="search">
+                        <g id="Shape">
+                            <use xlink:href="#path2_fill" transform="matrix(1 0 0 -1 -99 2456)" fill="#000000" fill-opacity="0.21"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <filter id="filter0_d" filterUnits="userSpaceOnUse" x="-180" y="2409" width="800" height="80" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
+            <feOffset dx="0" dy="4"/>
+            <feGaussianBlur stdDeviation="5"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+        </filter>
+        <path id="path0_fill" d="M 0 0L 1029 0L 1029 768L 0 768L 0 0Z"/>
+        <path id="path1_fill" fill-rule="evenodd" d="M 790 0L 0 0L 0 60L 790 60L 790 0Z"/>
+        <path id="path2_fill" fill-rule="evenodd" d="M 14.2962 7.4221L 13.3882 7.4221L 13.0726 7.73541C 14.1875 9.0355 14.8656 10.7209 14.8656 12.5676C 14.8656 16.6726 11.538 20 7.43282 20C 3.32762 20 0 16.6726 0 12.5676C 0 8.46264 3.32762 5.13521 7.43282 5.13521C 9.27959 5.13521 10.964 5.81213 12.2642 6.92585L 12.5798 6.61254L 12.5798 5.70693L 18.295 0L 20 1.70488L 14.2962 7.4221ZM 7.43282 7.42213C 4.59005 7.42213 2.28702 9.72503 2.28702 12.5676C 2.28702 15.4091 4.59005 17.7131 7.43282 17.7131C 10.2744 17.7131 12.5786 15.4091 12.5786 12.5676C 12.5786 9.72503 10.2744 7.42213 7.43282 7.42213Z"/>
+    </defs>
+</svg>

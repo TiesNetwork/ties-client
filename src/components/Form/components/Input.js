@@ -12,6 +12,7 @@ class Input extends Component {
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyPress: PropTypes.func,
+    placeholder: PropTypes.string,
     type: PropTypes.string,
     value: PropTypes.string
   }
@@ -66,6 +67,7 @@ class Input extends Component {
             onChange={this.handleChange}
             onFocus={this.handleFocus}
             onKeyPress={this.props.onKeyPress}
+            placeholder={this.props.placeholder}
             type={this.props.type}
             value={this.props.value}
           />

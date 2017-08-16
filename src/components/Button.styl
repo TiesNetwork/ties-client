@@ -4,19 +4,23 @@ color-white = #FFF
 
 .Button
   background: transparent
-  border: 1px solid
-  font-family: Avenir
+  border: 0
+  font-family: Segoe UI
   font-size: 14px
-  height: 24px
   margin: 0
-  min-width: 72px
-  padding: 0 18px
+  padding: 0
 
   &:focus
     outline: none
 
   &:hover
     cursor: pointer
+
+  &:not(.ButtonCustom)
+    border: 1px solid
+    height: 24px
+    min-width: 72px
+    padding: 0 18px
 
 .ButtonDisabled
   pointer-events: none

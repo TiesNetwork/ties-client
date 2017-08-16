@@ -81,16 +81,6 @@ class User extends Component {
             ))}
           </Block>
         )}
-
-        {contacts && contacts.length > 0 && (
-          <Block title="Contacts">
-            <div className={styles.UserContacts}>
-              {contacts.map((contact, index) => (
-                <UserContact {...contact} key={index} />
-              ))}
-            </div>
-          </Block>
-        )}
       </div>
     )
   }
@@ -100,7 +90,6 @@ export default connect(state => {
   const user = state.entities.users[state.services.session.userId]
 
   return {
-    contacts: (user.contacts || []).map(userId => state.entities.users[userId]),
     personal: { ...user },
     projects: (user.projects || []).map(projectId => state.entities.projects[projectId])
   }

@@ -23,6 +23,7 @@ class Button extends React.Component {
   }
 
   static color = ButtonColor
+  static COLOR = ButtonColor
 
   render() {
     return (

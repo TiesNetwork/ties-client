@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 /** Components **/
 import Avatar from '../../components/Avatar'
 import Button from '../../components/Button'
+import Icon from '../../components/Icon'
 import HeaderAccount from './components/Account'
 
 class Header extends Component {
@@ -12,9 +13,8 @@ class Header extends Component {
     })
   }
 
-  handleUserClick = () => this.props.user && this.props.history.push({
-    pathname: `/user/${this.props.user.id}`
-  })
+  handleSearchClick = () => this.props.history.push('/search/users')
+  handleUserClick = () => this.props.user && this.props.history.push(`/user/${this.props.user.id}`)
 
   render() {
     return (
@@ -27,6 +27,16 @@ class Header extends Component {
           <HeaderAccount amount="10 000" currency="TIE"/>
           <HeaderAccount amount="100.28" currency="ETH"/>
           <HeaderAccount amount="100" currency="HMQ"/>
+        </div>
+
+        <div className={styles.HeaderSearch}>
+          <Button
+            className={styles.HeaderSearchButton}
+            color={Button.color.CUSTOM}
+            onClick={this.handleSearchClick}
+          >
+            <Icon type={Icon.TYPE.SEARCH} />
+          </Button>
         </div>
 
         {this.props.user && (
