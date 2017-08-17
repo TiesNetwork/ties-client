@@ -2,10 +2,11 @@
 import Avatar from '../../components/Avatar'
 import Block from '../../components/Block'
 import Button from '../../components/Button'
+import Personal from '../../components/Personal'
+import Tag from '../../components/Tag'
 
 import UserContact from './components/Contact'
 import UserProject from './components/Project'
-import UserTag from './components/Tag'
 
 class User extends Component {
   static propTypes = {
@@ -13,17 +14,7 @@ class User extends Component {
     projects: PropTypes.arrayOf(
       PropTypes.shape(UserProject.propTypes)
     ),
-    personal: PropTypes.shape({
-      company: PropTypes.string,
-      country: PropTypes.string,
-      keywords: PropTypes.arrayOf(
-        PropTypes.string
-      ),
-      name: PropTypes.string,
-      photo: PropTypes.string,
-      position: PropTypes.string,
-      surname: PropTypes.string
-    })
+    personal: PropTypes.shape(Personal.propTypes)
   }
 
   handlePersonalEditClick = () => this.props.history.push('/edit/personal')
@@ -40,31 +31,16 @@ class User extends Component {
             className={styles.UserPersonal}
             title="Personal Information"
           >
-            <div className={styles.UserHeader}>
-              <Avatar
-                className={styles.UserAvatar}
-                src={personal.photo}
-              />
-
-              <div className={styles.UserInfo}>
-                <div className={styles.UserName}>
-                  {personal.name} {personal.surname}
-                </div>
-
-                <div className={styles.UserPosition}>
-                  {personal.company}, {personal.position}
-                </div>
-
-                <div className={styles.UserCountry}>
-                  {personal.country}
-                </div>
-              </div>
-            </div>
+            <Personal {...personal} />
 
             {personal.keywords && personal.keywords.length > 0 && (
               <div className={styles.UserTags}>
                 {personal.keywords.map((keyword, index) => (
-                  <UserTag key={index} title={keyword} />
+                  <Tag
+                    className={styles.UserTag}
+                    key={index}
+                    title={keyword}
+                  />
                 ))}
               </div>
             )}
@@ -85,7 +61,7 @@ class User extends Component {
 }
 
 export default connect((state, ownProps) => {
-  const user = state.entities.users[state.services.session.userId]
+  const user = state.entities.users[ownProps.match.params.userId]
 
   return {
     isCurrentUser: state.services.session.userId === ownProps.match.params.userId,

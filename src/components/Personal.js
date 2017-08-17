@@ -13,6 +13,11 @@ class Personal extends Component {
   render() {
     return (
       <div className={styles.Personal}>
+        <Avatar
+          className={styles.PersonalAvatar}
+          src={this.props.photo}
+        />
+
         <div className={styles.PersonalInfo}>
           <div className={styles.PersonalName}>
             {this.props.name} {this.props.surname}

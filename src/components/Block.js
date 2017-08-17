@@ -2,12 +2,16 @@ class Block extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    onClick: PropTypes.func,
     title: PropTypes.string
   }
 
   render() {
     return (
-      <div className={classNames(this.props.className, styles.Block)}>
+      <div
+        className={classNames(this.props.className, styles.Block)}
+        onClick={this.props.onClick}
+      >
         {(this.props.actions || this.props.title) && (
           <div className={styles.BlockHeader}>
             {this.props.title && (
