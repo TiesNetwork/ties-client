@@ -1,5 +1,3 @@
-import { normalize } from 'normalizr'
-
 /** Actions **/
 import { updateUser } from '../../../../entities/models/users'
 
