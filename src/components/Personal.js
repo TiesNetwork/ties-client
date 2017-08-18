@@ -19,17 +19,23 @@ class Personal extends Component {
         />
 
         <div className={styles.PersonalInfo}>
-          <div className={styles.PersonalName}>
-            {this.props.name} {this.props.surname}
-          </div>
+          {(this.props.name || this.props.surname) && (
+            <div className={styles.PersonalName}>
+              {this.props.name} {this.props.surname}
+            </div>
+          )}
 
-          <div className={styles.PersonalPosition}>
-            {this.props.company}, {this.props.position}
-          </div>
+          {(this.props.company || this.props.position) && (
+            <div className={styles.PersonalPosition}>
+              {this.props.company}, {this.props.position}
+            </div>
+          )}
 
-          <div className={styles.PersonalCountry}>
-            {this.props.country}
-          </div>
+          {this.props.country && (
+            <div className={styles.PersonalCountry}>
+              {this.props.country}
+            </div>
+          )}
         </div>
       </div>
     )

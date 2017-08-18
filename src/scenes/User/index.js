@@ -18,6 +18,7 @@ class User extends Component {
   }
 
   handlePersonalEditClick = () => this.props.history.push('/edit/personal')
+  handleExperienceCreateClick = () => this.props.history.push('/edit/experience/create')
   handleExperienceEditClick = () => this.props.history.push('/edit/experience')
 
   render() {
@@ -25,34 +26,47 @@ class User extends Component {
 
     return (
       <div>
-        <Block
-          actions={this.props.isCurrentUser && <Button onClick={this.handlePersonalEditClick}>Edit</Button>}
-          className={styles.UserPersonal}
-          title="Personal Information"
-        >
-          {personal && <Personal {...personal} />}
+        {personal ? (
+          <Block
+            actions={this.props.isCurrentUser && <Button onClick={this.handlePersonalEditClick}>Edit</Button>}
+            className={styles.UserPersonal}
+            title="Personal Information"
+          >
+            <Personal {...personal} />
 
-          {personal && personal.keywords && personal.keywords.length > 0 && (
-            <div className={styles.UserTags}>
-              {personal.keywords.map((keyword, index) => (
-                <Tag
-                  className={styles.UserTag}
-                  key={index}
-                  title={keyword}
-                />
-              ))}
-            </div>
-          )}
-        </Block>
+            {personal.keywords && personal.keywords.length > 0 && (
+              <div className={styles.UserTags}>
+                {personal.keywords.map((keyword, index) => (
+                  <Tag
+                    className={styles.UserTag}
+                    key={index}
+                    title={keyword}
+                  />
+                ))}
+              </div>
+            )}
+          </Block>
+        ) : (
+          <Block title="Fill your profile">
+            <Button onClick={this.handlePersonalEditClick}>Edit profile</Button>
+          </Block>
+        )}
 
-        <Block
-          actions={this.props.isCurrentUser && <Button onClick={this.handleExperienceEditClick}>Edit</Button>}
-          title="Experience"
-        >
-          {projects && projects.length > 0 &&projects.map(project => (
-            <UserProject {...project} key={project.id} />
-          ))}
-        </Block>
+
+        {personal && (
+          projects && projects.length > 0 ? (
+            <Block
+              actions={this.props.isCurrentUser && <Button onClick={this.handleExperienceEditClick}>Edit</Button>}
+              title="Experience"
+            >
+              {projects.map(project => <UserProject {...project} key={project.id} />)}
+            </Block>
+          ) : (
+            <Block title="Add your first project">
+              <Button onClick={this.handleExperienceCreateClick}>Add</Button>
+            </Block>
+          )
+        )}
       </div>
     )
   }
