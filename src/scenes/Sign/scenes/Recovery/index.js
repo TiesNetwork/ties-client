@@ -8,6 +8,8 @@ class SignRecovery extends Component {
     })
   }
 
+  handleContinueClick = () => this.props.wallet && this.props.history.push(`/users/${this.props.wallet.address}`)
+
   render() {
     return (
       <div>
@@ -56,7 +58,7 @@ class SignRecovery extends Component {
         </div>
 
         <div className={styles.SignRecoveryActions}>
-          <Button solid>
+          <Button onClick={this.handleContinueClick} solid>
             Continue
           </Button>
         </div>
