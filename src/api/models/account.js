@@ -47,7 +47,11 @@ class Account {
   static async setInfo(values) {
     const user = Client.user
 
-    user.user = { ...user.user, ...values }
+    user.user = {
+      ...user.user,
+      ...values,
+      __address: Client.wallet.address
+    }
     await user.saveToDB()
 
     return { ...user.user }

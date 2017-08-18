@@ -25,27 +25,25 @@ class User extends Component {
 
     return (
       <div>
-        {personal && (
-          <Block
-            actions={this.props.isCurrentUser && <Button onClick={this.handlePersonalEditClick}>Edit</Button>}
-            className={styles.UserPersonal}
-            title="Personal Information"
-          >
-            <Personal {...personal} />
+        <Block
+          actions={this.props.isCurrentUser && <Button onClick={this.handlePersonalEditClick}>Edit</Button>}
+          className={styles.UserPersonal}
+          title="Personal Information"
+        >
+          {personal && <Personal {...personal} />}
 
-            {personal.keywords && personal.keywords.length > 0 && (
-              <div className={styles.UserTags}>
-                {personal.keywords.map((keyword, index) => (
-                  <Tag
-                    className={styles.UserTag}
-                    key={index}
-                    title={keyword}
-                  />
-                ))}
-              </div>
-            )}
-          </Block>
-        )}
+          {personal && personal.keywords && personal.keywords.length > 0 && (
+            <div className={styles.UserTags}>
+              {personal.keywords.map((keyword, index) => (
+                <Tag
+                  className={styles.UserTag}
+                  key={index}
+                  title={keyword}
+                />
+              ))}
+            </div>
+          )}
+        </Block>
 
         <Block
           actions={this.props.isCurrentUser && <Button onClick={this.handleExperienceEditClick}>Edit</Button>}
@@ -66,6 +64,6 @@ export default connect((state, ownProps) => {
   return {
     isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
     personal: { ...user },
-    projects: (user.projects || []).map(projectId => state.entities.projects[projectId])
+    projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
   }
 })(User)

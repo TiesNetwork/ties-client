@@ -27,7 +27,7 @@ class EditPersonal extends Component {
 
 export default connect(
   state => ({
-    personal: state.entities.users[state.services.session.userId]
+    personal: state.entities.users[state.services.session.userId] || {}
   }),
   dispatch => ({
     handleSubmit: values => dispatch(updatePersonal(values))

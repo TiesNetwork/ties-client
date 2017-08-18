@@ -8,7 +8,7 @@ class SignRecovery extends Component {
     })
   }
 
-  handleContinueClick = () => this.props.wallet && this.props.history.push(`/users/${this.props.wallet.address}`)
+  handleContinueClick = () => this.props.wallet && this.props.history.push(`/edit/personal`)
 
   render() {
     return (

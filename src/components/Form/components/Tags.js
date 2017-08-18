@@ -7,9 +7,12 @@ class Tags extends Component {
     label: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
-    value: PropTypes.arrayOf(
+    value: PropTypes.oneOfType([
+      PropTypes.arrayOf(
+        PropTypes.string
+      ),
       PropTypes.string
-    )
+    ])
   }
 
   state = { value: '' }
@@ -35,6 +38,7 @@ class Tags extends Component {
   ])
 
   render() {
+    console.log(this.props)
     return (
       <div className={styles.Tags}>
         <Input
