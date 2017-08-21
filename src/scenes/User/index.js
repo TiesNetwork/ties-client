@@ -1,3 +1,6 @@
+/** Actions **/
+import { getProjects } from './actions'
+
 /** Components **/
 import Avatar from '../../components/Avatar'
 import Block from '../../components/Block'
@@ -11,10 +14,12 @@ import UserProject from './components/Project'
 class User extends Component {
   static propTypes = {
     isCurrentUser: PropTypes.bool,
-    projects: PropTypes.arrayOf(
-      PropTypes.shape(UserProject.propTypes)
-    ),
+    projects: PropTypes.arrayOf(PropTypes.shape(UserProject.propTypes)),
     personal: PropTypes.shape(Personal.propTypes)
+  }
+
+  componentDidMount() {
+    this.props.getProjects()
   }
 
   handlePersonalEditClick = () => this.props.history.push('/edit/personal')
@@ -72,12 +77,17 @@ class User extends Component {
   }
 }
 
-export default connect((state, ownProps) => {
-  const user = state.entities.users[ownProps.match.params.userId]
+export default connect(
+  (state, ownProps) => {
+    const user = state.entities.users[ownProps.match.params.userId]
 
-  return {
-    isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
-    personal: { ...user },
-    projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
-  }
-})(User)
+    return {
+      isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
+      personal: { ...user },
+      projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
+    }
+  },
+  (dispatch, ownProps) => ({
+    getProjects: () => dispatch(getProjects(ownProps.match.params.userId))
+  })
+)(User)

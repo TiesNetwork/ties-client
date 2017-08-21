@@ -1,8 +1,10 @@
 import Account from './models/account'
+import Projects from './models/projects'
 
 class Api {
   constructor() {
     this.account = Account
+    this.projects = Projects
 
     this.user = null
     this.wallet = null
