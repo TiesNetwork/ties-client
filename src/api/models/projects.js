@@ -48,15 +48,20 @@ console.log(project)
    * @param {string} address
    * @param {string} id
    * @param {{
-   *
+   *   dateEnd: (string),
+   *   dateStart: (string),
+   *   description: (string),
+   *   name: (string)
    * }} values
    */
   static async update(address, id, values) {
     const project = await Client.Project.createFromDB(address, id)
 
-    project.raw = {
-      ...project.raw,
-      ...values
+    project.raw = { ...project.raw,
+      date_end: values.dateEnd,
+      date_start: values.dateStart,
+      description: values.description,
+      name: values.name
     }
 
     await project.saveToDB()
