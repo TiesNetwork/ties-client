@@ -54,7 +54,7 @@ class Account {
     }
     await user.saveToDB()
 
-    return { ...user.user }
+    return user.user
   }
 
   /**

@@ -43,6 +43,26 @@ console.log(project)
       }
     });
   }
+
+  /**
+   * @param {string} address
+   * @param {string} id
+   * @param {{
+   *
+   * }} values
+   */
+  static async update(address, id, values) {
+    const project = await Client.Project.createFromDB(address, id)
+
+    project.raw = {
+      ...project.raw,
+      ...values
+    }
+
+    await project.saveToDB()
+
+    return project.raw
+  }
 }
 
 export default Projects
