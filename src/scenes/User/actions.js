@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr'
 
 /** Actions **/
-import { setProjects } from '../../entities/models/users'
+import { updateProjects } from '../../entities/models/users'
 import { updateEntities } from '../../entities'
 
 export const GET_PROJECTS_FAILURE = 'SCENES/USER/GET_PROJECTS_FAILURE';
@@ -15,6 +15,6 @@ export const getProjects = address => (dispatch, getState, { api, schema }) => d
       const data = normalize(response, [schema.project])
 
       dispatch(updateEntities(data))
-      dispatch(setProjects(address, data.result))
+      dispatch(updateProjects(address, data.result))
     })
 })

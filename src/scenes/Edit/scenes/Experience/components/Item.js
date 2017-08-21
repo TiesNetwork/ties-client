@@ -1,13 +1,16 @@
-import { withRouter } from 'react-router-dom'
-
 /** Components **/
 import Button from '../../../../../components/Button'
 import UserProject from '../../../../User/components/Project'
 
 class EditExperienceItem extends Component {
-  static propTypes = UserProject.propTypes
+  static propTypes = {
+    ...UserProject.propTypes,
+    onEdit: PropTypes.func,
+    onRemove: PropTypes.func
+  }
 
-  handleEditClick = () => this.props.history.push(`/edit/experience/${this.props.id}`)
+  handleEditClick = () => this.props.onEdit && this.props.onEdit(this.props.id)
+  handleRemoveClick = () => this.props.onRemove && this.props.onRemove(this.props.__address, this.props.id)
 
   render() {
     return (
@@ -15,8 +18,19 @@ class EditExperienceItem extends Component {
         <UserProject {...this.props} />
 
         <div className={styles.EditExperienceItemActions}>
-          <Button onClick={this.handleEditClick}>
+          <Button
+            className={styles.EditExperienceItemAction}
+            onClick={this.handleEditClick}
+          >
             Edit
+          </Button>
+
+          <Button
+            className={styles.EditExperienceItemAction}
+            color={Button.COLOR.DANGER}
+            onClick={this.handleRemoveClick}
+          >
+            Remove
           </Button>
         </div>
       </div>
@@ -24,4 +38,4 @@ class EditExperienceItem extends Component {
   }
 }
 
-export default withRouter(EditExperienceItem)
+export default EditExperienceItem

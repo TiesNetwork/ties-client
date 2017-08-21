@@ -1,6 +1,26 @@
+color-danger = #E8322B
 color-primary = #174DA1
 color-secondary = rgba(0, 0, 0, .43)
 color-white = #FFF
+
+ButtonTheme(primaryColor, secondaryColor)
+  border-color: primaryColor
+  color: primaryColor
+
+  &:hover
+    background: primaryColor
+    border-color: primaryColor
+    color: secondaryColor
+
+  &.ButtonSolid
+    background: primaryColor
+    border-color: primaryColor
+    color: secondaryColor
+
+    &:hover
+      background: transparent
+      border-color: primaryColor
+      color: primaryColor
 
 .Button
   background: transparent
@@ -26,37 +46,17 @@ color-white = #FFF
   pointer-events: none
   opacity: .42
 
+.ButtonDanger
+  ButtonTheme(color-danger, color-white)
+
 .ButtonSecondary
-  border-color: color-secondary
-  color: color-secondary
-
-  &:hover
-    background: color-secondary
-    color: color-white
-
-  &.ButtonSolid
-    background: color-secondary
-    color: color-white
-
-    &:hover
-      background: transparent
-      color: color-secondary
+  ButtonTheme(color-secondary, color-white)
 
 .ButtonPrimary
-  border-color: color-primary
-  color: color-primary
+  ButtonTheme(color-primary, color-white)
 
-  &:hover
-    background: color-primary
-    color: color-white
-
-  &.ButtonSolid
-    background: color-primary
-    color: color-white
-
-    &:hover
-      background: transparent
-      color: color-primary
+.ButtonWhite
+  ButtonTheme(color-white, color-primary)
 
 .ButtonWhite
   border-color: color-white
