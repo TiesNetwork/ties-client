@@ -18,11 +18,9 @@ class Projects {
    * @param {string} id
    */
   static async delete(address, id) {
-    console.error(address, id)
     const project = await Client.Project.createFromDB(address, id)
-      console.log(project, project.isLoaded())
-    const response = await project.deleteFromDB()
-console.log(project)
+        , response = await project.deleteFromDB()
+
     return response
   }
 
