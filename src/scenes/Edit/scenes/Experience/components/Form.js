@@ -2,7 +2,7 @@ import { withRouter } from 'react-router-dom'
 
 /** Components **/
 import Button from '../../../../../components/Button'
-import Form, { Actions, Group, Input, Tags } from '../../../../../components/Form'
+import Form, { Actions, Group, Input } from '../../../../../components/Form'
 
 class EditExperienceForm extends Component {
   handleCloseClick = () => this.props.history.push('/edit/experience')

@@ -7,10 +7,24 @@ class Projects {
    * @return {Promise.<void>}
    */
   static async create(values) {
-    const project = await Client.user.newProject(values)
+    const project = await Client.user.newProject({
+            date_end: values.dateEnd,
+            date_start: values.dateStart,
+            description: values.description,
+            name: values.name
+          })
         , response = await project.saveToDB()
 
-    return project.toJson()
+    const data = project.toJson()
+
+    return {
+      __address: data.__address,
+      dateEnd: data.date_end,
+      dateStart: data.date_start,
+      description: data.description,
+      id: data.id.toString(),
+      name: data.name,
+    }
   }
 
   /**
@@ -34,10 +48,12 @@ class Projects {
       const data = project.toJson()
 
       return {
-        ...data,
+        __address: data.__address,
         dateEnd: data.date_end,
         dateStart: data.date_start,
-        id: data.id.toString()
+        description: data.description,
+        id: data.id.toString(),
+        name: data.name,
       }
     });
   }
@@ -64,7 +80,16 @@ class Projects {
 
     await project.saveToDB()
 
-    return project.raw
+    const data = project.toJson()
+
+    return {
+      __address: data.__address,
+      dateEnd: data.date_end,
+      dateStart: data.date_start,
+      description: data.description,
+      id: data.id.toString(),
+      name: data.name,
+    }
   }
 }
 
