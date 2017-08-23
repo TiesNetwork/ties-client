@@ -48,6 +48,7 @@ class Field extends Component {
         <ReduxField
           component={ReduxFieldAdapter}
           name={this.props.name}
+          normalize={this.props.normalize}
           value={this.props.value}
         >
           { props => React.cloneElement(this.props.children, { ...props, id: this.state.id }) }
