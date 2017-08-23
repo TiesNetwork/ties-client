@@ -1,6 +1,6 @@
 /** Actions **/
-import { updateProject } from '../../../../../../entities/models/projects'
-import { updateProjects } from '../../../../../../entities/models/users'
+import { updateProject } from '../../../../../../entities/projects'
+import { updateProjects } from '../../../../../../entities/users'
 
 export const CREATE_PROJECT_FAILURE = 'SCENES/EDIT/CREATE_PROJECT_FAILURE'
 export const CREATE_PROJECT_REQUEST = 'SCENES/EDIT/CREATE_PROJECT_REQUEST'

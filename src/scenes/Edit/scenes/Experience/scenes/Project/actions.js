@@ -1,5 +1,5 @@
 /** Actions **/
-import { updateProject as updateProjectEntities } from '../../../../../../entities/models/projects'
+import { updateProject as updateProjectEntities } from '../../../../../../entities/projects'
 
 export const UPDATE_PROJECT_FAILURE = 'SCENES/EDIT/UPDATE_PROJECT_FAILURE'
 export const UPDATE_PROJECT_REQUEST = 'SCENES/EDIT/UPDATE_PROJECT_REQUEST'

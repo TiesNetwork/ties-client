@@ -1,9 +1,9 @@
 {
   "author": "Ivan Vyatkin <vanya095@gmail.com>",
   "dependencies": {
-    "@ties-network/ties-client-base": "^1.2.3",
+    "@ties-network/ties-client-base": "^1.2.6",
     "classnames": "^2.2.5",
-    "history": "^4.6.3",
+    "history": "^4.7.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "normalizr": "^3.2.3",
@@ -31,7 +31,7 @@
     "baggage-loader": "^1.0.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
-    "electron": "^1.6.11",
+    "electron": "^1.7.6",
     "electron-devtools-installer": "^2.2.0",
     "file-loader": "^0.11.2",
     "react-hot-loader": "3.0.0-beta.6",
@@ -49,7 +49,6 @@
   "name": "Ties.Network",
   "scripts": {
     "start": "npm run dev",
-
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
     "hot-updates-server": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.renderer.js",
     "start-hot-renderer": "cross-env HOT=1 NODE_ENV=development BABEL_DISABLE_CACHE=1 electron -r babel-register -r babel-polyfill ./app"

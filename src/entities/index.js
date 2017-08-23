@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 /** Model reducers **/
-import projectsReducer from './models/projects'
-import usersReducer from './models/users'
-import walletsReducer from './models/wallets'
+import projectsReducer from './projects'
+import usersReducer from './users'
+import walletsReducer from './wallets'
 
 const modelsReducer = combineReducers({
   projects: projectsReducer,

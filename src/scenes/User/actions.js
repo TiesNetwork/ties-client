@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr'
 
 /** Actions **/
-import { updateProjects } from '../../entities/models/users'
+import { updateProjects } from '../../entities/users'
 import { updateEntities } from '../../entities'
 
 export const GET_PROJECTS_FAILURE = 'SCENES/USER/GET_PROJECTS_FAILURE';

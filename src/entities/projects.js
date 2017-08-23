@@ -1,6 +1,6 @@
 export const DELETE_PROJECT = 'ENTITIES/PROJECTS/DELETE_PROJECT'
 export const deleteProject = id => ({
-  type: UPDATE_PROJECT,
+  type: DELETE_PROJECT,
   id: id
 })
 

@@ -1,5 +1,5 @@
 /** Actions **/
-import { updateUser } from '../../../../entities/models/users'
+import { updateUser } from '../../../../entities/users'
 
 export const UPDATE_PERSONAL_FAILURE = 'SCENES/EDIT/UPDATE_PERSONAL_FAILURE'
 export const UPDATE_PERSONAL_REQUEST = 'SCENES/EDIT/UPDATE_PERSONAL_REQUEST'
