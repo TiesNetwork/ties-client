@@ -36,6 +36,27 @@ class EditExperienceForm extends Component {
   }
 }
 
+const validate = values => {
+  const errors = {}
+      , dateFields = ['dateEnd', 'dateStart']
+      , required = ['dateEnd', 'dateStart', 'description', 'name']
+
+  required.forEach(name => {
+    if (!values[name]) {
+      errors[name] = 'Required!'
+    }
+  })
+
+  dateFields.forEach(name => {
+    if (!!values[name] && !moment(values[name], 'YYYY-MM-DD', true).isValid()) {
+      errors[name] = 'Date is not valid! Format: YYYY-MM-DD'
+    }
+  })
+
+  return errors
+}
+
 export default reduxForm({
-  form: 'EditExperienceForm'
+  form: 'EditExperienceForm',
+  validate
 })(withRouter(EditExperienceForm))

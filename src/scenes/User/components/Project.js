@@ -1,7 +1,7 @@
 class UserProject extends Component {
   static propTypes = {
-    dateEnd: PropTypes.object,
-    dateStart: PropTypes.object,
+    dateEnd: PropTypes.string,
+    dateStart: PropTypes.string,
     description: PropTypes.string,
     name: PropTypes.string
   }

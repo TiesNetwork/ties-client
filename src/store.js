@@ -2,8 +2,6 @@ import { push, routerMiddleware, routerReducer } from 'react-router-redux'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 
-import demoState from './demo'
-
 import Api from './api'
 import * as schema from './api/schema'
 

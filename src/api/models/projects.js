@@ -4,7 +4,7 @@ class Projects {
    *   description: (string),
    *   name: (string)
    * }} values
-   * @return {Promise.<void>}
+   * @return {{}}
    */
   static async create(values) {
     const project = await Client.user.newProject({
