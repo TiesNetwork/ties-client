@@ -49,12 +49,28 @@ class Account {
 
     user.user = {
       ...user.user,
-      ...values,
-      __address: Client.wallet.address
+      __address: Client.wallet.address,
+      company: values.company,
+      country: values.country,
+      keywords: values.keywords,
+      name: values.name,
+      photo: `0x${values.photo.toString('hex')}`,
+      surname: values.surname
     }
+
     await user.saveToDB()
 
-    return user.user
+    const data = user.user
+
+    return {
+      __address: Client.wallet.address,
+      company: data.company,
+      country: data.country,
+      keywords: data.keywords,
+      name: data.name,
+      photo: Buffer.from(data.photo.replace(/^0x/, ''), 'hex'),
+      surname: data.surname
+    }
   }
 
   /**

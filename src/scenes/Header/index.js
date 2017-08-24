@@ -9,7 +9,7 @@ import HeaderAccount from './components/Account'
 class Header extends Component {
   static propTypes = {
     user: PropTypes.shape({
-      photo: PropTypes.string
+      photo: PropTypes.object
     })
   }
 

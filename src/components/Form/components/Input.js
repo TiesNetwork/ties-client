@@ -40,9 +40,7 @@ class Input extends Component {
   render() {
     return (
       <div className={classNames(
-        this.props.className,
         styles.Input,
-
         this.props.type == 'hidden' && styles.InputHidden
       )}>
         <div className={styles.InputContainer}>

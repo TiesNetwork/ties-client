@@ -1,15 +1,28 @@
+import { formValueSelector } from 'redux-form'
+
+/** Components **/
 import Avatar from '../../../../../components/Avatar'
 import Button from '../../../../../components/Button'
-import Form, { Actions, Group, Input, Tags } from '../../../../../components/Form'
+import Form, { Actions, File, Group, Input, Tags } from '../../../../../components/Form'
 
 class EditPersonalForm extends Component {
   render() {
     return (
       <Form onSubmit={this.props.handleSubmit}>
-        <Avatar
-          className={styles.EditPersonalFormAvatar}
-          src={this.props.initialValues.photo}
-        />
+        <div className={styles.EditPersonalFormAvatar}>
+          <Avatar
+            className={styles.EditPersonalFormAvatarPreview}
+            src={this.props.photo}
+          />
+
+          <File
+            accept="image/*"
+            className={styles.EditPersonalFormAvatarControl}
+            label="Upload photo"
+            name="photo"
+          />
+        </div>
+
 
         <Group>
           <Input label="Name" name="name" />
@@ -38,6 +51,9 @@ class EditPersonalForm extends Component {
   }
 }
 
-export default reduxForm({
+const selector = formValueSelector('EditPersonalForm')
+export default connect(state => ({
+  photo: selector(state, 'photo')
+}))(reduxForm({
   form: 'EditPersonalForm'
-})(EditPersonalForm)
+})(EditPersonalForm))
