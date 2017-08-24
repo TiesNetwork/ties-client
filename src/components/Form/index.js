@@ -105,6 +105,8 @@ export const File = props => (
   </Field>
 )
 
+File.CONVERTER = InputFileComponent.CONVERTER
+
 export const Input = props => (
   <Field {...props}>
     <InputComponent {...props} />

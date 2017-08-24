@@ -18,8 +18,10 @@ class EditPersonalForm extends Component {
           <File
             accept="image/*"
             className={styles.EditPersonalFormAvatarControl}
+            converter={File.CONVERTER.HEX}
             label="Upload photo"
             name="photo"
+            toBuffer={true}
           />
         </div>
 

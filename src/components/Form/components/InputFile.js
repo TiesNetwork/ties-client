@@ -1,12 +1,8 @@
-class File extends Component {
-  static propTypes = {
-    accept: PropTypes.string,
-    id: PropTypes.string,
-    label: PropTypes.string,
-    name: PropTypes.string,
-  }
-
-  handleChange = event => {
+const FileConverters = {
+  DEFAULT: (files, toBuffer, callback) => {
+    callback && callback(files)
+  },
+  HEX: (files, toBuffer, callback) => {
     const fileReader = new FileReader()
 
     fileReader.addEventListener('load', () => {
@@ -15,15 +11,36 @@ class File extends Component {
         , i = intArray.length
 
       while(i--) {
-        bufferArray[i] = `0x${(intArray[i] < 16 ? '0' : '') + intArray[i].toString(16)}`
+        bufferArray[i] = `${toBuffer ? '0x' : ''}${(intArray[i] < 16 ? '0' : '') + intArray[i].toString(16)}`
       }
 
-      this.props.onChange && this.props.onChange(new Buffer(bufferArray))
+      callback && callback(toBuffer ? Buffer.from(bufferArray, 'hex') : `0x${bufferArray.join('')}`)
       bufferArray = intArray = i = null
     })
 
-    fileReader.readAsArrayBuffer(event.target.files[0])
+    fileReader.readAsArrayBuffer(files[0])
   }
+}
+
+class File extends Component {
+  static propTypes = {
+    accept: PropTypes.string,
+    converter: PropTypes.func,
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
+    onChange: PropTypes.func,
+    toBuffer: PropTypes.bool
+  }
+
+  static defaultProps = {
+    converter: FileConverters.DEFAULT,
+    toBuffer: false
+  }
+
+  static CONVERTER = FileConverters
+
+  handleChange = event => this.props.converter(event.target.files, this.props.toBuffer, this.props.onChange)
 
   render() {
     return (
