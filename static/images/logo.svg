@@ -1,46 +1,19 @@
 <svg width="22" height="26" viewBox="0 0 22 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>logo</title>
+    <title>Vector</title>
     <desc>Created using Figma</desc>
-    <g id="Canvas" transform="translate(-661 -2372)">
-        <rect x="661" y="2372" width="22" height="26" fill="#E5E5E5"/>
+    <g id="Canvas" transform="translate(4873 -2646)">
         <clipPath id="clip-0" clip-rule="evenodd">
-            <path d="M 644 2355L 1672 2355L 1672 3123L 644 3123L 644 2355Z" fill="#FFFFFF"/>
+            <path d="M -5067 2354L -4039 2354L -4039 3123L -5067 3123L -5067 2354Z" fill="#FFFFFF"/>
         </clipPath>
-        <g id="d_06_01_messages" clip-path="url(#clip-0)">
-            <path d="M 644 2355L 1672 2355L 1672 3123L 644 3123L 644 2355Z" fill="#FFFFFF"/>
-            <g id="dialogs">
-                <g id="Rectangle 16">
-                    <use xlink:href="#path0_fill" transform="translate(644 2355)" fill="#FFFFFF"/>
-                </g>
-            </g>
-            <g id="header">
-                <g id="app bar bg" filter="url(#filter0_d)">
-                    <use xlink:href="#path1_fill" transform="translate(644 2355)" fill="#FFFFFF"/>
-                </g>
-                <g id="logo">
-                    <g id="Layer 7">
-                        <g id="Group">
-                            <g id="Vector">
-                                <use xlink:href="#path2_fill" transform="translate(661 2372)" fill="#E8322B"/>
-                            </g>
-                        </g>
-                    </g>
-                </g>
+        <g id="01_01_login" clip-path="url(#clip-0)">
+            <g id="Vector">
+                <use xlink:href="#path2_fill" transform="translate(-4873 2646)" fill="#E8322B"/>
             </g>
         </g>
     </g>
     <defs>
-        <filter id="filter0_d" filterUnits="userSpaceOnUse" x="644" y="2355" width="1028" height="74" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 0"/>
-            <feOffset dx="0" dy="4"/>
-            <feGaussianBlur stdDeviation="5"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-        </filter>
-        <path id="path0_fill" d="M 0 0L 239 0L 239 768L 0 768L 0 0Z"/>
-        <path id="path1_fill" fill-rule="evenodd" d="M 1028 0L 0 0L 0 60L 1028 60L 1028 0Z"/>
+        <path id="path0_fill" d="M 0 0L 1028 0L 1028 769L 0 769L 0 0Z"/>
+        <path id="path1_fill" d="M 0 0L 512 0L 512 769L 0 769L 0 0Z"/>
         <path id="path2_fill" d="M 10.2882 26L 10.2882 13.2932L 1.42353 8.04762L 1.42353 18.7995L 0 18.7995L 0 5.57143L 11.7118 12.4787L 11.7118 23.5238L 15.4324 21.3734L 15.4324 10.2306L 4.43235 3.81203L 11 0L 22 6.38596L 22 18.7995L 20.5765 18.7995L 20.5765 7.23308L 11 1.66165L 7.27941 3.81203L 16.8559 9.38346L 16.8559 22.188L 10.2882 26Z"/>
     </defs>
 </svg>
