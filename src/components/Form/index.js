@@ -1,9 +1,10 @@
 import { Field as ReduxField } from 'redux-form'
 
-import CheckboxComponent from './components/Checkbox'
-import InputComponent from './components/Input'
-import InputFileComponent from './components/InputFile'
-import TagsComponent from './components/Tags'
+import FormCheckbox from './components/Checkbox'
+import FormInput from './components/Input'
+import FormFile from './components/InputFile'
+import FormRecipients from './components/Recipients'
+import FormTags from './components/Tags'
 
 const ReduxFieldAdapter = props => {
   const {
@@ -95,30 +96,35 @@ class Group extends Component {
 
 export const Checkbox = props => (
   <Field {...props}>
-    <CheckboxComponent {...props} />
+    <FormCheckbox {...props} />
   </Field>
 )
 
 export const File = props => (
   <Field {...props}>
-    <InputFileComponent {...props} />
+    <FormFile {...props} />
   </Field>
 )
 
-File.CONVERTER = InputFileComponent.CONVERTER
+File.CONVERTER = FormFile.CONVERTER
 
 export const Input = props => (
   <Field {...props}>
-    <InputComponent {...props} />
+    <FormInput {...props} />
   </Field>
 )
 
 export const Tags = props => (
   <Field {...props}>
-    <TagsComponent {...props} />
+    <FormTags {...props} />
   </Field>
 )
 
+export const Recipients = props => (
+  <Field {...props}>
+    <FormRecipients {...props} />
+  </Field>
+)
 
 export default Form
 export { Actions, Group }
