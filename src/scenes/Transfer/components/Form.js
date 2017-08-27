@@ -1,6 +1,6 @@
 /** Components **/
-import Button from '../../../components/Button'
-import Form, { Actions, Input, Recipients } from '../../../components/Form'
+import Button from '../../../components/Button';
+import Form, { Actions, Input, Recipients } from '../../../components/Form';
 
 class TransferForm extends Component {
   render() {
@@ -23,4 +23,4 @@ class TransferForm extends Component {
 
 export default reduxForm({
   form: 'TransferForm'
-})(TransferForm)
+})(TransferForm);

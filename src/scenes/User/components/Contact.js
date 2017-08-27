@@ -1,4 +1,4 @@
-import Avatar from '../../../components/Avatar'
+import Avatar from '../../../components/Avatar';
 
 class UserContact extends Component {
   static propTypes = {
@@ -34,4 +34,4 @@ class UserContact extends Component {
   }
 }
 
-export default UserContact
+export default UserContact;

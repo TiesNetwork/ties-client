@@ -36,4 +36,4 @@ class UserProject extends Component {
   }
 }
 
-export default UserProject
+export default UserProject;

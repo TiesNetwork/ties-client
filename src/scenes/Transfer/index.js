@@ -1,9 +1,9 @@
 /** Actions **/
-import { sendTransfer } from './actions'
+import { sendTransfer } from './actions';
 
 /** Components **/
-import Block from '../../components/Block'
-import TransferForm from './components/Form'
+import Block from '../../components/Block';
+import TransferForm from './components/Form';
 
 class Transfer extends Component {
   static propTypes = {
@@ -33,11 +33,11 @@ class Transfer extends Component {
   }
 }
 
-export default connect(
-  (state, ownProps) => ({
-    recipient: state.entities.users[ownProps.location.query.to]
-  }),
-  dispatch => ({
-    handleSubmit: values => dispatch(sendTransfer(values.address, values.sum))
-  })
-)(Transfer)
+const mapStateToProps = (state, ownProps) => ({
+  recipient: state.entities.users[ownProps.location.query.to]
+});
+const mapDispatchToProps = dispatch => ({
+  handleSubmit: values => dispatch(sendTransfer(values.address, values.sum))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Transfer);

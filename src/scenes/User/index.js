@@ -1,13 +1,13 @@
 /** Actions **/
-import { getProjects } from './actions'
+import { getProjects } from './actions';
 
 /** Components **/
-import Block from '../../components/Block'
-import Button from '../../components/Button'
-import Personal from '../../components/Personal'
-import Tag from '../../components/Tag'
+import Block from '../../components/Block';
+import Button from '../../components/Button';
+import Personal from '../../components/Personal';
+import Tag from '../../components/Tag';
 
-import UserProject from './components/Project'
+import UserProject from './components/Project';
 
 class User extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ class User extends Component {
   }
 
   componentDidMount() {
-    this.props.getProjects()
+    this.props.getProjects();
   }
 
   handlePersonalEditClick = () => this.props.history.push('/edit/personal')
@@ -30,7 +30,7 @@ class User extends Component {
   })
 
   render() {
-    const { personal, projects } = this.props
+    const { personal, projects } = this.props;
 
     return (
       <div>
@@ -88,18 +88,19 @@ class User extends Component {
   }
 }
 
-export default connect(
-  (state, ownProps) => {
-    const user = state.entities.users[ownProps.match.params.userId]
+const mapStateToProps = (state, ownProps) => {
+  const user = state.entities.users[ownProps.match.params.userId];
 
-    return {
-      id: ownProps.match.params.userId,
-      isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
-      personal: { ...user },
-      projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
-    }
-  },
-  (dispatch, ownProps) => ({
-    getProjects: () => dispatch(getProjects(ownProps.match.params.userId))
-  })
-)(User)
+  return {
+    id: ownProps.match.params.userId,
+    isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
+    personal: { ...user },
+    projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  getProjects: () => dispatch(getProjects(ownProps.match.params.userId))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);

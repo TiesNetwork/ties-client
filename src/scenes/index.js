@@ -1,10 +1,10 @@
 /** Scenes **/
-import Edit from './Edit'
-import Header from './Header'
-import Search from './Search'
-import Sidebar from './Sidebar'
-import Transfer from './Transfer'
-import User from './User'
+import Edit from './Edit';
+import Header from './Header';
+import Search from './Search';
+import Sidebar from './Sidebar';
+import Transfer from './Transfer';
+import User from './User';
 
 class Scenes extends Component {
   render() {
@@ -27,4 +27,4 @@ class Scenes extends Component {
   }
 }
 
-export default connect()(Scenes)
+export default Scenes;
