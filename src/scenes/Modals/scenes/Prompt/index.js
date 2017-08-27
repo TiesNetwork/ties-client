@@ -1,3 +1,6 @@
+/** Actions **/
+import { closeModal } from '../../../../services/modals'
+
 /** Components **/
 import Modal from '../../../../components/Modal'
 import ModalsPromptForm from './components/Form'
@@ -9,7 +12,10 @@ class ModalsPrompt extends Component {
     title: PropTypes.string
   }
 
-  handleSubmit = values => this.props.onSubmit && this.props.onSubmit(values.input)
+  handleSubmit = values => {
+    this.props.closeModal()
+    this.props.onSubmit && this.props.onSubmit(values.input)
+  }
 
   render() {
     return (
@@ -26,6 +32,7 @@ class ModalsPrompt extends Component {
   }
 }
 
-export default connect(state => ({
-  ...state.services.modals.prompt
-}))(ModalsPrompt)
+const mapStateToProps = state => ({ ...state.services.modals.prompt })
+    , mapDispatchToProps = dispatch => ({ closeModal: () => dispatch(closeModal('prompt')) })
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalsPrompt)

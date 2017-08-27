@@ -7,8 +7,6 @@ import Form, { Actions, Input } from '../../../../../components/Form'
 
 class ModalsPromptForm extends Component {
   render() {
-    console.log(this.props)
-
     return (
       <Form onSubmit={this.props.handleSubmit}>
         <Input {...this.props.input}
@@ -19,7 +17,7 @@ class ModalsPromptForm extends Component {
         <Actions>
           <Button
             color={Button.COLOR.SECONDARY}
-            onClick={this.props.handleCancelClick}
+            onClick={this.props.closeModal}
           >
             Cancel
           </Button>
@@ -33,11 +31,9 @@ class ModalsPromptForm extends Component {
   }
 }
 
-export default connect(
-  state => ({ input: state.services.modals.prompt.input }),
-  dispatch => ({
-    handleCancelClick: () => dispatch(closeModal('prompt'))
-  })
-)(reduxForm({
+const mapStateToProps = state => ({ input: state.services.modals.prompt.input })
+    , mapDispatchToProps = dispatch => ({  closeModal: () => dispatch(closeModal('prompt')) })
+
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   form: 'ModalsPromptForm'
 })(ModalsPromptForm))
