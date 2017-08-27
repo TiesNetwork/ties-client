@@ -1,5 +1,3 @@
-import { Redirect } from 'react-router-dom'
-
 /** Scenes **/
 import Edit from './Edit'
 import Header from './Header'
@@ -12,8 +10,6 @@ class Scenes extends Component {
   render() {
     return (
       <div className={styles.App}>
-        <Redirect to={{ pathname: '/transfer', query: { to: '0x001bd6d442d00c3bae9249093e48c0d8c3224321' }}} />
-
         <Header />
 
         <div className={styles.AppBody}>

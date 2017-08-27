@@ -2,17 +2,16 @@
 import { getProjects } from './actions'
 
 /** Components **/
-import Avatar from '../../components/Avatar'
 import Block from '../../components/Block'
 import Button from '../../components/Button'
 import Personal from '../../components/Personal'
 import Tag from '../../components/Tag'
 
-import UserContact from './components/Contact'
 import UserProject from './components/Project'
 
 class User extends Component {
   static propTypes = {
+    id: PropTypes.string,
     isCurrentUser: PropTypes.bool,
     projects: PropTypes.arrayOf(PropTypes.shape(UserProject.propTypes)),
     personal: PropTypes.shape(Personal.propTypes)
@@ -25,6 +24,10 @@ class User extends Component {
   handlePersonalEditClick = () => this.props.history.push('/edit/personal')
   handleExperienceCreateClick = () => this.props.history.push('/edit/experience/create')
   handleExperienceEditClick = () => this.props.history.push('/edit/experience')
+  handleTransferClick = () => this.props.history.push({
+    pathname: '/transfer',
+    query: { to: this.props.id }
+  })
 
   render() {
     const { personal, projects } = this.props
@@ -48,6 +51,14 @@ class User extends Component {
                     title={keyword}
                   />
                 ))}
+              </div>
+            )}
+
+            {!this.props.isCurrentUser && (
+              <div className={styles.UserActions}>
+                <Button onClick={this.handleTransferClick}>
+                  Transfer
+                </Button>
               </div>
             )}
           </Block>
@@ -82,6 +93,7 @@ export default connect(
     const user = state.entities.users[ownProps.match.params.userId]
 
     return {
+      id: ownProps.match.params.userId,
       isCurrentUser: state.services.session.userId === ownProps.match.params.userId,
       personal: { ...user },
       projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
