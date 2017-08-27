@@ -55,6 +55,7 @@ class Account {
       keywords: values.keywords,
       name: values.name,
       photo: `0x${values.photo.toString('hex')}`,
+      position: values.position,
       surname: values.surname
     }
 
@@ -69,6 +70,7 @@ class Account {
       keywords: data.keywords,
       name: data.name,
       photo: Buffer.from(data.photo.replace(/^0x/, ''), 'hex'),
+      position: data.position,
       surname: data.surname
     }
   }

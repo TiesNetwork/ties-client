@@ -31,4 +31,4 @@ class Scenes extends Component {
   }
 }
 
-export default Scenes
+export default connect()(Scenes)

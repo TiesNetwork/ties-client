@@ -1,5 +1,7 @@
 import createHistory from 'history/createHashHistory'
+
 import App from './App'
+import createStore from './store'
 
 Client.setConfig({
   connection: {
@@ -19,7 +21,14 @@ Client.setConfig({
 
 Client.connect()
   .then(() => {
-    ReactDOM.render(<App history={createHistory()} />, document.getElementById('app'))
-  }).catch(error => alert(error));
+    const history = createHistory()
 
+    ReactDOM.render(
+      <App
+        history={createHistory()}
+        store={createStore(history)}
+      />,
+      document.getElementById('app')
+    )
+  }).catch(error => alert(error));
 

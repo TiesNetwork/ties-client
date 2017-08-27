@@ -1,9 +1,13 @@
+/** Actions **/
+import { sendTransfer } from './actions'
+
 /** Components **/
 import Block from '../../components/Block'
 import TransferForm from './components/Form'
 
 class Transfer extends Component {
   static propTypes = {
+    handleSubmit: PropTypes.func,
     recipient: PropTypes.shape({
       __address: PropTypes.string,
       name: PropTypes.string,
@@ -17,9 +21,11 @@ class Transfer extends Component {
       <div>
         <Block title="Make a transfer">
           <TransferForm
-            initialValues={{...this.props,
-              address: this.props.recipient && this.props.recipient.__address
+            initialValues={{
+              address: this.props.recipient && this.props.recipient.__address,
+              recipient: this.props.recipient
             }}
+            onSubmit={this.props.handleSubmit}
           />
         </Block>
       </div>
@@ -27,6 +33,11 @@ class Transfer extends Component {
   }
 }
 
-export default connect((state, ownProps) => ({
-  recipient: state.entities.users[ownProps.location.query.to]
-}))(Transfer)
+export default connect(
+  (state, ownProps) => ({
+    recipient: state.entities.users[ownProps.location.query.to]
+  }),
+  dispatch => ({
+    handleSubmit: values => dispatch(sendTransfer(values.address, values.sum))
+  })
+)(Transfer)
