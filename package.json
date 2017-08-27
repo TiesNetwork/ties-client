@@ -2,6 +2,7 @@
   "author": "Ivan Vyatkin <vanya095@gmail.com>",
   "dependencies": {
     "@ties-network/ties-client-base": "^1.2.6",
+    "bignumber.js": "^4.0.2",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
