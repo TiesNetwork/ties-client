@@ -1,7 +1,7 @@
-import createHistory from 'history/createHashHistory'
+import createHistory from 'history/createHashHistory';
 
-import App from './App'
-import createStore from './store'
+import App from './App';
+import createStore from './store';
 
 Client.setConfig({
   connection: {

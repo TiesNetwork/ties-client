@@ -1,41 +1,28 @@
 /** Components **/
-import Button from '../../../../../components/Button'
-import UserProject from '../../../../User/components/Project'
+import Button from '../../../../../../../components/Button';
+import UserProject from '../../../../Users/scenes/Show/components/Project';
 
-class EditExperienceItem extends Component {
-  static propTypes = {
-    ...UserProject.propTypes,
-    onEdit: PropTypes.func,
-    onRemove: PropTypes.func
-  }
+const EditExperienceItem = ({ onEdit, onRemove, project }) => (
+  <div className={styles.EditExperienceItem}>
+    <UserProject {...project} />
 
-  handleEditClick = () => this.props.onEdit && this.props.onEdit(this.props.id)
-  handleRemoveClick = () => this.props.onRemove && this.props.onRemove(this.props.__address, this.props.id)
+    <div className={styles.EditExperienceItemActions}>
+      <Button
+        className={styles.EditExperienceItemAction}
+        onClick={() => onEdit && onEdit(project.id)}
+      >
+        Edit
+      </Button>
 
-  render() {
-    return (
-      <div className={styles.EditExperienceItem}>
-        <UserProject {...this.props} />
+      <Button
+        className={styles.EditExperienceItemAction}
+        color={Button.COLOR.DANGER}
+        onClick={() => onRemove && onRemove(project.__address, project.id)}
+      >
+        Remove
+      </Button>
+    </div>
+  </div>
+);
 
-        <div className={styles.EditExperienceItemActions}>
-          <Button
-            className={styles.EditExperienceItemAction}
-            onClick={this.handleEditClick}
-          >
-            Edit
-          </Button>
-
-          <Button
-            className={styles.EditExperienceItemAction}
-            color={Button.COLOR.DANGER}
-            onClick={this.handleRemoveClick}
-          >
-            Remove
-          </Button>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default EditExperienceItem
+export default EditExperienceItem;

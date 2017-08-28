@@ -1,36 +1,25 @@
 /** Actions **/
-import { updateProject } from './actions'
+import { updateProject } from './actions';
 
 /** Components **/
-import Block from '../../../../../../components/Block'
-import EditExperienceForm from '../../components/Form'
+import Block from '../../../../../../../../components/Block';
+import EditExperienceForm from '../../components/Form';
 
-class EditExperienceProject extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func,
-    project: PropTypes.shape({
-      dateEnd: PropTypes.string,
-      dateStart: PropTypes.string,
-      description: PropTypes.string,
-      name: PropTypes.string
-    })
-  }
+const EditExperienceProject = ({ handleSubmit, project }) => (
+  <Block title={project.name}>
+    <EditExperienceForm
+      initialValues={project}
+      onSubmit={handleSubmit}
+    />
+  </Block>
+);
 
-  render() {
-    return (
-      <Block title={this.props.project.name}>
-        <EditExperienceForm
-          initialValues={this.props.project}
-          onSubmit={this.props.handleSubmit}
-        />
-      </Block>
-    )
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  project: state.entities.projects[ownProps.match.params.projectId]
+});
 
-export default connect(
-  (state, ownProps) => ({ project: state.entities.projects[ownProps.match.params.projectId] }),
-  dispatch => ({
-    handleSubmit: values => dispatch(updateProject(values.__address, values.id, values))
-  })
-)(EditExperienceProject)
+const mapDispatchToProps = dispatch => ({
+  handleSubmit: values => dispatch(updateProject(values.__address, values.id, values))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditExperienceProject);

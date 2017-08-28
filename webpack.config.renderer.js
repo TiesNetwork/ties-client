@@ -80,7 +80,9 @@ export default {
       PropTypes: 'prop-types',
       React: 'react',
       ReactDOM: 'react-dom',
-      Route: ['react-router-dom', 'Route']
+      Redirect: ['react-router-dom', 'Redirect'],
+      Route: ['react-router-dom', 'Route'],
+      Switch: ['react-router-dom', 'Switch']
     })
   ],
 

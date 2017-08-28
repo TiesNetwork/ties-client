@@ -2,34 +2,24 @@
 import { updatePersonal } from './actions'
 
 /** Components **/
-import Block from '../../../../components/Block'
+import Block from '../../../../../../components/Block'
 import EditPersonalForm from './components/Form'
 
-class EditPersonal extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func,
-    personal: PropTypes.object
-  }
+const EditPersonal = ({ handleSubmit, personal }) => (
+  <Block title="Personal Information">
+    <EditPersonalForm
+      initialValues={personal}
+      onSubmit={handleSubmit}
+    />
+  </Block>
+);
 
-  render() {
-    return (
-      <div>
-        <Block title="Personal Information">
-          <EditPersonalForm
-            initialValues={this.props.personal}
-            onSubmit={this.props.handleSubmit}
-          />
-        </Block>
-      </div>
-    )
-  }
-}
+const mapStateToProps = state => ({
+  personal: state.entities.users[state.services.session.userId] || {}
+});
 
-export default connect(
-  state => ({
-    personal: state.entities.users[state.services.session.userId] || {}
-  }),
-  dispatch => ({
-    handleSubmit: values => dispatch(updatePersonal(values))
-  })
-)(EditPersonal)
+const mapDispatchToProps = dispatch => ({
+  handleSubmit: values => dispatch(updatePersonal(values))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPersonal);

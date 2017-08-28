@@ -7,7 +7,7 @@ import Personal from '../../../../../components/Personal';
 const SearchUser = props => (
   <Block
     className={styles.SearchUser}
-    onClick={() => props.id && props.history.push(`/users/${props.id}`)}
+    onClick={() => props.id && props.history.push(`/private/users/${props.id}`)}
   >
     <Personal {...props} />
   </Block>

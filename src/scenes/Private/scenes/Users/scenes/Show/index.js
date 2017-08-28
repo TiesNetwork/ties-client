@@ -2,14 +2,14 @@
 import { getProjects } from './actions';
 
 /** Components **/
-import Block from '../../components/Block';
-import Button from '../../components/Button';
-import Personal from '../../components/Personal';
-import Tag from '../../components/Tag';
+import Block from '../../../../../../components/Block';
+import Button from '../../../../../../components/Button';
+import Personal from '../../../../../../components/Personal';
+import Tag from '../../../../../../components/Tag';
 
 import UserProject from './components/Project';
 
-class User extends Component {
+class UsersShow extends Component {
   static propTypes = {
     id: PropTypes.string,
     isCurrentUser: PropTypes.bool,
@@ -21,11 +21,11 @@ class User extends Component {
     this.props.getProjects();
   }
 
-  handlePersonalEditClick = () => this.props.history.push('/edit/personal')
-  handleExperienceCreateClick = () => this.props.history.push('/edit/experience/create')
-  handleExperienceEditClick = () => this.props.history.push('/edit/experience')
+  handlePersonalEditClick = () => this.props.history.push('/private/edit/personal')
+  handleExperienceCreateClick = () => this.props.history.push('/private/edit/experience/create')
+  handleExperienceEditClick = () => this.props.history.push('/private/edit/experience')
   handleTransferClick = () => this.props.history.push({
-    pathname: '/transfer',
+    pathname: '/private/transfer',
     query: { to: this.props.id }
   })
 
@@ -37,16 +37,15 @@ class User extends Component {
         {personal ? (
           <Block
             actions={this.props.isCurrentUser && <Button onClick={this.handlePersonalEditClick}>Edit</Button>}
-            className={styles.UserPersonal}
             title="Personal Information"
           >
             <Personal {...personal} />
 
             {personal.keywords && personal.keywords.length > 0 && (
-              <div className={styles.UserTags}>
+              <div className={styles.UsersShowTags}>
                 {personal.keywords.map((keyword, index) => (
                   <Tag
-                    className={styles.UserTag}
+                    className={styles.UsersShowTag}
                     key={index}
                     title={keyword}
                   />
@@ -55,7 +54,7 @@ class User extends Component {
             )}
 
             {!this.props.isCurrentUser && (
-              <div className={styles.UserActions}>
+              <div className={styles.UsersShowActions}>
                 <Button onClick={this.handleTransferClick}>
                   Transfer
                 </Button>
@@ -103,4 +102,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getProjects: () => dispatch(getProjects(ownProps.match.params.userId))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersShow);

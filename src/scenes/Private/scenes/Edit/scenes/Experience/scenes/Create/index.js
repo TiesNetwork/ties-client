@@ -1,24 +1,18 @@
 /** Actions **/
-import { createProject } from './actions'
+import { createProject } from './actions';
 
 /** Components **/
-import Block from '../../../../../../components/Block'
-import EditExperienceForm from '../../components/Form'
+import Block from '../../../../../../../../components/Block';
+import EditExperienceForm from '../../components/Form';
 
-class EditExperienceCreate extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func
-  }
+const EditExperienceCreate  = ({ handleSubmit }) => (
+  <Block title="Create">
+    <EditExperienceForm onSubmit={handleSubmit} />
+  </Block>
+);
 
-  render() {
-    return (
-      <Block title="Create">
-        <EditExperienceForm onSubmit={this.props.handleSubmit} />
-      </Block>
-    )
-  }
-}
-
-export default connect(null, dispatch => ({
+const mapDispatchToProps = dispatch => ({
   handleSubmit: values => dispatch(createProject(values))
-}))(EditExperienceCreate)
+});
+
+export default connect(null, mapDispatchToProps)(EditExperienceCreate);

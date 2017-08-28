@@ -1,61 +1,59 @@
-import { formValueSelector } from 'redux-form'
+import { formValueSelector } from 'redux-form';
 
 /** Components **/
-import Avatar from '../../../../../components/Avatar'
-import Button from '../../../../../components/Button'
-import Form, { Actions, File, Group, Input, Tags } from '../../../../../components/Form'
+import Avatar from '../../../../../../../components/Avatar';
+import Button from '../../../../../../../components/Button';
+import Form, { Actions, File, Group, Input, Tags } from '../../../../../../../components/Form';
 
-class EditPersonalForm extends Component {
-  render() {
-    return (
-      <Form onSubmit={this.props.handleSubmit}>
-        <div className={styles.EditPersonalFormAvatar}>
-          <Avatar
-            className={styles.EditPersonalFormAvatarPreview}
-            src={this.props.photo}
-          />
+const EditPersonalForm = ({ handleSubmit, invalid, photo, submitting }) => (
+  <Form onSubmit={handleSubmit}>
+    <div className={styles.EditPersonalFormAvatar}>
+      <Avatar
+        className={styles.EditPersonalFormAvatarPreview}
+        src={photo}
+      />
 
-          <File
-            accept="image/*"
-            className={styles.EditPersonalFormAvatarControl}
-            converter={File.CONVERTER.HEX}
-            label="Upload photo"
-            name="photo"
-            toBuffer={true}
-          />
-        </div>
+      <File
+        accept="image/*"
+        className={styles.EditPersonalFormAvatarControl}
+        converter={File.CONVERTER.HEX}
+        label="Upload photo"
+        name="photo"
+        toBuffer={true}
+      />
+    </div>
 
 
-        <Group>
-          <Input label="Name" name="name" />
-          <Input label="Surname" name="surname" />
-        </Group>
+    <Group>
+      <Input label="Name" name="name" />
+      <Input label="Surname" name="surname" />
+    </Group>
 
-        <Group>
-          <Input label="Company" name="company" />
-          <Input label="Position" name="position" />
-        </Group>
+    <Group>
+      <Input label="Company" name="company" />
+      <Input label="Position" name="position" />
+    </Group>
 
-        <Input label="Country" name="country" />
+    <Input label="Country" name="country" />
 
-        <Tags label="Keywords" name="keywords" />
+    <Tags label="Keywords" name="keywords" />
 
-        <Actions>
-          <Button
-            disabled={this.props.invalid || this.props.submitting}
-            type="submit"
-          >
-            Save
-          </Button>
-        </Actions>
-      </Form>
-    )
-  }
-}
+    <Actions>
+      <Button
+        disabled={invalid || submitting}
+        type="submit"
+      >
+        Save
+      </Button>
+    </Actions>
+  </Form>
+);
 
-const selector = formValueSelector('EditPersonalForm')
-export default connect(state => ({
+const selector = formValueSelector('EditPersonalForm');
+const mapStateToProps = state => ({
   photo: selector(state, 'photo')
-}))(reduxForm({
+});
+
+export default connect(mapStateToProps)(reduxForm({
   form: 'EditPersonalForm'
-})(EditPersonalForm))
+})(EditPersonalForm));

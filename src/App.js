@@ -7,7 +7,7 @@ import Scenes from './scenes';
 const App = ({ history, store }) => (
   <Provider store={store}>
     <Router history={history}>
-      <Scenes />
+      <Route component={Scenes} path="/" />
     </Router>
   </Provider>
 );
