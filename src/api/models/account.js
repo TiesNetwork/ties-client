@@ -15,6 +15,12 @@ class Account {
     }
   }
 
+  static async getBalance() {
+    const response = await Client.user.getTieBalance();
+    console.log(response)
+    return response;
+  }
+
   /**
    * @param {string} password
    */

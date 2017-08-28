@@ -5,10 +5,10 @@ class Transfers {
    * @return {Promise.<void>}
    */
   static async send(address, sum) {
-    const response = await Client.user.transfer(address, sum)
+    const response = await Client.user.transfer(address, Client.BC.web3.toWei(sum, 'ether'));
 
-    console.log(response)
+    return response;
   }
 }
 
-export default Transfers
+export default Transfers;

@@ -1,30 +1,22 @@
+import { Redirect, Switch } from 'react-router-dom';
+
 /** Scenes **/
-import Edit from './Edit';
-import Header from './Header';
-import Search from './Search';
-import Sidebar from './Sidebar';
-import Transfer from './Transfer';
-import User from './User';
+import Public from './Public';
+// import Private from './Private';
 
-class Scenes extends Component {
-  render() {
-    return (
-      <div className={styles.App}>
-        <Header />
+const Scenes = ({ isAuthenticated }) => (
+  <div>
+    <Switch>
+      <Route component={Public} path="/public" />
+      <Route path="/" render={props => (
+        isAuthenticated
+          ? null
+          : <Redirect to="/public/sign" />
+      )}/>
+    </Switch>
+  </div>
+);
 
-        <div className={styles.AppBody}>
-          <Sidebar />
+const mapStateToProps = state => ({ isAuthenticated: !!state.services.session.userId });
 
-          <div className={styles.AppContainer}>
-            <Route component={Edit} path="/edit" />
-            <Route component={Search} path="/search" />
-            <Route component={Transfer} path="/transfer" />
-            <Route component={User} path="/users/:userId" />
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Scenes;
+export default connect(mapStateToProps, null, null, { pure: false })(Scenes);
