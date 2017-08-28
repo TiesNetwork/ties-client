@@ -5,42 +5,30 @@ import { search } from './actions'
 import SearchForm from './components/Form'
 import SearchUser from './components/User'
 
-class Search extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func,
-    result: PropTypes.shape({
-      users: PropTypes.arrayOf(
-        PropTypes.string
-      )
-    })
-  }
+const Search = ({ handleSubmit, result }) => (
+  <div>
+    <SearchForm onSubmit={handleSubmit} />
 
-  render() {
-    return (
+    {result && result.users && (
       <div>
-        <SearchForm onSubmit={this.props.handleSubmit} />
+        <div className={styles.SearchResultTitle}>
+          Search Results ({result.users.length || 0})
+        </div>
 
-        {this.props.result && this.props.result.users && (
-          <div>
-            <div className={styles.SearchResultTitle}>
-              Search Results ({this.props.result.users.length || 0})
-            </div>
-
-            <div>
-              {this.props.result.users.map(userId => <SearchUser id={userId} key={userId} />)}
-            </div>
-          </div>
-        )}
+        <div>
+          {result.users.map(userId => <SearchUser id={userId} key={userId} />)}
+        </div>
       </div>
-    )
-  }
-}
+    )}
+  </div>
+);
 
-export default connect(
-  state => ({
-    result: state.scenes.search.result
-  }),
-  dispatch => ({
-    handleSubmit: values => dispatch(search(values.text))
-  })
-)(Search)
+const mapStateToProps = state => ({
+  result: state.scenes.search.result
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleSubmit: values => dispatch(search(values.text))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

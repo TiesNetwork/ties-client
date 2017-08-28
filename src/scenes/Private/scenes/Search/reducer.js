@@ -1,6 +1,6 @@
 import {
   SET_RESULT
-} from './actions'
+} from './actions';
 
 export default (state = {
   result: null
@@ -10,8 +10,8 @@ export default (state = {
       return {
         ...state,
         result: action.result
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};

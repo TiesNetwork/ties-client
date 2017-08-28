@@ -1,16 +1,12 @@
 /** Scenes **/
-import EditExperience from './scenes/Experience'
-import EditPersonal from './scenes/Personal'
+import EditExperience from './scenes/Experience';
+import EditPersonal from './scenes/Personal';
 
-class Edit extends Component {
-  render() {
-    return (
-      <div>
-        <Route component={EditExperience} path={`${this.props.match.url}/experience`} />
-        <Route component={EditPersonal} path={`${this.props.match.url}/personal`} />
-      </div>
-    )
-  }
-}
+const Edit = ({ match }) => (
+  <div>
+    <Route component={EditExperience} path={`${match.url}/experience`} />
+    <Route component={EditPersonal} path={`${match.url}/personal`} />
+  </div>
+);
 
-export default Edit
+export default Edit;
