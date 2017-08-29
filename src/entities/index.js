@@ -1,24 +1,26 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 /** Model reducers **/
-import projectsReducer from './projects'
-import usersReducer from './users'
-import walletsReducer from './wallets'
+import accountReducer from './account';
+import projectsReducer from './projects';
+import usersReducer from './users';
+import walletsReducer from './wallets';
 
 const modelsReducer = combineReducers({
+  account: accountReducer,
   projects: projectsReducer,
   users: usersReducer,
   wallets: walletsReducer
-})
+});
 
-export const UPDATE_ENTITIES = 'ENTITIES/UPDATE'
-export const updateEntities = data => ({ type: UPDATE_ENTITIES, data })
+export const UPDATE_ENTITIES = 'ENTITIES/UPDATE';
+export const updateEntities = data => ({ type: UPDATE_ENTITIES, data });
 
 export default (state = {}, action) => {
   switch (action.type) {
     case UPDATE_ENTITIES:
-      return _.merge({}, state, action.data.entities)
+      return _.merge({}, state, action.data.entities);
     default:
-      return modelsReducer(state, action)
+      return modelsReducer(state, action);
   }
-}
+};

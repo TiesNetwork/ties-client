@@ -5,14 +5,20 @@ import Avatar from '../../../../components/Avatar';
 import Button from '../../../../components/Button';
 import Icon from '../../../../components/Icon';
 
-const Header = ({ history, user }) => (
+import HeaderAccount from './components/Account';
+
+const Header = ({ balance, history, user }) => (
   <div className={styles.Header}>
     <div className={styles.HeaderLogo}>
       <div className={styles.HeaderLogoImage} />
     </div>
 
-    <div className={styles.HeaderAccounts}>
-    </div>
+    {balance && (
+      <div className={styles.HeaderBalance}>
+        <HeaderAccount amount={balance.TIE} currency="TIE" />
+        <HeaderAccount amount={balance.ETH} currency="ETH" />
+      </div>
+    )}
 
     <div className={styles.HeaderSearch}>
       <Button
@@ -42,6 +48,7 @@ const Header = ({ history, user }) => (
 );
 
 const mapStateToProps = state => ({
+  balance: state.entities.account.balance,
   user: state.entities.users[state.services.session.userId]
 });
 

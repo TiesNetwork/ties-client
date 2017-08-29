@@ -1,9 +1,9 @@
 /** Actions **/
-import { search } from './actions'
+import { search } from './actions';
 
 /** Components **/
-import SearchForm from './components/Form'
-import SearchUser from './components/User'
+import SearchForm from './components/Form';
+import SearchUser from './components/User';
 
 const Search = ({ handleSubmit, result }) => (
   <div>

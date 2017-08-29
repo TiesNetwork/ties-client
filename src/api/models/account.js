@@ -15,10 +15,17 @@ class Account {
     }
   }
 
+  /**
+   * @return {Promise.<{ETH: number, TIE: number}>}
+   */
   static async getBalance() {
-    const response = await Client.user.getTieBalance();
-    console.log(response)
-    return response;
+    const ETH = await Client.user.getNativeBalance();
+    const TIE = await Client.user.getTieBalance();
+
+    return {
+      ETH: ETH.toNumber() / Math.pow(10, 18),
+      TIE: TIE.toNumber() / Math.pow(10, 18)
+    };
   }
 
   /**

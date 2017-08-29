@@ -1,26 +1,16 @@
-class HeaderAccount extends Component {
-  static propTypes = {
-    amount: PropTypes.string.isRequired,
-    currency: PropTypes.string.isRequired
-  }
+const HeaderAccount = ({ amount, currency }) => (
+  <div className={styles.HeaderAccount}>
+    <div className={styles.HeaderAccountCurrency}>
+      {currency}:
+    </div>
 
-  render() {
-    return (
-      <div className={styles.HeaderAccount}>
-        {this.props.currency && (
-          <div className={styles.HeaderAccountCurrency}>
-            {this.props.currency}:
-          </div>
-        )}
+    <div
+      className={styles.HeaderAccountAmount}
+      title={amount}
+    >
+      {amount.toFixed(((amount ^ 0) === amount) ? 0 : 2)}
+    </div>
+  </div>
+);
 
-        {this.props.amount && (
-          <div className={styles.HeaderAccountAmount}>
-            {this.props.amount}
-          </div>
-        )}
-      </div>
-    )
-  }
-}
-
-export default HeaderAccount
+export default HeaderAccount;
