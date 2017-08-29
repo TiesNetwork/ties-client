@@ -1,3 +1,6 @@
+/** Components **/
+import Header from './components/Header';
+
 /** Scenes **/
 import Edit from './scenes/Edit';
 import Search from './scenes/Search';
@@ -5,7 +8,9 @@ import Transfer from './scenes/Transfer';
 import Users from './scenes/Users';
 
 const Private = ({ match }) => (
-  <div>
+  <div className={styles.Private}>
+    <Header />
+
     <div>
       <Switch>
         <Route component={Edit} path={`${match.url}/edit`} />
