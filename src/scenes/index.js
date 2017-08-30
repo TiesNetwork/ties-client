@@ -15,6 +15,6 @@ const Scenes = ({ location, match, isAuthenticated }) => location.pathname == ma
   </Switch>
 );
 
-const mapStateToProps = state => ({ isAuthenticated: !!state.services.session.userId });
+const mapStateToProps = state => ({ isAuthenticated: !!state.entities.account.id });
 
 export default connect(mapStateToProps, null, null, { pure: false })(Scenes);

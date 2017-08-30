@@ -1,0 +1,24 @@
+<svg width="14" height="16" viewBox="0 0 14 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <desc>Created using Figma</desc>
+    <g id="Canvas" transform="translate(-2384 -1712)">
+        <g id="Group">
+            <g id="Vector 7">
+                <use xlink:href="#path0_stroke" transform="translate(2387.29 1715.2)" fill="#174DA1"/>
+            </g>
+            <g id="Rectangle 12">
+                <mask id="mask0_outline_ins">
+                    <use xlink:href="#path1_fill" fill="white" transform="translate(2384 1712)"/>
+                </mask>
+                <g mask="url(#mask0_outline_ins)">
+                    <use xlink:href="#path2_stroke_2x" transform="translate(2384 1712)" fill="#174DA1"/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <path id="path0_stroke" d="M 0 7.7L 7.41176 7.7L 7.41176 6.7L 0 6.7L 0 7.7ZM 0 10.1L 7.41176 10.1L 7.41176 9.1L 0 9.1L 0 10.1ZM 0 2.9L 7.41176 2.9L 7.41176 1.9L 0 1.9L 0 2.9ZM 0 5.3L 7.41176 5.3L 7.41176 4.3L 0 4.3L 0 5.3ZM 0 0.5L 7.41176 0.5L 7.41176 -0.5L 0 -0.5L 0 0.5Z"/>
+        <path id="path1_fill" d="M 0 0L 0 16L 14 16L 14 11.7073L 14 0L 0 0Z"/>
+        <path id="path2_stroke_2x" d="M 0 16L -1 16L -1 17L 0 17L 0 16ZM 0 0L 0 -1L -1 -1L -1 0L 0 0ZM 14 0L 15 0L 15 -1L 14 -1L 14 0ZM 14 16L 14 17L 15 17L 15 16L 14 16ZM 1 16L 1 0L -1 0L -1 16L 1 16ZM 13 0L 13 11.7073L 15 11.7073L 15 0L 13 0ZM 13 11.7073L 13 16L 15 16L 15 11.7073L 13 11.7073ZM 0 1L 14 1L 14 -1L 0 -1L 0 1ZM 14 15L 0 15L 0 17L 14 17L 14 15Z"/>
+    </defs>
+</svg>

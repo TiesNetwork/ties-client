@@ -1,6 +1,6 @@
 /** Components **/
 import Button from '../../../../../../../components/Button';
-import UserProject from '../../../../Users/scenes/Show/components/Project';
+import UserProject from '../../../../Users/scenes/Show/components/Experience/Project';
 
 const EditExperienceItem = ({ onEdit, onRemove, project }) => (
   <div className={styles.EditExperienceItem}>

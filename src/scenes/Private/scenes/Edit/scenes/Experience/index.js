@@ -42,7 +42,7 @@ const EditExperience = ({ handleRemove, history, match, projects }) => (
 );
 
 const mapStateToProps = state => ({
-  projects: (state.entities.users[state.services.session.userId].projects || []).map(projectId => state.entities.projects[projectId])
+  projects: (state.entities.users[state.entities.account.id].projects || []).map(projectId => state.entities.projects[projectId])
 });
 
 const mapDispatchToProps = dispatch => ({

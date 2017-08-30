@@ -76,6 +76,7 @@ export default {
       connect: ['react-redux', 'connect'],
       moment: 'moment',
       reduxForm: ['redux-form', 'reduxForm'],
+      withRouter: ['react-router-dom', 'withRouter'],
       Component: ['react', 'Component'],
       PropTypes: 'prop-types',
       React: 'react',

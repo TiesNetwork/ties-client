@@ -56,7 +56,7 @@ const SignRecovery = ({ handleContinueClick, wallet }) => (
 );
 
 const mapStateToProps = state => ({
-  wallet: state.entities.wallets[state.services.session.userId]
+  wallet: state.entities.wallets[state.entities.account.id]
 });
 const mapDispatchToProps = (dispatch, { history, match }) => ({
   handleContinueClick: history.push(`/private/edit/personal`)

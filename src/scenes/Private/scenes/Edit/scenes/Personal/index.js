@@ -15,7 +15,7 @@ const EditPersonal = ({ handleSubmit, personal }) => (
 );
 
 const mapStateToProps = state => ({
-  personal: state.entities.users[state.services.session.userId] || {}
+  personal: state.entities.users[state.entities.account.id] || {}
 });
 
 const mapDispatchToProps = dispatch => ({

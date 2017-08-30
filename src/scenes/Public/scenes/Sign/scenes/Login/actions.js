@@ -2,7 +2,7 @@ import { normalize } from 'normalizr';
 
 /** Actions **/
 import { updateEntities } from '../../../../../../entities';
-import { setCurrentUserId } from '../../../../../../services/session';
+import { setId as setCurrentUserId } from '../../../../../../entities/account';
 
 export const SIGN_RECOVER_FAILURE = 'SCENES/SIGN/RECOVER_REQUEST';
 export const SIGN_RECOVER_REQUEST = 'SCENES/SIGN/RECOVER_REQUEST';

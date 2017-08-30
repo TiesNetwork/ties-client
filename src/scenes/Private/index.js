@@ -1,8 +1,10 @@
 /** Actions **/
 import { getBalance } from './actions';
+import { prompt } from '../../services/modals';
 
 /** Components **/
 import Header from './components/Header';
+import Prompt from './components/Prompt';
 
 /** Scenes **/
 import Edit from './scenes/Edit';
@@ -12,9 +14,21 @@ import Users from './scenes/Users';
 
 class Private extends Component {
   componentDidMount() {
-    const { getBalance } = this.props;
+    const { dispatch } = this.props;
 
-    getBalance();
+    dispatch(getBalance());
+
+    Client.confirmCallback = description => new Promise((resolve, reject) => dispatch(
+      prompt({
+        description: description,
+        input: {
+          label: 'Password',
+          type: 'password'
+        },
+        onSubmit: value => resolve(value),
+        title: 'Confirm transaction'
+      }))
+    );
   }
 
   render() {
@@ -32,13 +46,11 @@ class Private extends Component {
             <Route component={Users} path={`${match.url}/users`} />
           </Switch>
         </div>
+
+        <Prompt />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getBalance: () => dispatch(getBalance())
-});
-
-export default connect(null, mapDispatchToProps)(Private);
+export default connect()(Private);

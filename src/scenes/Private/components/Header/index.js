@@ -49,11 +49,7 @@ const Header = ({ balance, history, user }) => (
 
 const mapStateToProps = state => ({
   balance: state.entities.account.balance,
-  user: state.entities.users[state.services.session.userId]
+  user: state.entities.users[state.entities.account.id]
 });
 
 export default connect(mapStateToProps)(withRouter(Header));
-
-// <HeaderAccount amount="10 000" currency="TIE"/>
-//   <HeaderAccount amount="100.28" currency="ETH"/>
-//   <HeaderAccount amount="100" currency="HMQ"/>
