@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch, { address, history }) => ({
   handleAddClick: () => dispatch(addContact(address)),
   handleEditClick: () => history.push('/private/edit/personal'),
   handleTransferClick: () => history.push({
-    pathname: '/private/transfer',
+    pathname: '/private/transfer/send',
     query: { to: address }
   })
 });

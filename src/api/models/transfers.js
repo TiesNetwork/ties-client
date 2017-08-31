@@ -5,9 +5,13 @@ class Transfers {
    * @return {Promise.<void>}
    */
   static async send(address, sum) {
-    const response = await Client.user.transfer(address, Client.BC.web3.toWei(sum, 'ether'));
+    const result = await Client.user.transfer(address, Client.BC.web3.toWei(sum, 'ether'));
 
-    return response;
+    return result.map(transfer => ({
+      address: address,
+      tx: transfer.tx,
+      sum: sum
+    }));
   }
 }
 
