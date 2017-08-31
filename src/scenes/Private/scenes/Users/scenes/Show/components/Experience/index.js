@@ -10,7 +10,7 @@ const UsersShowExperience = ({ history, isCurrentUser, projects }) => (
   >
     {projects && projects.length > 0
       ? projects.map(project => <Project {...project} key={project.id} />)
-      : (<Button onClick={() => history.push('/private/edit/experience/create')}>Add new project</Button>)
+      : isCurrentUser && <Button onClick={() => history.push('/private/edit/experience/create')}>Add new project</Button>
     }
   </Block>
 );

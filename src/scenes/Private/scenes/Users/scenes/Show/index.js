@@ -29,11 +29,14 @@ class UsersShow extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const currentUser = state.entities.users[state.entities.account.id];
   const user = state.entities.users[ownProps.match.params.userId];
 
   return {
     address: ownProps.match.params.userId,
-    isCurrentUser: state.entities.account.id === ownProps.match.params.userId,
+    contacts: user.contacts,
+    isCurrentUser: currentUser.address === ownProps.match.params.userId,
+    isContact: currentUser.contacts && currentUser.contacts.indexOf(user.address) > -1,
     personal: { ...user },
     projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
   };

@@ -1,5 +1,5 @@
 /** Actions **/
-import { addContact } from '../../actions';
+import { addContact, deleteContact } from '../../actions';
 
 /** Components **/
 import Block from '../../../../../../../../components/Block';
@@ -10,10 +10,10 @@ import Tag from '../../../../../../../../components/Tag';
 
 const UsersShowPersonal = ({
   handleAddClick, handleEditClick, handleTransferClick,
-  isCurrentUser, personal
+  isContact, isCurrentUser, personal
 }) => (
   <Block
-    actions={<Button onClick={handleEditClick}>Edit</Button>}
+    actions={isCurrentUser && <Button onClick={handleEditClick}>Edit</Button>}
     title="Personal Information"
   >
     <Personal {...personal} />
@@ -50,7 +50,7 @@ const UsersShowPersonal = ({
             type={Icon.TYPE.ADD_CONTACT}
           />
 
-          Add
+          {isContact ? 'Remove' : 'Add'}
         </Button>
 
         <Button
@@ -76,6 +76,7 @@ const UsersShowPersonal = ({
 const mapDispatchToProps = (dispatch, { address, history }) => ({
   handleAddClick: () => dispatch(addContact(address)),
   handleEditClick: () => history.push('/private/edit/personal'),
+  handleRemoveClick: () => dispatch(deleteContact(address)),
   handleTransferClick: () => history.push({
     pathname: '/private/transfer/send',
     query: { to: address }

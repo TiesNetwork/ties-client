@@ -1,3 +1,5 @@
+import Users from './users';
+
 class Contacts {
   /**
    * @param {string} address
@@ -5,17 +7,18 @@ class Contacts {
   static async add(address) {
     await Client.user.addContact(address);
     const result = await Client.user.saveToDB();
-console.log(result);
-    return result;
+
+    return address;
   }
 
   /**
    * @param {string} address
    */
   static async delete(address) {
-    const response = await Client.user.removeContact(address);
-    console.log(response);
-    return response;
+    await Client.user.removeContact(address);
+    const result = await Client.user.saveToDB();
+
+    return address;
   }
 
   /**
@@ -24,9 +27,10 @@ console.log(result);
   static async get(address) {
     const user = await Client.User.createFromDB(address);
     const contacts = await user.getContacts();
-    console.log(contacts);
-    return {};
+
+    return contacts.map(raw => Users.toJson(raw.user));
   }
+
 }
 
 export default Contacts;
