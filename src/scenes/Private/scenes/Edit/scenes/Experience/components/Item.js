@@ -1,15 +1,18 @@
+/** Actions **/
+import { deleteProject } from '../actions';
+
 /** Components **/
 import Button from '../../../../../../../components/Button';
 import UserProject from '../../../../Users/scenes/Show/components/Experience/Project';
 
-const EditExperienceItem = ({ onEdit, onRemove, project }) => (
+const EditExperienceItem = ({ handleRemoveClick, history, id, project }) => (
   <div className={styles.EditExperienceItem}>
     <UserProject {...project} />
 
     <div className={styles.EditExperienceItemActions}>
       <Button
         className={styles.EditExperienceItemAction}
-        onClick={() => onEdit && onEdit(project.id)}
+        onClick={() =>  history.push(`/private/edit/experience/${id}`)}
       >
         Edit
       </Button>
@@ -17,7 +20,7 @@ const EditExperienceItem = ({ onEdit, onRemove, project }) => (
       <Button
         className={styles.EditExperienceItemAction}
         color={Button.COLOR.DANGER}
-        onClick={() => onRemove && onRemove(project.__address, project.id)}
+        onClick={handleRemoveClick}
       >
         Remove
       </Button>
@@ -25,4 +28,9 @@ const EditExperienceItem = ({ onEdit, onRemove, project }) => (
   </div>
 );
 
-export default EditExperienceItem;
+const mapStateToProps = (state, { id }) => ({ project: state.entities.projects[id] });
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleRemoveClick: () => dispatch(deleteProject(ownProps.id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(EditExperienceItem));

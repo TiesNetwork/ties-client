@@ -1,8 +1,3 @@
-import { Switch } from 'react-router-dom';
-
-/** Actions **/
-import { deleteProject } from './actions';
-
 /** Components **/
 import Block from '../../../../../../components/Block';
 import Button from '../../../../../../components/Button';
@@ -27,13 +22,7 @@ const EditExperience = ({ handleRemove, history, match, projects }) => (
       >
         {projects && projects.length > 0 && (
           <div>
-            {projects.map(project => (
-              <EditExperienceItem {...project}
-                key={project.id}
-                onEdit={history.push(`${match.url}/${id}`)}
-                onRemove={handleRemove}
-              />
-            ))}
+            {projects.map(projectId => <EditExperienceItem id={projectId} key={projectId} />)}
           </div>
         )}
       </Block>
@@ -42,11 +31,7 @@ const EditExperience = ({ handleRemove, history, match, projects }) => (
 );
 
 const mapStateToProps = state => ({
-  projects: (state.entities.users[state.entities.account.id].projects || []).map(projectId => state.entities.projects[projectId])
+  projects: state.entities.users[state.entities.account.id].projects
 });
 
-const mapDispatchToProps = dispatch => ({
-  handleRemove: (address, id) => dispatch(deleteProject(address, id))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditExperience);
+export default connect(mapStateToProps)(EditExperience);
