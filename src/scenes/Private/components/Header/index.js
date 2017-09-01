@@ -20,6 +20,12 @@ const Header = ({ balance, history, user }) => (
       </div>
     )}
 
+    <div className={styles.HeaderTopup}>
+      <Button onClick={() => history.push('/private/topup')}>
+        Topup
+      </Button>
+    </div>
+
     <div className={styles.HeaderSearch}>
       <Button
         className={styles.HeaderSearchButton}

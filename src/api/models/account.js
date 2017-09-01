@@ -67,7 +67,7 @@ class Account {
     };
 
     await user.saveToDB();
-console.log(Users.toJson(user.user));
+
     return Users.toJson(user.user);
   }
 

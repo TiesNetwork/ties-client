@@ -25,8 +25,8 @@ class Actions extends Component {
 
   render() {
     return (
-      <div className={styles.FormActions}>
-        {React.Children.map(this.props.children, child => React.cloneElement(child, {
+      <div className={classNames(this.props.className, styles.FormActions)}>
+        {React.Children.map(this.props.children, child => child && React.cloneElement(child, {
           className: classNames(child.props.className, styles.FormAction)
         }))}
       </div>

@@ -3,7 +3,7 @@ import Block from '../../../../../../../../components/Block';
 import Button from '../../../../../../../../components/Button';
 import User from './User';
 
-const UsersShowContacts = ({ contacts, isCurrentUser }) => (
+const UsersShowContacts = ({ contacts, history, isCurrentUser }) => (
   <Block title="Contacts">
     {contacts && (
       <div className={styles.UsersShowContactsList}>
@@ -19,7 +19,7 @@ const UsersShowContacts = ({ contacts, isCurrentUser }) => (
 
         <Button
           className={styles.UsersShowContactsInvitationAction}
-          onClick={() => console.log(123)}
+          onClick={() => history.push('/private/invitation')}
         >
           Generate invitation code
         </Button>
@@ -28,4 +28,4 @@ const UsersShowContacts = ({ contacts, isCurrentUser }) => (
   </Block>
 );
 
-export default UsersShowContacts;
+export default withRouter(UsersShowContacts);

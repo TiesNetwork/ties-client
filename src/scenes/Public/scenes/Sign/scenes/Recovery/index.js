@@ -1,5 +1,6 @@
 /** Components **/
 import Button from '../../../../../../components/Button';
+import Copy from '../../../../../../components/Copy';
 
 const SignRecovery = ({ handleContinueClick, wallet }) => (
   <div>
@@ -15,9 +16,7 @@ const SignRecovery = ({ handleContinueClick, wallet }) => (
               Your wallet address / Ties.Network login
             </div>
 
-            <Button>
-              {wallet.address}
-            </Button>
+            <Copy value={wallet.address} />
           </div>
         )}
 
