@@ -1,5 +1,5 @@
 /** Actions **/
-import { getBalance } from './actions';
+import { getBalance, updateBalance } from './actions';
 import { prompt } from '../../services/modals';
 
 /** Components **/
@@ -16,12 +16,15 @@ import Users from './scenes/Users';
 
 class Private extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {
+      address, prompt,
+      getBalance, updateBalance
+    } = this.props;
 
-    dispatch(getBalance());
+    getBalance();
 
-    Client.confirmCallback = description => new Promise((resolve, reject) => dispatch(
-      prompt({
+    Client.confirmCallback = description =>
+      new Promise((resolve, reject) => prompt({
         description: description,
         input: {
           label: 'Password',
@@ -29,7 +32,18 @@ class Private extends Component {
         },
         onSubmit: value => resolve(value),
         title: 'Confirm transaction'
-      }))
+      }));
+
+    Client.BC.listenBalance(address, balance =>
+      updateBalance({ ETH: balance.toNumber() / Math.pow(10, 18) })
+    );
+
+    Client.BC.listenDeposit(address, balance =>
+      updateBalance({ Deposit: balance.toNumber() / Math.pow(10, 18) })
+    );
+
+    Client.BC.listenTransfer(address, balance =>
+      updateBalance({ TIE: balance.toNumber() / Math.pow(10, 18) })
     );
   }
 
@@ -57,4 +71,13 @@ class Private extends Component {
   }
 }
 
-export default connect()(Private);
+const mapStateToProps = state => ({
+  address: state.entities.account.address
+});
+const mapDispatchToProps = dispatch => ({
+  getBalance: () => dispatch(getBalance()),
+  prompt: props => dispatch(prompt(props)),
+  updateBalance: balance => dispatch(updateBalance(balance))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Private);

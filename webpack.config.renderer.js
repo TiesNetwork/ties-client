@@ -84,7 +84,7 @@ export default {
       Redirect: ['react-router-dom', 'Redirect'],
       Route: ['react-router-dom', 'Route'],
       Switch: ['react-router-dom', 'Switch']
-    })
+    }),
   ],
 
   resolve: {
