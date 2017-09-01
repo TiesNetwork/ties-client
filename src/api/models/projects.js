@@ -8,8 +8,8 @@ class Projects {
    */
   static async create(values) {
     const project = await Client.user.newProject({
-            date_end: values.dateEnd,
-            date_start: values.dateStart,
+            date_end: values.dateEnd || null,
+            date_start: values.dateStart || null,
             description: values.description,
             name: values.name
           })

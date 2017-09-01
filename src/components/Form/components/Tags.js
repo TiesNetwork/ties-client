@@ -20,9 +20,8 @@ class Tags extends Component {
   handleChange = event => this.setState({ value: event.target.value })
 
   handleKeyPress = event => {
-    if (event.key == 'Enter') {
+    if (event.key == 'Enter' || event.key == ',') {
       event.preventDefault()
-
       this.setState({ value: '' })
 
       this.props.onChange && this.props.onChange([

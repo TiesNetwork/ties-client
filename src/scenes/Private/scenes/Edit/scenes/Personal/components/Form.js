@@ -23,7 +23,6 @@ const EditPersonalForm = ({ handleSubmit, invalid, photo, submitting }) => (
       />
     </div>
 
-
     <Group>
       <Input label="Name" name="name" />
       <Input label="Surname" name="surname" />
@@ -54,6 +53,20 @@ const mapStateToProps = state => ({
   photo: selector(state, 'photo')
 });
 
+const validate = values => {
+  const errors = {};
+  const required = ['name', 'surname'];
+
+  required.forEach(name => {
+    if (!values[name]) {
+      errors[name] = 'Required!';
+    }
+  });
+
+  return errors;
+};
+
 export default connect(mapStateToProps)(reduxForm({
-  form: 'EditPersonalForm'
+  form: 'EditPersonalForm',
+  validate
 })(EditPersonalForm));

@@ -33,7 +33,7 @@ const EditExperienceForm = ({ handleSubmit, history, initialValues }) => (
 const validate = values => {
   const errors = {};
   const dateFields = ['dateEnd', 'dateStart'];
-  const required = ['dateEnd', 'dateStart', 'description', 'name'];
+  const required = ['dateStart', 'description', 'name'];
 
   required.forEach(name => {
     if (!values[name]) {
