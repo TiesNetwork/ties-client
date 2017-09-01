@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+const { app, BrowserWindow } = require('electron');
 
 const installExtensions = async () => {
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
