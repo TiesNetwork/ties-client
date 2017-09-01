@@ -1,20 +1,20 @@
-import { withRouter } from 'react-router-dom';
-
 /** Components **/
 import Block from '../../../../../components/Block';
 import Personal from '../../../../../components/Personal';
 
-const SearchUser = props => (
-  <Block
-    className={styles.SearchUser}
-    onClick={() => props.id && props.history.push(`/private/users/${props.id}`)}
-  >
-    <Personal {...props} />
-  </Block>
-);
+function SearchUser({ history, user }) {
+  return (
+    <Block
+      className={styles.SearchUser}
+      onClick={() => history.push(`/private/users/${user.address}`)}
+    >
+      <Personal {...user} />
+    </Block>
+  );
+}
 
-const mapStateToProps = (state, ownProps) => ({
-  ...state.entities.users[ownProps.id]
+const mapStateToProps = (state, { address }) => ({
+  user: state.entities.users[address]
 });
 
 export default connect(mapStateToProps)(withRouter(SearchUser));

@@ -1,3 +1,6 @@
+export const DELETE_CONTACT = 'ENTITIES/USERS/DELETE_CONTACT';
+export const deleteContact = (address, payload) => ({ type: DELETE_CONTACT, address, payload });
+
 export const DELETE_PROJECT = 'ENTITIES/USERS/DELETE_PROJECT';
 export const deleteProject = (address, payload) => ({ type: DELETE_PROJECT, address, payload });
 
@@ -14,6 +17,14 @@ export default (state = {}, action) => {
   const user = state[action.address];
 
   switch (action.type) {
+    case DELETE_CONTACT:
+      return {
+        ...state,
+        [action.address]: {
+          ...user,
+          contacts: user.contacts.filter(address => address !== action.payload)
+        }
+      };
     case DELETE_PROJECT:
       return {
         ...state,
@@ -41,7 +52,7 @@ export default (state = {}, action) => {
     case UPDATE_USER:
       return {
         ...state,
-        [action.id]: {
+        [action.address]: {
           ...user,
           ...action.payload
         }

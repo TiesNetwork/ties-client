@@ -2,6 +2,7 @@ import Account from './models/account';
 import Contacts from './models/contacts';
 import Projects from './models/projects';
 import Transfers from './models/transfers';
+import Users from './models/users';
 
 class Api {
   constructor() {
@@ -15,11 +16,11 @@ class Api {
    * @param {string} text
    */
   async search(text) {
-    const response = await Client.User.search(text)
+    const response = await Client.User.search(text);
 
     return {
-      users: response.map(user => ({ ...user.user }))
-    }
+      users: response.map(user => Users.toJson(user.user))
+    };
   }
 }
 

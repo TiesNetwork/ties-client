@@ -2,6 +2,7 @@ class Avatar extends Component {
   static propTypes = {
     className: PropTypes.string,
     src: PropTypes.oneOfType([
+      PropTypes.array,
       PropTypes.object,
       PropTypes.string
     ])

@@ -1,5 +1,5 @@
 /** Actions **/
-import { addContact, deleteContact } from '../../actions';
+import { addContact, removeContact } from '../../actions';
 
 /** Components **/
 import Block from '../../../../../../../../components/Block';
@@ -9,7 +9,7 @@ import Personal from '../../../../../../../../components/Personal';
 import Tag from '../../../../../../../../components/Tag';
 
 const UsersShowPersonal = ({
-  handleAddClick, handleEditClick, handleTransferClick,
+  handleAddClick, handleEditClick, handleRemoveClick, handleTransferClick,
   isContact, isCurrentUser, personal
 }) => (
   <Block
@@ -43,7 +43,7 @@ const UsersShowPersonal = ({
         <Button
           className={styles.UsersShowAction}
           color={Button.COLOR.CUSTOM}
-          onClick={handleAddClick}
+          onClick={isContact ? handleRemoveClick : handleAddClick}
         >
           <Icon
             className={styles.UsersShowActionIcon}
@@ -76,7 +76,7 @@ const UsersShowPersonal = ({
 const mapDispatchToProps = (dispatch, { address, history }) => ({
   handleAddClick: () => dispatch(addContact(address)),
   handleEditClick: () => history.push('/private/edit/personal'),
-  handleRemoveClick: () => dispatch(deleteContact(address)),
+  handleRemoveClick: () => dispatch(removeContact(address)),
   handleTransferClick: () => history.push({
     pathname: '/private/transfer/send',
     query: { to: address }

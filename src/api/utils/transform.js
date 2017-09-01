@@ -1,7 +1,7 @@
 export default (fields, values, snakeCase) => {
   const result = {};
 
-  Object.keys(values).forEach(key => {
+  fields && values && Object.keys(values).forEach(key => {
     const camelCaseKey = _.camelCase(key);
     const snakeCaseKey = _.snakeCase(key);
 

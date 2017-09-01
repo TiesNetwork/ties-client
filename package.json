@@ -1,7 +1,6 @@
 {
   "author": "Ivan Vyatkin <vanya095@gmail.com>",
   "dependencies": {
-    "@ties-network/ties-client-base": "^1.2.13",
     "bignumber.js": "^4.0.2",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
@@ -17,9 +16,7 @@
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.1",
     "redux-form": "^6.8.0",
-    "redux-thunk": "^2.2.0",
-    "smalltalk": "^2.4.1",
-    "vertex": "^1.4.0"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

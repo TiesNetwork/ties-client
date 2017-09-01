@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr';
 
 /** Actions **/
-import { updateContacts, updateProjects } from '../../../../../../entities/users';
+import { deleteContact, updateContacts, updateProjects } from '../../../../../../entities/users';
 import { updateEntities } from '../../../../../../entities';
 
 export const ADD_CONTACT_FAILURE = 'SCENES/USERS/ADD_CONTACT_FAILURE';
@@ -18,10 +18,10 @@ export const DELETE_CONTACT_FAILURE = 'SCENES/USERS/DELETE_CONTACT_FAILURE';
 export const DELETE_CONTACT_REQUEST = 'SCENES/USERS/DELETE_CONTACT_REQUEST';
 export const DELETE_CONTACT_SUCCESS = 'SCENES/USERS/DELETE_CONTACT_SUCCESS';
 
-export const deleteContact = address => (dispatch, getState, { api, schema }) => dispatch({
+export const removeContact = address => (dispatch, getState, { api, schema }) => dispatch({
   types: [DELETE_CONTACT_REQUEST, DELETE_CONTACT_SUCCESS, DELETE_CONTACT_FAILURE],
   promise: api.contacts.delete(address)
-    .then(response => dispatch(updateContacts(getState().entities.account.id, address)))
+    .then(response => dispatch(deleteContact(getState().entities.account.id, address)))
 });
 
 export const GET_CONTACTS_FAILURE = 'SCENES/USER/GET_CONTACTS_FAILURE';

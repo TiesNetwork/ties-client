@@ -16,7 +16,7 @@ const Search = ({ handleSubmit, result }) => (
         </div>
 
         <div>
-          {result.users.map(userId => <SearchUser id={userId} key={userId} />)}
+          {result.users.map((address, index) => <SearchUser address={address} key={index} />)}
         </div>
       </div>
     )}
