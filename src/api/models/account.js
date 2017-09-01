@@ -21,10 +21,12 @@ class Account {
    * @return {Promise.<{ETH: number, TIE: number}>}
    */
   static async getBalance() {
+    const Deposit = await Client.user.getTieDeposit();
     const ETH = await Client.user.getNativeBalance();
     const TIE = await Client.user.getTieBalance();
 
     return {
+      Deposit: Deposit.toNumber() / Math.pow(10, 18),
       ETH: ETH.toNumber() / Math.pow(10, 18),
       TIE: TIE.toNumber() / Math.pow(10, 18)
     };

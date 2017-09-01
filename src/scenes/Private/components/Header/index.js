@@ -15,8 +15,20 @@ const Header = ({ balance, history, user }) => (
 
     {balance && (
       <div className={styles.HeaderBalance}>
-        <HeaderAccount amount={balance.TIE} currency="TIE" />
-        <HeaderAccount amount={balance.ETH} currency="ETH" />
+        <HeaderAccount
+          amount={balance.TIE}
+          currency="TIE"
+        />
+
+        <HeaderAccount
+          amount={balance.ETH}
+          currency="ETH"
+        />
+
+        <HeaderAccount
+          amount={balance.Deposit}
+          currency={<s title=" TIE Deposit. You spend it for database transactions.">TIE</s>}
+        />
       </div>
     )}
 

@@ -10,3 +10,5 @@ export const getBalance = () => (dispatch, getState, { api }) => dispatch({
   promise: api.account.getBalance()
     .then(response => dispatch(updateBalance(response)))
 });
+
+export { updateBalance };
