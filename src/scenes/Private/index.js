@@ -5,6 +5,7 @@ import { prompt } from '../../services/modals';
 /** Components **/
 import Header from './components/Header';
 import Prompt from './components/Prompt';
+import Sidebar from './components/Sidebar';
 
 /** Scenes **/
 import Edit from './scenes/Edit';
@@ -55,16 +56,20 @@ class Private extends Component {
       <div className={styles.Private}>
         <Header />
 
-        <div>
-          <Switch>
-            <Route component={Edit} path={`${match.url}/edit`} />
-            <Route component={Invitation} path={`${match.url}/invitation`} />
-            <Route component={Invoice} path={`${match.url}/invoice`} />
-            <Route component={Search} path={`${match.url}/search`} />
-            <Route component={Topup} path={`${match.url}/topup`} />
-            <Route component={Transfer} path={`${match.url}/transfer`} />
-            <Route component={Users} path={`${match.url}/users`} />
-          </Switch>
+        <div className={styles.PrivateContainer}>
+          <Sidebar />
+
+          <div className={styles.PrivateContent}>
+            <Switch>
+              <Route component={Edit} path={`${match.url}/edit`} />
+              <Route component={Invitation} path={`${match.url}/invitation`} />
+              <Route component={Invoice} path={`${match.url}/invoice`} />
+              <Route component={Search} path={`${match.url}/search`} />
+              <Route component={Topup} path={`${match.url}/topup`} />
+              <Route component={Transfer} path={`${match.url}/transfer`} />
+              <Route component={Users} path={`${match.url}/users`} />
+            </Switch>
+          </div>
         </div>
 
         <Prompt />

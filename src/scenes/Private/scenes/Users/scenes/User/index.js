@@ -8,10 +8,25 @@ import Personal from './components/Personal';
 
 class UsersUser extends Component {
   componentDidMount() {
-    const { address, dispatch } = this.props;
+    const { address, getContacts, getProjects } = this.props;
 
-    dispatch(getContacts(address))
-    dispatch(getProjects(address));
+    getContacts(address);
+    getProjects(address);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      address,
+      contacts,
+      getContacts,
+      getProjects,
+      projects
+    } = this.props;
+
+    if (address != prevProps.address) {
+      (!contacts || contacts.length == 0) && getContacts(address);
+      (!projects || projects.length == 0) && getProjects(address);
+    }
   }
 
   render() {
@@ -41,5 +56,9 @@ const mapStateToProps = (state, ownProps) => {
     projects: user ? (user.projects || []).map(projectId => state.entities.projects[projectId]) : null
   };
 };
+const mapDispatchToProps = dispatch => ({
+  getContacts: address => dispatch(getContacts(address)),
+  getProjects: address => dispatch(getProjects(address))
+});
 
-export default connect(mapStateToProps)(UsersUser);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersUser);
