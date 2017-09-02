@@ -4,6 +4,7 @@ import FormCheckbox from './components/Checkbox'
 import FormInput from './components/Input'
 import FormFile from './components/InputFile'
 import FormRecipients from './components/Recipients'
+import FormSelect from './components/Select'
 import FormTags from './components/Tags'
 
 const ReduxFieldAdapter = props => {
@@ -111,6 +112,12 @@ File.CONVERTER = FormFile.CONVERTER
 export const Input = props => (
   <Field {...props}>
     <FormInput {...props} />
+  </Field>
+)
+
+export const Select = props => (
+  <Field {...props}>
+    <FormSelect {...props} />
   </Field>
 )
 

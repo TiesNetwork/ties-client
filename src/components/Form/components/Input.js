@@ -71,6 +71,7 @@ class Input extends Component {
             onFocus={this.handleFocus}
             onKeyPress={this.props.onKeyPress}
             placeholder={this.props.placeholder}
+            readOnly={this.props.readOnly}
             type={this.props.type}
             value={this.props.value}
           />
