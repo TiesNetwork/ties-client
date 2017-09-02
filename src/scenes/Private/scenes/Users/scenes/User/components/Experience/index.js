@@ -3,7 +3,7 @@ import Block from '../../../../../../../../components/Block';
 import Button from '../../../../../../../../components/Button';
 import Project from './Project';
 
-const UsersShowExperience = ({ history, isCurrentUser, projects }) => (
+const UsersUserExperience = ({ history, isCurrentUser, projects }) => (
   <Block
     actions={isCurrentUser && <Button onClick={() => history.push('/private/edit/experience/')}>Edit</Button>}
     title="Experience"
@@ -15,4 +15,4 @@ const UsersShowExperience = ({ history, isCurrentUser, projects }) => (
   </Block>
 );
 
-export default withRouter(UsersShowExperience);
+export default withRouter(UsersUserExperience);

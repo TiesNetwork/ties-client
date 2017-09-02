@@ -1,6 +1,7 @@
 import Account from './models/account';
 import Contacts from './models/contacts';
 import Invitations from './models/invitations';
+import Invoices from './models/invoices';
 import Projects from './models/projects';
 import Transfers from './models/transfers';
 import Users from './models/users';
@@ -10,6 +11,7 @@ class Api {
     this.account = Account;
     this.contacts = Contacts;
     this.invitations = Invitations;
+    this.invoices = Invoices;
     this.projects = Projects;
     this.transfers = Transfers;
   }

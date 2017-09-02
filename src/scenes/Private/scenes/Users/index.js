@@ -1,10 +1,9 @@
 /** Scenes **/
-import UsersShow from './scenes/Show';
+import UsersUser from './scenes/User';
 
 const Users = ({ match }) => (
   <Switch>
-    123
-    <Route component={UsersShow} path={`${match.url}/:userId`} />
+    <Route component={UsersUser} path={`${match.url}/:userId`} />
   </Switch>
 );
 

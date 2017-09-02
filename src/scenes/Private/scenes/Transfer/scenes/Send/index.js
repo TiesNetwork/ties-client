@@ -5,17 +5,16 @@ import { sendTransfer } from './actions';
 import Block from '../../../../../../components/Block';
 import TransferSendForm from './components/Form';
 
-const TransferSend = ({ address, handleSubmit, match, recipient }) => (
+const TransferSend = ({ address, handleSubmit, recipient }) => (
   <Block title="Make a transfer">
-    {match.isExact && (
-      <TransferSendForm
-        initialValues={{
-          address: address,
-          recipient: recipient
-        }}
-        onSubmit={handleSubmit}
-      />
-    )}
+    <TransferSendForm
+      initialValues={{
+        address: address,
+        currency: 'TIE',
+        recipient: recipient
+      }}
+      onSubmit={handleSubmit}
+    />
   </Block>
 );
 

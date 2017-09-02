@@ -8,9 +8,15 @@ import Icon from '../../../../../../../../components/Icon';
 import Personal from '../../../../../../../../components/Personal';
 import Tag from '../../../../../../../../components/Tag';
 
-const UsersShowPersonal = ({
-  handleAddClick, handleEditClick, handleRemoveClick, handleTransferClick,
-  isContact, isCurrentUser, personal
+const UsersUserPersonal = ({
+  handleAddClick,
+  handleEditClick,
+  handleInvoiceClick,
+  handleRemoveClick,
+  handleTransferClick,
+  isContact,
+  isCurrentUser,
+  personal
 }) => (
   <Block
     actions={isCurrentUser && <Button onClick={handleEditClick}>Edit</Button>}
@@ -19,10 +25,10 @@ const UsersShowPersonal = ({
     <Personal {...personal} />
 
     {personal.keywords && personal.keywords.length > 0 && (
-      <div className={styles.UsersShowPersonalTags}>
+      <div className={styles.UsersUserPersonalTags}>
         {personal.keywords.map((keyword, index) => (
           <Tag
-            className={styles.UsersShowPersonalTag}
+            className={styles.UsersUserPersonalTag}
             key={index}
             title={keyword}
           />
@@ -31,9 +37,9 @@ const UsersShowPersonal = ({
     )}
 
     {!isCurrentUser && (
-      <div className={styles.UsersShowActions}>
+      <div className={styles.UsersUserActions}>
         <Button
-          className={styles.UsersShowAction}
+          className={styles.UsersUserAction}
           color={Button.COLOR.CUSTOM}
           onClick={handleAddClick}
         >
@@ -41,12 +47,12 @@ const UsersShowPersonal = ({
         </Button>
 
         <Button
-          className={styles.UsersShowAction}
+          className={styles.UsersUserAction}
           color={Button.COLOR.CUSTOM}
           onClick={isContact ? handleRemoveClick : handleAddClick}
         >
           <Icon
-            className={styles.UsersShowActionIcon}
+            className={styles.UsersUserActionIcon}
             type={Icon.TYPE.ADD_CONTACT}
           />
 
@@ -54,7 +60,7 @@ const UsersShowPersonal = ({
         </Button>
 
         <Button
-          className={styles.UsersShowAction}
+          className={styles.UsersUserAction}
           color={Button.COLOR.CUSTOM}
           onClick={handleTransferClick}
         >
@@ -62,9 +68,9 @@ const UsersShowPersonal = ({
         </Button>
 
         <Button
-          className={styles.UsersShowAction}
+          className={styles.UsersUserAction}
           color={Button.COLOR.CUSTOM}
-          onClick={handleTransferClick}
+          onClick={handleInvoiceClick}
         >
           Invoice
         </Button>
@@ -76,6 +82,10 @@ const UsersShowPersonal = ({
 const mapDispatchToProps = (dispatch, { address, history }) => ({
   handleAddClick: () => dispatch(addContact(address)),
   handleEditClick: () => history.push('/private/edit/personal'),
+  handleInvoiceClick: () => history.push({
+    pathname: '/private/invoice/create',
+    query: { to: address }
+  }),
   handleRemoveClick: () => dispatch(removeContact(address)),
   handleTransferClick: () => history.push({
     pathname: '/private/transfer/send',
@@ -83,4 +93,4 @@ const mapDispatchToProps = (dispatch, { address, history }) => ({
   })
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(UsersShowPersonal));
+export default connect(null, mapDispatchToProps)(withRouter(UsersUserPersonal));

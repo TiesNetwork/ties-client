@@ -8,6 +8,7 @@ import Prompt from './components/Prompt';
 
 /** Scenes **/
 import Edit from './scenes/Edit';
+import Invoice from './scenes/Invoice';
 import Invitation from './scenes/Invitation';
 import Search from './scenes/Search';
 import Topup from './scenes/Topup';
@@ -58,6 +59,7 @@ class Private extends Component {
           <Switch>
             <Route component={Edit} path={`${match.url}/edit`} />
             <Route component={Invitation} path={`${match.url}/invitation`} />
+            <Route component={Invoice} path={`${match.url}/invoice`} />
             <Route component={Search} path={`${match.url}/search`} />
             <Route component={Topup} path={`${match.url}/topup`} />
             <Route component={Transfer} path={`${match.url}/transfer`} />

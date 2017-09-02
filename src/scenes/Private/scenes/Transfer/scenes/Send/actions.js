@@ -7,13 +7,13 @@ export const SEND_TRANSFER_FAILURE = 'SCENES/TRANSFER/SEND_TRANSFER_FAILURE';
 export const SEND_TRANSFER_REQUEST = 'SCENES/TRANSFER/SEND_TRANSFER_REQUEST';
 export const SEND_TRANSFER_SUCCESS = 'SCENES/TRANSFER/SEND_TRANSFER_SUCCESS';
 
-export const sendTransfer = (address, sum) => (dispatch, getState, { api, push, schema }) => dispatch({
+export const sendTransfer = (address, sum) => (dispatch, getState, { api, replace, schema }) => dispatch({
   types: [SEND_TRANSFER_REQUEST, SEND_TRANSFER_SUCCESS, SEND_TRANSFER_FAILURE],
   promise: api.transfers.send(address, sum)
     .then(response => {
       const data = normalize(response, [schema.transfer]);
 
       dispatch(updateTransfers(data.entities));
-      dispatch(push(`/private/transfer/${data.result[0]}`));
+      dispatch(replace(`/private/transfer/${data.result[0]}`));
     })
 });

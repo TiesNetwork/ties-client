@@ -1,16 +1,16 @@
 import Avatar from '../../../../../../../../components/Avatar';
 
-const UsersShowContactsUser = ({ address, history, name, photo, surname }) => (
+const UsersUserContactsUser = ({ address, history, name, photo, surname }) => (
   <div
-    className={styles.UsersShowContactsUser}
+    className={styles.UsersUserContactsUser}
     onClick={() => history.push(`/private/users/${address}`)}
   >
     <Avatar
-      className={styles.UsersShowContactsUserAvatar}
+      className={styles.UsersUserContactsUserAvatar}
       src={photo}
     />
 
-    <div className={styles.UsersShowContactsUserName}>
+    <div className={styles.UsersUserContactsUserName}>
       <strong>{surname}</strong>
       {name}
     </div>
@@ -19,4 +19,4 @@ const UsersShowContactsUser = ({ address, history, name, photo, surname }) => (
 
 const mapStateToProps = (state, ownProps) => state.entities.users[ownProps.address];
 
-export default connect(mapStateToProps)(withRouter(UsersShowContactsUser));
+export default connect(mapStateToProps)(withRouter(UsersUserContactsUser));

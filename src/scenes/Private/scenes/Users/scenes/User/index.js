@@ -6,7 +6,7 @@ import Contacts from './components/Contacts';
 import Experience from './components/Experience';
 import Personal from './components/Personal';
 
-class UsersShow extends Component {
+class UsersUser extends Component {
   componentDidMount() {
     const { address, dispatch } = this.props;
 
@@ -42,4 +42,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(UsersShow);
+export default connect(mapStateToProps)(UsersUser);
