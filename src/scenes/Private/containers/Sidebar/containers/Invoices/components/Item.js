@@ -1,12 +1,19 @@
+import { shell } from 'electron';
+
+/** Components **/
 import Avatar from '../../../../../../../components/Avatar';
 import Button from '../../../../../../../components/Button';
 
 function SidebarInvoicesItem({
+  address,
   amount,
   comment,
   currency,
   date,
+  id,
   isIncoming,
+  history,
+  transaction,
   user
 }) {
   return (
@@ -47,13 +54,24 @@ function SidebarInvoicesItem({
         {comment}
       </div>
 
-      {isIncoming && (
-        <div className={styles.SidebarInvoicesItemActions}>
-          <Button>
+      <div className={styles.SidebarInvoicesItemActions}>
+        {isIncoming && !transaction && (
+          <Button
+            onClick={() => history.push({
+              pathname: `/private/transfer/send/${address}`,
+              query: { invoice: id }
+            })}
+          >
             Pay
           </Button>
-        </div>
-      )}
+        )}
+
+        {transaction && (
+          <Button onClick={() => shell.openExternal(`https://kovan.etherscan.io/tx/${transaction}`)}>
+            Check on Etherscan
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
@@ -67,4 +85,4 @@ const mapStateToProps = (state, { address, recipient }) => {
   };
 };
 
-export default connect(mapStateToProps)(SidebarInvoicesItem);
+export default connect(mapStateToProps)(withRouter(SidebarInvoicesItem));

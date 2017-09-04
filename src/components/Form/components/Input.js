@@ -14,7 +14,10 @@ class Input extends Component {
     onKeyPress: PropTypes.func,
     placeholder: PropTypes.string,
     type: PropTypes.string,
-    value: PropTypes.string
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
   }
 
   static defaultProps = {
@@ -64,6 +67,7 @@ class Input extends Component {
               styles.InputControl,
               this.state.isFocused && styles.InputControlFocused
             )}
+            disabled={this.props.disabled}
             id={this.props.id}
             name={this.props.name}
             onBlur={this.handleBlur}

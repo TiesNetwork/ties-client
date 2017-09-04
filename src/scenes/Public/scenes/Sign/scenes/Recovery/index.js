@@ -2,7 +2,7 @@
 import Button from '../../../../../../components/Button';
 import Copy from '../../../../../../components/Copy';
 
-const SignRecovery = ({ handleContinueClick, wallet }) => (
+const SignRecovery = ({ history, wallet }) => (
   <div>
     <div className={styles.SignRecoveryTitle}>
       Recovery Information
@@ -47,7 +47,7 @@ const SignRecovery = ({ handleContinueClick, wallet }) => (
     </div>
 
     <div className={styles.SignRecoveryActions}>
-      <Button onClick={handleContinueClick} solid>
+      <Button onClick={() => history.push(`/private/users/${wallet.address}`)} solid>
         Continue
       </Button>
     </div>
@@ -57,8 +57,5 @@ const SignRecovery = ({ handleContinueClick, wallet }) => (
 const mapStateToProps = state => ({
   wallet: state.entities.wallets[state.entities.account.id]
 });
-const mapDispatchToProps = (dispatch, { history, match }) => ({
-  handleContinueClick: history.push(`/private/edit/personal`)
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignRecovery)
+export default connect(mapStateToProps)(SignRecovery)

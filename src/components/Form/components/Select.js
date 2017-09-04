@@ -8,6 +8,7 @@ function FormSelect(props) {
 
       <select
         className={styles.FormSelectControl}
+        disabled={props.disabled}
         onChange={props.onChange}
         value={props.value}
       >

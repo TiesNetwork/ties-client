@@ -4,7 +4,7 @@ import TransferSend from './scenes/Send';
 
 const Transfer = ({ match }) => (
   <Switch>
-    <Route component={TransferSend} path={`${match.url}/send`} />
+    <Route component={TransferSend} path={`${match.url}/send/:userAddress`} />
     <Route component={TransferComplete} path={`${match.url}/:transferAddress`} />
   </Switch>
 );

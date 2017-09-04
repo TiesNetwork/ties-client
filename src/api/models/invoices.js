@@ -16,7 +16,7 @@ class Invoices {
     const incomingInvoices = await Client.Invoice.getIncoming(Client.wallet.address);
     const outgoingInvoices = await Client.Invoice.getOutgoing(Client.wallet.address);
 
-    return (incomingInvoices || []).concat(outgoingInvoices).map(({ invoice }) => {
+    return (incomingInvoices || []).concat(outgoingInvoices).map(({ invoice, status }) => {
       const data = Invoices.toJson(invoice);
 
       return {
@@ -24,9 +24,18 @@ class Invoices {
         amount: data.amount.toNumber(),
         date: invoice.__timestamp.toNumber(),
         id: data.id.toString(),
-        recipient: data.recepient
+        recipient: data.recepient,
+        transaction: status && status.transaction
       }
     });
+  }
+
+  static async setTransaction(invoiceId, tx) {
+    const invoices = await Client.Invoice.getIncoming(Client.wallet.address);
+    const invoice = invoices.filter(({ invoice }) => invoice.id == invoiceId)[0];
+    await invoice.setTransaction(tx);
+
+    const result = await invoice.saveToDB(tx);
   }
 
   static toJson(data) {
