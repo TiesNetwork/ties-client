@@ -13,12 +13,12 @@ class Users {
     }
   }
 
-  static fromJson(
+  static fromJson({
     address,
     company, country,
     keywords, name, photo,
     position, surname
-  ) {
+  }) {
     return {
       __address: address,
       company, country,
