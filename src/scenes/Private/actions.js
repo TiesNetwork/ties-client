@@ -1,6 +1,9 @@
+import { normalize } from 'normalizr';
+
 /** Actions **/
 import { updateBalance } from '../../entities/account';
 import { updateContacts } from '../../entities/users';
+import { updateEntities } from '../../entities';
 
 export const GET_BALANCE_FAILURE = 'SCENES/PRIVATE/GET_BALANCE_FAILURE';
 export const GET_BALANCE_REQUEST = 'SCENES/PRIVATE/GET_BALANCE_REQUEST';
@@ -16,7 +19,7 @@ export const GET_CONTACTS_FAILURE = 'SCENES/PRIVATE/GET_CONTACTS_FAILURE';
 export const GET_CONTACTS_REQUEST = 'SCENES/PRIVATE/GET_CONTACTS_REQUEST';
 export const GET_CONTACTS_SUCCESS = 'SCENES/PRIVATE/GET_CONTACTS_SUCCESS';
 
-export const getContacts = () => (dispatch, getState, { api }) => dispatch({
+export const getContacts = () => (dispatch, getState, { api, schema }) => dispatch({
   types: [GET_CONTACTS_REQUEST, GET_CONTACTS_SUCCESS, GET_CONTACTS_FAILURE],
   promise: api.contacts.get(getState().entities.account.address)
     .then(response => {

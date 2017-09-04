@@ -27,6 +27,7 @@ class Private extends Component {
     } = this.props;
 
     getBalance();
+    getContacts();
 
     Client.confirmCallback = description =>
       new Promise((resolve, reject) => prompt({
@@ -50,6 +51,15 @@ class Private extends Component {
     Client.BC.listenTransfer(address, balance =>
       updateBalance({ TIE: balance.toNumber() / Math.pow(10, 18) })
     );
+
+    Chat.messageCallback = (address, message) => {
+      console.log(message);
+    };
+  }
+
+  componentDidUpdate() {
+    const { address, contacts } = this.props;
+    Chat.create(address, contacts);
   }
 
   render() {
@@ -88,6 +98,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   getBalance: () => dispatch(getBalance()),
+  getContacts: () => dispatch(getContacts()),
   prompt: props => dispatch(prompt(props)),
   updateBalance: balance => dispatch(updateBalance(balance))
 })

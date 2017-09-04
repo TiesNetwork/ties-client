@@ -11,7 +11,35 @@
     <script>
       // @todo - Provide connect by Webpack
       var Client = require('@ties-network/ties-client-base')
-      var Chat = require('@ties-network/ties-client-base').Chat;
+      const TiesChat = require('@ties-network/ties-client-base').Chat;
+
+      class ClientChat {
+        constructor() {
+          this.chat = null;
+
+          this.messageCallback = null;
+        }
+
+        addContact(contact) {
+          this.chat.addContact(contact);
+        }
+
+        create(address, contacts) {
+          if (!this.chat && address && contacts) {
+            this.chat = new TiesChat(address, {
+              connectPeer: address => console.log(`${address} is online`),
+              disconnectPeer: address => console.log(`${address} is offline`),
+              message: (from, msg) => console.log(`From ${from}: ${msg}`)
+            }, contacts);
+          }
+        }
+
+        destroy() {
+          this.chat && this.chat.destroy();
+        }
+      }
+
+      var Chat = new ClientChat();
 
       const scripts = []
 
