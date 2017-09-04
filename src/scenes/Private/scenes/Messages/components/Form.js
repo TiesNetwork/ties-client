@@ -15,7 +15,7 @@ function MessagesForm({ handleSubmit }) {
       />
 
       <Actions className={styles.MessagesFormActions}>
-        <Button>
+        <Button type="submit">
           Send
         </Button>
       </Actions>

@@ -1,8 +1,10 @@
+import { sendMessage } from './actions';
+
 /** Components **/
 import Header from './components/Header';
 import Form from './components/Form';
 
-function Messages({ user }) {
+function Messages({ handleSubmit, user }) {
   return (
     <div className={styles.Messages}>
       <Header {...user} />
@@ -11,7 +13,7 @@ function Messages({ user }) {
 
       </div>
 
-      <Form onSubmit={() => console.log(123)} />
+      <Form onSubmit={handleSubmit} />
     </div>
   );
 }
@@ -19,5 +21,8 @@ function Messages({ user }) {
 const mapStateToProps = (state, { match }) => ({
   user: state.entities.users[match.params.userAddress]
 });
+const mapDispatchToProps = (dispatch, { match }) => ({
+  handleSubmit: values => dispatch(sendMessage(match.params.userAddress, values.message))
+});
 
-export default connect(mapStateToProps)(Messages);
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);

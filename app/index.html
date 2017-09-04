@@ -37,6 +37,10 @@
         destroy() {
           this.chat && this.chat.destroy();
         }
+
+        sendMessage(address, message) {
+          return this.chat.sendMessage(address, message);
+        }
       }
 
       var Chat = new ClientChat();

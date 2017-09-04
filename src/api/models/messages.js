@@ -8,3 +8,5 @@ class Messages {
     console.log(result);
   }
 }
+
+export default Messages;
