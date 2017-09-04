@@ -2,8 +2,6 @@
 import Input from './Input';
 
 function FormSelect(props) {
-  console.log(props);
-
   return (
     <div className={styles.FormSelect}>
       <Input {...props} readOnly />

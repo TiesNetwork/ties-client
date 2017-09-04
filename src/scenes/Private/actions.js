@@ -11,4 +11,10 @@ export const getBalance = () => (dispatch, getState, { api }) => dispatch({
     .then(response => dispatch(updateBalance(response)))
 });
 
+export const getInvoices = () => (dispatch, getState, { api }) => dispatch({
+  types: [],
+  promise: api.invoices.get()
+    .then(response => console.log(response))
+});
+
 export { updateBalance };

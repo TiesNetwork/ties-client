@@ -5,7 +5,9 @@ import { prompt } from '../../services/modals';
 /** Components **/
 import Header from './components/Header';
 import Prompt from './components/Prompt';
-import Sidebar from './components/Sidebar';
+
+/** Containers **/
+import Sidebar from './containers/Sidebar';
 
 /** Scenes **/
 import Edit from './scenes/Edit';

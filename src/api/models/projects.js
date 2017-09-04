@@ -43,7 +43,7 @@ class Projects {
    */
   static async getByAddress(address) {
     let response = await Client.Project.getProjects(address)
-console.log(address, response)
+
     return response.map(project => {
       const data = project.toJson()
 
