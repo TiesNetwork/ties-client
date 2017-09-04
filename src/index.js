@@ -18,7 +18,7 @@ Client.setConfig({
     port: 9042
   },
   tiesdb: {
-    host: 'http://mock.db.ties.network/',
+    host: 'https://mockdb.ties.network/',
   }
 })
 
