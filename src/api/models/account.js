@@ -12,7 +12,7 @@ class Account {
         }
 
     return {
-      users: [Users.toJson(response.user)],
+      users: [Users.toJson(response.user || { __address: response.wallet.address })],
       wallets: [{ ...response.wallet }]
     }
   }
