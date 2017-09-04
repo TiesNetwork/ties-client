@@ -1,5 +1,5 @@
 /** Actions **/
-import { getBalance, updateBalance } from './actions';
+import { getBalance, getContacts, updateBalance } from './actions';
 import { prompt } from '../../services/modals';
 
 /** Components **/
@@ -13,6 +13,7 @@ import Sidebar from './containers/Sidebar';
 import Edit from './scenes/Edit';
 import Invoice from './scenes/Invoice';
 import Invitation from './scenes/Invitation';
+import Messages from './scenes/Messages';
 import Search from './scenes/Search';
 import Topup from './scenes/Topup';
 import Transfer from './scenes/Transfer';
@@ -22,7 +23,7 @@ class Private extends Component {
   componentDidMount() {
     const {
       address, prompt,
-      getBalance, updateBalance
+      getContacts, getBalance, updateBalance
     } = this.props;
 
     getBalance();
@@ -66,6 +67,7 @@ class Private extends Component {
               <Route component={Edit} path={`${match.url}/edit`} />
               <Route component={Invitation} path={`${match.url}/invitation`} />
               <Route component={Invoice} path={`${match.url}/invoice`} />
+              <Route component={Messages} path={`${match.url}/messages/:userAddress`} />
               <Route component={Search} path={`${match.url}/search`} />
               <Route component={Topup} path={`${match.url}/topup`} />
               <Route component={Transfer} path={`${match.url}/transfer`} />
@@ -81,7 +83,8 @@ class Private extends Component {
 }
 
 const mapStateToProps = state => ({
-  address: state.entities.account.address
+  address: state.entities.account.address,
+  contacts: state.entities.users[state.entities.account.address].contacts
 });
 const mapDispatchToProps = dispatch => ({
   getBalance: () => dispatch(getBalance()),

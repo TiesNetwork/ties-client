@@ -7,6 +7,7 @@ import Tab from './components/Tab';
 /** Containers **/
 import Contacts from './containers/Contacts';
 import Invoices from './containers/Invoices';
+import Messages from './containers/Messages';
 
 class Sidebar extends Component {
   render() {
@@ -17,6 +18,7 @@ class Sidebar extends Component {
         <div className={styles.SidebarContainer}>
           {current == 'Contacts' && <Contacts />}
           {current == 'Invoices' && <Invoices />}
+          {current == 'Messages' && <Messages />}
         </div>
 
         <div className={styles.SidebarTabs}>

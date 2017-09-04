@@ -4,6 +4,12 @@ import App from './App';
 import createStore from './store';
 
 Client.setConfig({
+  blockchain: {
+    host: 'https://kovan.infura.io/biP9YQcNXTag7nvAELQJ'
+  },
+  chat: {
+    host: 'https://mockdb.ties.network/'
+  },
   connection: {
     login: 'reader',
     password: 'reader',
@@ -13,10 +19,7 @@ Client.setConfig({
   },
   tiesdb: {
     host: 'http://mock.db.ties.network/',
-  },
-  blockchain: {
-    host: 'https://kovan.infura.io/biP9YQcNXTag7nvAELQJ'
-  },
+  }
 })
 
 Client.connect()

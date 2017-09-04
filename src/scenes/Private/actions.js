@@ -1,5 +1,6 @@
 /** Actions **/
 import { updateBalance } from '../../entities/account';
+import { updateContacts } from '../../entities/users';
 
 export const GET_BALANCE_FAILURE = 'SCENES/PRIVATE/GET_BALANCE_FAILURE';
 export const GET_BALANCE_REQUEST = 'SCENES/PRIVATE/GET_BALANCE_REQUEST';
@@ -11,10 +12,19 @@ export const getBalance = () => (dispatch, getState, { api }) => dispatch({
     .then(response => dispatch(updateBalance(response)))
 });
 
-export const getInvoices = () => (dispatch, getState, { api }) => dispatch({
-  types: [],
-  promise: api.invoices.get()
-    .then(response => console.log(response))
-});
+export const GET_CONTACTS_FAILURE = 'SCENES/PRIVATE/GET_CONTACTS_FAILURE';
+export const GET_CONTACTS_REQUEST = 'SCENES/PRIVATE/GET_CONTACTS_REQUEST';
+export const GET_CONTACTS_SUCCESS = 'SCENES/PRIVATE/GET_CONTACTS_SUCCESS';
+
+export const getContacts = () => (dispatch, getState, { api }) => dispatch({
+  types: [GET_CONTACTS_REQUEST, GET_CONTACTS_SUCCESS, GET_CONTACTS_FAILURE],
+  promise: api.contacts.get(getState().entities.account.address)
+    .then(response => {
+      const data = normalize(response, [schema.user]);
+
+      dispatch(updateEntities(data));
+      dispatch(updateContacts(getState().entities.account.address, data.result));
+    })
+})
 
 export { updateBalance };
