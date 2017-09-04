@@ -1,6 +1,10 @@
 /** Components **/
 import Avatar from './Avatar'
 
+const PersonalSize = {
+  SMALL: 'Small'
+};
+
 class Personal extends Component {
   static propTypes = {
     company: PropTypes.string,
@@ -10,9 +14,14 @@ class Personal extends Component {
     surname: PropTypes.string
   }
 
+  static SIZE = PersonalSize;
+
   render() {
     return (
-      <div className={styles.Personal}>
+      <div className={classNames(
+        styles.Personal,
+        this.props.size && styles[`Personal${this.props.size}`]
+      )}>
         <Avatar
           className={styles.PersonalAvatar}
           src={this.props.photo}

@@ -36,11 +36,11 @@ class Account {
    * @param {string} password
    */
   static async login(password) {
-    const response = await Client.createUserDecrypt(localStorage.getItem('token'), password)
+    const { user, wallet } = await Client.createUserDecrypt(localStorage.getItem('token'), password)
 
     return {
-      users: [Users.toJson(response.user)],
-      wallets: [{ ...response.wallet }]
+      users: [Users.toJson(user || { __address: wallet.address })],
+      wallets: [{ ...wallet }]
     }
   }
 
