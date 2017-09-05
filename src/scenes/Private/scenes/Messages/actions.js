@@ -1,3 +1,5 @@
+import { reset } from 'redux-form';
+
 /** Actions **/
 import { addMessage } from '../../../../entities/messages';
 
@@ -8,10 +10,14 @@ export const SEND_MESSAGE_SUCCESS = 'SCENES/MESSAGES/SEND_MESSAGE_SUCCESS';
 export const sendMessage = (address, message) => (dispatch, getState, { api }) => dispatch({
   types: [SEND_MESSAGE_REQUEST, SEND_MESSAGE_SUCCESS, SEND_MESSAGE_FAILURE],
   promise: api.messages.send(address, message)
-    .then(response => dispatch(addMessage({
-      address: address,
-      date: new Date(),
-      from: getState().entities.account.address,
-      text: message
-    })))
+    .then(response => {
+      dispatch(addMessage({
+        address: address,
+        date: new Date(),
+        from: getState().entities.account.address,
+        text: message
+      }))
+
+      dispatch(reset('MessagesForm'));
+    })
 });

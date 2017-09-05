@@ -1,7 +1,8 @@
 /** Components **/
 import Avatar from '../../../../../../../components/Avatar';
 
-function SidebarMessagesDialog({ onClick, user }) {
+function SidebarMessagesDialog({ message, onClick, user }) {
+  console.log('Message: ', message);
   return (
     <div
       className={styles.SidebarMessagesDialog}
@@ -17,12 +18,21 @@ function SidebarMessagesDialog({ onClick, user }) {
           {user.name} {user.surname}
         </div>
 
-        <div className={styles.SidebarMessagesDialogMessage}>
-          Message
-        </div>
+        {message && (
+          <div className={styles.SidebarMessagesDialogMessage}>
+            {message.from != user.address && 'You:'} {message.text}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-export default SidebarMessagesDialog;
+const mapStateToProps = (state, { user }) => {
+  const messages = state.entities.messages.items.filter(message => message.address == user.address)
+console.log(messages)
+  return {
+    message: messages[messages.length - 1]
+  };
+}
+export default connect(mapStateToProps)(SidebarMessagesDialog);

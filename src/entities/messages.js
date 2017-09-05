@@ -6,7 +6,6 @@ export const addMessage = payload => ({
 export default (state = {
   items: []
 }, action) => {
-  console.log(action.payload)
   switch (action.type) {
     case ADD_MESSAGE:
       return {
