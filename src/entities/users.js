@@ -4,6 +4,9 @@ export const deleteContact = (address, payload) => ({ type: DELETE_CONTACT, addr
 export const DELETE_PROJECT = 'ENTITIES/USERS/DELETE_PROJECT';
 export const deleteProject = (address, payload) => ({ type: DELETE_PROJECT, address, payload });
 
+export const SET_ONLINE = 'ENTITIES/USERS/SET_ONLINE';
+export const setOnline = (address, payload) => ({ type: SET_ONLINE, address, payload });
+
 export const UPDATE_CONTACTS = 'ENTITIES/USERS/UPDATE_CONTACTS';
 export const updateContacts = (address, payload) => ({ type: UPDATE_CONTACTS, address, payload });
 
@@ -33,6 +36,14 @@ export default (state = {}, action) => {
           projects: user.projects.filter(project => project !== action.payload)
         }
       };
+    case SET_ONLINE:
+      return {
+        ...state,
+        [action.address]: {
+          ...user,
+          online: !!action.payload
+        }
+      }
     case UPDATE_CONTACTS:
       return {
         ...state,

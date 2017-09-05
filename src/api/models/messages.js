@@ -5,7 +5,6 @@ class Messages {
    */
   static async send(address, message) {
     const result = await Chat.sendMessage(address, message);
-    console.log(result);
   }
 }
 

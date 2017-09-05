@@ -1,5 +1,5 @@
 /** Actions **/
-import { getBalance, getContacts, updateBalance } from './actions';
+import { addMessage, getBalance, getContacts, setOnline, updateBalance } from './actions';
 import { prompt } from '../../services/modals';
 
 /** Components **/
@@ -23,7 +23,7 @@ class Private extends Component {
   componentDidMount() {
     const {
       address, prompt,
-      getContacts, getBalance, updateBalance
+      addMessage, getContacts, getBalance, setOnline, updateBalance
     } = this.props;
 
     getBalance();
@@ -52,9 +52,15 @@ class Private extends Component {
       updateBalance({ TIE: balance.toNumber() / Math.pow(10, 18) })
     );
 
-    Chat.messageCallback = (address, message) => {
-      console.log(message);
-    };
+    Chat.connectCallback = (address) => setOnline(address, true);
+    Chat.disconnectCallback = (address) => setOnline(address, false);
+
+    Chat.messageCallback = (from, message) => addMessage({
+      address: from,
+      date: new Date(),
+      from: from,
+      text: message.toString(),
+    })
   }
 
   componentDidUpdate() {
@@ -97,8 +103,10 @@ const mapStateToProps = state => ({
   contacts: state.entities.users[state.entities.account.address].contacts
 });
 const mapDispatchToProps = dispatch => ({
+  addMessage: message => dispatch(addMessage(message)),
   getBalance: () => dispatch(getBalance()),
   getContacts: () => dispatch(getContacts()),
+  setOnline: (address, status) => dispatch(setOnline(address, status)),
   prompt: props => dispatch(prompt(props)),
   updateBalance: balance => dispatch(updateBalance(balance))
 })

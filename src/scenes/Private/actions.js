@@ -2,7 +2,8 @@ import { normalize } from 'normalizr';
 
 /** Actions **/
 import { updateBalance } from '../../entities/account';
-import { updateContacts } from '../../entities/users';
+import { addMessage } from '../../entities/messages';
+import { setOnline, updateContacts } from '../../entities/users';
 import { updateEntities } from '../../entities';
 
 export const GET_BALANCE_FAILURE = 'SCENES/PRIVATE/GET_BALANCE_FAILURE';
@@ -30,4 +31,4 @@ export const getContacts = () => (dispatch, getState, { api, schema }) => dispat
     })
 })
 
-export { updateBalance };
+export { addMessage, setOnline, updateBalance };

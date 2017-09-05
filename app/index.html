@@ -17,6 +17,8 @@
         constructor() {
           this.chat = null;
 
+          this.connectCallback = null;
+          this.disconnectCallback = null;
           this.messageCallback = null;
         }
 
@@ -27,9 +29,9 @@
         create(address, contacts) {
           if (!this.chat && address && contacts) {
             this.chat = new TiesChat(address, {
-              connectPeer: address => console.log(`${address} is online`),
-              disconnectPeer: address => console.log(`${address} is offline`),
-              message: (from, msg) => console.log(`From ${from}: ${msg}`)
+              connectPeer: this.connectCallback,
+              disconnectPeer: this.disconnectCallback,
+              message: this.messageCallback
             }, contacts);
           }
         }
