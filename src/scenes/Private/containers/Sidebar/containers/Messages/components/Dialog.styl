@@ -1,22 +1,46 @@
-.SidebarMessagesDialog
-  align-items: center
-  display: flex
-  padding: 12px 0
+.SidebarMessagesDialog {
+  align-items: center;
+  display: flex;
+  padding: 12px 0;
 
-  &:hover
-    cursor: pointer
+  &:hover {
+    cursor: pointer;
+  }
 
-  &:not(:first-child)
-    border-top: 1px solid rgba(23, 77, 161, .43)
+  &:not(:first-child) {
+    border-top: 1px solid rgba(23, 77, 161, .43);
+  }
+
+  &Selected {
+    background: #F9F9F9;
+
+    .SidebarMessagesDialogName {
+      font-weight: 600;
+    }
+  }
+}
 
 .SidebarMessagesDialogAvatar
-  flex: 0 0 36px
-  height: 36px
-  margin-right: 12px
-  width: 36px
+  flex: 0 0 40px;
+  height: 40px;
+  margin-right: 12px;
+  width: 40px;
+
+.SidebarMessagesDialogDate
+  color: rgba(0, 0, 0, .43);
+
+.SidebarMessagesDialogInfo
+  flex: 1 1 auto;
 
 .SidebarMessagesDialogMessage
   color: rgba(0, 0, 0, .43);
 
+.SidebarMessagesDialogMessageYou
+  color: #174DA1;
+  margin-right: 4px;
+
 .SidebarMessagesDialogName
-  font-size: 16px
+  font-size: 16px;
+
+.SidebarMessagesDialogStatus
+  height: 100%;

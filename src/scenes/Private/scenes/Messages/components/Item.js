@@ -4,6 +4,8 @@ function MessagesItem({ date, from, isIncoming, text }) {
       styles.MessagesItem,
       isIncoming && styles.MessagesItemIncoming
     )}>
+      <div className={styles.MessagesItemArrow} />
+
       <div className={styles.MessagesItemText}>
         {text}
       </div>

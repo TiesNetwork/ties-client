@@ -13,11 +13,13 @@ function Messages({ handleSubmit, messages, user }) {
       <div className={styles.MessagesContainer}>
         {messages && messages.length > 0 && (
           <div className={styles.MessagesList}>
-            {messages.map((message, index) => <Message
-              {...message}
-              key={index}
-              isIncoming={message.from != user.address}
-            />)}
+            {messages.map((message, index) => (
+              <Message
+                {...message}
+                key={index}
+                isIncoming={message.from != user.address}
+              />
+            ))}
           </div>
         )}
       </div>

@@ -1,7 +1,7 @@
 /** Components **/
 import Dialog from './components/Dialog';
 
-function SidebarMessages({ contacts, history }) {
+function SidebarMessages({ contacts, history, matchParent }) {
   return (
     <div>
       {contacts && contacts.length > 0 && (
@@ -10,6 +10,7 @@ function SidebarMessages({ contacts, history }) {
             <Dialog
               key={user.address}
               onClick={() => history.push(`/private/messages/${user.address}`)}
+              selected={matchParent && matchParent.params.userAddress == user.address}
               user={user}
             />
           ))}
@@ -24,4 +25,4 @@ const mapStateToProps = state => ({
     state.entities.users[address])
 });
 
-export default connect(mapStateToProps)(withRouter(SidebarMessages));
+export default withRouter(connect(mapStateToProps)(SidebarMessages));

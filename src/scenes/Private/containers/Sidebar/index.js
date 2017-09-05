@@ -1,3 +1,5 @@
+import { matchPath } from 'react-router-dom';
+
 /** Actions **/
 import { selectContainer } from './actions';
 
@@ -11,14 +13,17 @@ import Messages from './containers/Messages';
 
 class Sidebar extends Component {
   render() {
-    const { current, handleTabClick } = this.props;
+    const { current, handleTabClick, location } = this.props;
 
     return (
       <div className={styles.Sidebar}>
         <div className={styles.SidebarContainer}>
           {current == 'Contacts' && <Contacts />}
           {current == 'Invoices' && <Invoices />}
-          {current == 'Messages' && <Messages />}
+
+          {current == 'Messages' && (
+            <Messages matchParent={matchPath(location.pathname, { path: '/private/messages/:userAddress'})} />
+          )}
         </div>
 
         <div className={styles.SidebarTabs}>
@@ -52,4 +57,4 @@ const mapDispatchToProps = dispatch => ({
   handleTabClick: id => dispatch(selectContainer(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar));
