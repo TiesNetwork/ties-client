@@ -5,7 +5,7 @@ import { addContact, removeContact } from '../../actions';
 import Block from '../../../../../../../../components/Block';
 import Button from '../../../../../../../../components/Button';
 import Icon from '../../../../../../../../components/Icon';
-import Personal from '../../../../../../../../components/Personal';
+import Personal from '../../../../../../../../containers/Personal';
 import Tag from '../../../../../../../../components/Tag';
 
 const UsersUserPersonal = ({

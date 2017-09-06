@@ -16,6 +16,7 @@ class Api {
     this.messages = Messages;
     this.projects = Projects;
     this.transfers = Transfers;
+    this.users = Users;
   }
 
   /**

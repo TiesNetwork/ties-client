@@ -7,6 +7,9 @@ export const deleteProject = (address, payload) => ({ type: DELETE_PROJECT, addr
 export const SET_ONLINE = 'ENTITIES/USERS/SET_ONLINE';
 export const setOnline = (address, payload) => ({ type: SET_ONLINE, address, payload });
 
+export const SET_RATING = 'ENTITIES/USERS/SET_RATING';
+export const setRating = (address, payload) => ({ type: SET_RATING, address, payload });
+
 export const UPDATE_CONTACTS = 'ENTITIES/USERS/UPDATE_CONTACTS';
 export const updateContacts = (address, payload) => ({ type: UPDATE_CONTACTS, address, payload });
 
@@ -43,7 +46,15 @@ export default (state = {}, action) => {
           ...user,
           online: !!action.payload
         }
-      }
+      };
+    case SET_RATING:
+      return {
+        ...state,
+        [action.address]: {
+          ...user,
+          rating: action.payload
+        }
+      };
     case UPDATE_CONTACTS:
       return {
         ...state,

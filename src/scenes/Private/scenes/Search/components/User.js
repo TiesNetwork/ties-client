@@ -1,6 +1,6 @@
 /** Components **/
 import Block from '../../../../../components/Block';
-import Personal from '../../../../../components/Personal';
+import Personal from '../../../../../containers/Personal';
 
 function SearchUser({ history, user }) {
   return (
