@@ -18,6 +18,7 @@ import Messages from './scenes/Messages';
 import Search from './scenes/Search';
 import Topup from './scenes/Topup';
 import Transfer from './scenes/Transfer';
+import Transaction from './scenes/Transaction';
 import Users from './scenes/Users';
 
 class Private extends Component {
@@ -84,6 +85,7 @@ class Private extends Component {
               <Route component={Messages} path={`${match.url}/messages/:userAddress`} />
               <Route component={Search} path={`${match.url}/search`} />
               <Route component={Topup} path={`${match.url}/topup`} />
+              <Route component={Transaction} path={`${match.url}/transaction/:tx`} />
               <Route component={Transfer} path={`${match.url}/transfer`} />
               <Route component={Users} path={`${match.url}/users`} />
             </Switch>
