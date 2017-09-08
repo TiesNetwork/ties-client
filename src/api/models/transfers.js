@@ -1,17 +1,22 @@
 class Transfers {
   /**
    * @param {string} address
+   * @param {string} currency
    * @param {number|string} sum
    * @return {Promise.<void>}
    */
-  static async send(address, sum) {
-    const result = await Client.user.transfer(address, Client.BC.web3.toWei(sum, 'ether'));
+  static async send(address, currency = 'TIE', sum) {
+    const result = await Client.user.transfer(address,
+      currency == 'TIE' && Client.BC.web3.toWei(sum, 'ether'),
+      currency == 'ETH' && Client.BC.web3.toWei(sum, 'ether')
+    );
 
-    return result.map(transfer => ({
+    return {
       address: address,
-      tx: transfer.tx,
+      currency: currency,
+      tx: result[0].tx,
       sum: sum
-    }));
+    };
   }
 }
 

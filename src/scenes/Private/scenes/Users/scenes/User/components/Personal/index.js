@@ -87,7 +87,10 @@ const mapDispatchToProps = (dispatch, { address, history }) => ({
     query: { to: address }
   }),
   handleRemoveClick: () => dispatch(removeContact(address)),
-  handleTransferClick: () => history.push(`/private/transfer/send/${address}`)
+  handleTransferClick: () => history.push({
+    pathname: '/private/transfer/send',
+    query: { to: address }
+  })
 });
 
 export default connect(null, mapDispatchToProps)(withRouter(UsersUserPersonal));

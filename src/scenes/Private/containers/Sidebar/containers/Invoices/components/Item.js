@@ -58,7 +58,7 @@ function SidebarInvoicesItem({
         {isIncoming && !transaction && (
           <Button
             onClick={() => history.push({
-              pathname: `/private/transfer/send/${address}`,
+              pathname: `/private/transfer/send`,
               query: { invoice: id }
             })}
           >

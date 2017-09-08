@@ -5,6 +5,7 @@ import accountReducer from './account';
 import invoicesReducer from './invoices';
 import messagesReducer from './messages';
 import projectsReducer from './projects';
+import transactionsReducer from './transactions';
 import usersReducer from './users';
 import walletsReducer from './wallets';
 
@@ -13,6 +14,7 @@ const modelsReducer = combineReducers({
   invoices: invoicesReducer,
   messages: messagesReducer,
   projects: projectsReducer,
+  transactions: transactionsReducer,
   users: usersReducer,
   wallets: walletsReducer
 });

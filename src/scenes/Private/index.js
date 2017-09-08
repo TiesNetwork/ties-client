@@ -1,3 +1,5 @@
+import { Redirect } from 'react-router-dom';
+
 /** Actions **/
 import { addMessage, getBalance, getContacts, setOnline, updateBalance } from './actions';
 import { prompt } from '../../services/modals';
@@ -11,7 +13,6 @@ import Sidebar from './containers/Sidebar';
 
 /** Scenes **/
 import Edit from './scenes/Edit';
-import Invoice from './scenes/Invoice';
 import Invitation from './scenes/Invitation';
 import Messages from './scenes/Messages';
 import Search from './scenes/Search';
@@ -65,7 +66,7 @@ class Private extends Component {
 
   componentDidUpdate() {
     const { address, contacts } = this.props;
-    Chat.create(address, contacts);
+    // Chat.create(address, contacts);
   }
 
   render() {
@@ -76,13 +77,10 @@ class Private extends Component {
         <Header />
 
         <div className={styles.PrivateContainer}>
-          <Sidebar />
-
           <div className={styles.PrivateContent}>
             <Switch>
               <Route component={Edit} path={`${match.url}/edit`} />
               <Route component={Invitation} path={`${match.url}/invitation`} />
-              <Route component={Invoice} path={`${match.url}/invoice`} />
               <Route component={Messages} path={`${match.url}/messages/:userAddress`} />
               <Route component={Search} path={`${match.url}/search`} />
               <Route component={Topup} path={`${match.url}/topup`} />
