@@ -4,10 +4,6 @@ import Avatar from '../../components/Avatar'
 /** Containers **/
 import Rating from './containers/Rating';
 
-const PersonalSize = {
-  SMALL: 'Small'
-};
-
 class Personal extends Component {
   static propTypes = {
     company: PropTypes.string,
@@ -17,13 +13,11 @@ class Personal extends Component {
     surname: PropTypes.string
   }
 
-  static SIZE = PersonalSize;
-
   render() {
     return (
       <div className={classNames(
         styles.Personal,
-        this.props.size && styles[`Personal${this.props.size}`]
+        this.props.densed && styles.PersonalDensed
       )}>
         <Avatar
           className={styles.PersonalAvatar}
@@ -53,7 +47,7 @@ class Personal extends Component {
         <div className={styles.PersonalRating}>
           <Rating
             address={this.props.address}
-            densed={!!this.props.size}
+            densed={this.props.densed}
           />
         </div>
       </div>

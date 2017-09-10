@@ -79,6 +79,8 @@ class Private extends Component {
         <Header />
 
         <div className={styles.PrivateContainer}>
+          <Sidebar />
+
           <div className={styles.PrivateContent}>
             <Switch>
               <Route component={Edit} path={`${match.url}/edit`} />

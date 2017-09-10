@@ -1,15 +1,15 @@
 /** Components **/
 import User from './components/Item';
 
-function SidebarContacts({ contacts, history }) {
+function SidebarContacts({ contacts, location, match }) {
   return (
-    <div>
+    <div className={styles.SidebarContacts}>
       {contacts && contacts.length > 0 && (
         <div className={styles.SidebarContactsContainer}>
-          {contacts.map(user => (
-            <User {...user}
-              key={user.address}
-              onClick={() => history.push(`/private/user/${user.address}`)}
+          {contacts.map(address => (
+            <User
+              address={address}
+              key={address}
             />
           ))}
         </div>
@@ -19,8 +19,7 @@ function SidebarContacts({ contacts, history }) {
 }
 
 const mapStateToProps = state => ({
-  contacts: (state.entities.users[state.entities.account.address].contacts || []).map(address =>
-    state.entities.users[address])
+  contacts: state.entities.users[state.entities.account.address].contacts || []
 });
 
-export default connect(mapStateToProps)(withRouter(SidebarContacts));
+export default withRouter(connect(mapStateToProps)(SidebarContacts));

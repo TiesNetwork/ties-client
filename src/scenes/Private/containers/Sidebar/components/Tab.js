@@ -1,14 +1,31 @@
-function SidebarTab({ onClick, selected, title }) {
+/** Actions **/
+import { selectContainer } from '../actions';
+
+/** Components **/
+import Button from '../../../../../components/Button';
+
+function SidebarTab({ handleClick, isCurrent, title }) {
   return (
-    <div
-      className={classNames(styles.SidebarTab, selected && styles.SidebarTabSelected)}
-      onClick={() => onClick(title)}
+    <Button
+      className={classNames(
+        styles.SidebarTab,
+        isCurrent && styles.SidebarTabSelected
+      )}
+      color={Button.COLOR.CUSTOM}
+      onClick={handleClick}
     >
       <div className={styles.SidebarTabTitle}>
         {title}
       </div>
-    </div>
+    </Button>
   );
 }
 
-export default SidebarTab;
+const mapStateToProps = (state, { title }) => ({
+  isCurrent: state.scenes.containers.sidebar.current == title
+});
+const mapDispatchToProps = (dispatch, { title }) => ({
+  handleClick: () => dispatch(selectContainer(title))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarTab);

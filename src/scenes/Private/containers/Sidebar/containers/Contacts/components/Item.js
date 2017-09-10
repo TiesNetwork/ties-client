@@ -1,14 +1,26 @@
+import { matchPath } from 'react-router-dom';
+
+/** Containers **/
 import Personal from '../../../../../../../containers/Personal';
 
-function SidebarContactsItem(props) {
+function SidebarContactsItem({ address, history, location, personal }) {
+  const match = matchPath(location.pathname, '/private/user/:address');
+
   return (
     <div
-      className={styles.SidebarContactsItem}
-      onClick={props.onClick}
+      className={classNames(
+        styles.SidebarContactsItem,
+        match.params.address == address && styles.SidebarContactsItemSelected
+      )}
+      onClick={() => history.push(`/private/user/${address}`)}
     >
-      <Personal {...props} size={Personal.SIZE.SMALL} />
+      <Personal {...personal} densed />
     </div>
-  )
+  );
 }
 
-export default SidebarContactsItem;
+const mapStateToProps = (state, { address }) => ({
+  personal: state.entities.users[address]
+});
+
+export default withRouter(connect(mapStateToProps)(SidebarContactsItem));
