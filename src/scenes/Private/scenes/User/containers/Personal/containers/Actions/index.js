@@ -5,7 +5,7 @@ import { addContact, deleteContact } from './actions';
 import Button from '../../../../../../../../components/Button';
 import Icon from '../../../../../../../../components/Icon';
 
-function UserPersonalActions({ addContact, deleteContact, isContact }) {
+function UserPersonalActions({ addContact, address, deleteContact, isContact, history }) {
   return (
     <div className={styles.UserPersonalActions}>
       <Button
@@ -32,7 +32,7 @@ function UserPersonalActions({ addContact, deleteContact, isContact }) {
       <Button
         className={styles.UserPersonalActionsButton}
         color={Button.COLOR.CUSTOM}
-        onClick={() => history.push({ pathname: '/private/transfer', query: { to: address }})}
+        onClick={() => history.push({ pathname: '/private/transfer/send', query: { to: address }})}
       >
         Transfer
       </Button>
@@ -40,7 +40,7 @@ function UserPersonalActions({ addContact, deleteContact, isContact }) {
       <Button
         className={styles.UserPersonalActionsButton}
         color={Button.COLOR.CUSTOM}
-        onClick={() => console.log('Issue a Invoice')}
+        onClick={() => history.push({ pathname: '/private/invoice', query: { to: address }})}
       >
         Invoice
       </Button>

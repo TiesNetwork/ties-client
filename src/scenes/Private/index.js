@@ -14,6 +14,7 @@ import Sidebar from './containers/Sidebar';
 /** Scenes **/
 import Edit from './scenes/Edit';
 import Invitation from './scenes/Invitation';
+import Invoice from './scenes/Invoice';
 import Messages from './scenes/Messages';
 import Search from './scenes/Search';
 import Topup from './scenes/Topup';
@@ -82,6 +83,7 @@ class Private extends Component {
             <Switch>
               <Route component={Edit} path={`${match.url}/edit`} />
               <Route component={Invitation} path={`${match.url}/invitation`} />
+              <Route component={Invoice} path={`${match.url}/invoice`} />
               <Route component={Messages} path={`${match.url}/messages/:userAddress`} />
               <Route component={Search} path={`${match.url}/search`} />
               <Route component={Topup} path={`${match.url}/topup`} />
