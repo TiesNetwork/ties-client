@@ -1,5 +1,3 @@
-import transform from '../utils/transform';
-
 class Invoices {
   static async create(data) {
     const invoice = await Client.Invoice.createNew(Invoices.fromJson({
@@ -17,16 +15,22 @@ class Invoices {
     const outgoingInvoices = await Client.Invoice.getOutgoing(Client.wallet.address);
 
     return (incomingInvoices || []).concat(outgoingInvoices).map(({ invoice, status }) => {
-      const data = Invoices.toJson(invoice);
-
-      return {
-        ...data,
-        amount: data.amount.toNumber(),
+      let data = Invoices.toJson({
+        ...invoice,
+        amount: invoice.amount.toNumber(),
         date: invoice.__timestamp.toNumber(),
-        id: data.id.toString(),
-        recipient: data.recepient,
-        transaction: status && status.transaction
+        id: invoice.id.toString()
+      });
+
+      if (status && status.transaction) {
+        data.transaction = {
+          address: invoice.recepient,
+          sum: invoice.amount.toNumber(),
+          tx: status.transaction
+        };
       }
+
+      return data;
     });
   }
 
@@ -38,14 +42,21 @@ class Invoices {
     const result = await invoice.saveToDB(tx);
   }
 
-  static toJson(data) {
-    const fields = ['address', 'amount', 'comment', 'currency', 'id', 'recepient'];
-    return transform(fields, data);
+  static toJson({ __address, amount, comment, currency, id, recepient }) {
+    return {
+      comment, currency, id,
+      address: __address,
+      recipient: recepient,
+      sum: amount
+    };
   }
 
-  static fromJson(data) {
-    const fields = ['amount', 'comment', 'currency', 'recepient'];
-    return transform(fields, data, true);
+  static fromJson({ comment, currency, recipient, sum }) {
+    return {
+      comment, currency,
+      amount: sum,
+      recepient: recipient
+    };
   }
 }
 

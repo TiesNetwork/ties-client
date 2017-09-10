@@ -4,12 +4,13 @@ import Tab from './components/Tab';
 
 /** Containers **/
 import Contacts from './containers/Contacts';
+import Invoices from './containers/Invoices';
 
 function Sidebar() {
   return (
     <div className={styles.Sidebar}>
       <div className={styles.SidebarContainer}>
-        <Contacts />
+        <Invoices />
       </div>
 
       <div className={styles.SidebarTabs}>

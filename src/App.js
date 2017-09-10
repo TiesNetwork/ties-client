@@ -14,7 +14,7 @@ function App({ isAuthenticated }) {
       <Header />
 
       <div className={styles.AppContainer}>
-        <Sidebar />
+        {isAuthenticated && <Sidebar />}
 
         <div className={styles.AppContent}>
           <Switch>

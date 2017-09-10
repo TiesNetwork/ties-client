@@ -33,7 +33,7 @@ class Personal extends Component {
 
           {(this.props.company || this.props.position) && (
             <div className={styles.PersonalPosition}>
-              {this.props.company}, {this.props.position}
+              {this.props.company} {this.props.position && `, ${this.props.position}`}
             </div>
           )}
 

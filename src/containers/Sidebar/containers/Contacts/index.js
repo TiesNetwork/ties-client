@@ -24,6 +24,6 @@ const mapStateToProps = state => {
   return {
     contacts: user && user.contacts || []
   };
-}
+};
 
 export default withRouter(connect(mapStateToProps)(SidebarContacts));
