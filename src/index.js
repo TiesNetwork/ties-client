@@ -1,4 +1,6 @@
 import createHistory from 'history/createHashHistory';
+import { Provider } from 'react-redux';
+import { ConnectedRouter as Router } from 'react-router-redux';
 
 import App from './App';
 import createStore from './store';
@@ -20,18 +22,19 @@ Client.setConfig({
   tiesdb: {
     host: 'https://mockdb.ties.network/',
   }
-})
+});
 
 Client.connect()
   .then(() => {
-    const history = createHistory()
+    const history = createHistory();
+    const store = createStore(history);
 
-    ReactDOM.render(
-      <App
-        history={createHistory()}
-        store={createStore(history)}
-      />,
-      document.getElementById('app')
-    )
+    ReactDOM.render((
+      <Provider store={store}>
+        <Router history={history}>
+          <App />
+        </Router>
+      </Provider>
+    ), document.getElementById('app'));
   }).catch(error => alert(error));
 

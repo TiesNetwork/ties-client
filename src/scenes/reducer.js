@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 
 /** Reducers **/
-import containersReducer from './Private/containers/reducer';
-import searchReducer from './Private/scenes/Search/reducer';
+import searchReducer from './Search/reducer';
 
 const scenesReducer = combineReducers({
-  containers: containersReducer,
   search: searchReducer
 });
 

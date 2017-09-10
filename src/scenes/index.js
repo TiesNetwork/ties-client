@@ -1,20 +1,27 @@
 /** Scenes **/
-import Public from './Public';
-import Private from './Private';
+import Edit from './Edit';
+import Invitation from './Invitation';
+import Invoice from './Invoice';
+import Search from './Search';
+import Sign from './Sign';
+import Topup from './Topup';
+import Transaction from './Transaction';
+import Transfer from './Transfer';
+import User from './User';
 
-const Scenes = ({ location, match, isAuthenticated }) => location.pathname == match.url ? (
-  <Redirect to="/private" />
-) : (
-  <Switch>
-    <Route component={Public} path="/public" />
-    <Route path="/private" render={props => (
-      isAuthenticated
-        ? <Private {...props} />
-        : <Redirect to="/public/sign" />
-    )}/>
-  </Switch>
-);
+function Scenes() {
+  return (
+    <Switch>
+      <Route component={Edit} path="/edit" />
+      <Route component={Invitation} path="/invitation" />
+      <Route component={Invoice} path="/invoice" />
+      <Route component={Search} path="/search" />
+      <Route component={Topup} path="/topup" />
+      <Route component={Transaction} path="/transaction/:tx" />
+      <Route component={Transfer} path="/transfer" />
+      <Route component={User} path="/user/:address" />
+    </Switch>
+  );
+}
 
-const mapStateToProps = state => ({ isAuthenticated: !!state.entities.account.id });
-
-export default connect(mapStateToProps, null, null, { pure: false })(Scenes);
+export default Scenes;
