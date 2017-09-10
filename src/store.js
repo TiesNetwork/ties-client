@@ -10,11 +10,13 @@ import loggerMiddleware from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
 /** Reducers **/
+import containersReducer from './containers/reducer';
 import entitiesReducer from './entities'
 import servicesReducer from './services'
 import scenesReducer from './scenes/reducer'
 
 const reducer = combineReducers({
+  containers: containersReducer,
   entities: entitiesReducer,
   services: servicesReducer,
   scenes: scenesReducer,

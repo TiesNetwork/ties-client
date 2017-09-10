@@ -8,7 +8,7 @@ function SearchUser({ history, user }) {
   return (
     <Block
       className={styles.SearchUser}
-      onClick={() => history.push(`/private/user/${user.address}`)}
+      onClick={() => history.push(`/user/${user.address}`)}
     >
       <Personal {...user} />
     </Block>

@@ -1,4 +1,5 @@
 /** Components **/
+import Icon from '../../components/Icon';
 import Tab from './components/Tab';
 
 /** Containers **/
@@ -12,9 +13,9 @@ function Sidebar() {
       </div>
 
       <div className={styles.SidebarTabs}>
-        <Tab title="Contacts" />
-        <Tab title="Messages" />
-        <Tab title="Invoices" />
+        <Tab icon={Icon.TYPE.CONTACTS} title="Contacts" />
+        <Tab icon={Icon.TYPE.MESSAGES} title="Messages" />
+        <Tab icon={Icon.TYPE.INVOICES} title="Invoices" />
       </div>
     </div>
   );

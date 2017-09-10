@@ -39,7 +39,7 @@ class UserContacts extends Component {
 
             <Button
               className={styles.UserContactsInvitationAction}
-              onClick={() => history.push('/private/invitation')}
+              onClick={() => history.push('/invitation')}
             >
               Generate invitation code
             </Button>

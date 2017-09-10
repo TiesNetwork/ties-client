@@ -1,7 +1,7 @@
 /** Components **/
 import User from './components/Item';
 
-function SidebarContacts({ contacts, location, match }) {
+function SidebarContacts({ contacts }) {
   return (
     <div className={styles.SidebarContacts}>
       {contacts && contacts.length > 0 && (
@@ -18,8 +18,12 @@ function SidebarContacts({ contacts, location, match }) {
   );
 }
 
-const mapStateToProps = state => ({
-  contacts: state.entities.users[state.entities.account.address].contacts || []
-});
+const mapStateToProps = state => {
+  const user = state.entities.users[state.entities.account.address];
+
+  return {
+    contacts: user && user.contacts || []
+  };
+}
 
 export default withRouter(connect(mapStateToProps)(SidebarContacts));

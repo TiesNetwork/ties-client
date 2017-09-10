@@ -1,35 +1,38 @@
 /** Components **/
 import Header from './components/Header';
 
+/** Containers **/
+import Sidebar from './containers/Sidebar';
+
 /** Scenes **/
 import Scenes from './scenes';
+import Sign from './scenes/Sign';
 
-function App() {
+function App({ isAuthenticated }) {
   return (
     <div className={styles.App}>
       <Header />
 
       <div className={styles.AppContainer}>
+        <Sidebar />
+
         <div className={styles.AppContent}>
-          <Route component={Scenes} path="/" />
+          <Switch>
+            <Route component={Sign} path="/sign" />
+            <Route path="/" render={props => (
+              isAuthenticated
+                ? <Scenes {...props} />
+                : <Redirect to="/sign" />
+            )}/>
+          </Switch>
         </div>
       </div>
     </div>
   );
 }
 
-// const Scenes = ({ location, match, isAuthenticated }) => location.pathname == match.url ? (
-//   <Redirect to="/private" />
-// ) : (
-//   <Switch>
-//     <Route component={Public} path="/sign" />
-//     <Route path="/" render={props => (
-//       isAuthenticated
-//         ? <Private {...props} />
-//         : <Redirect to="/public/sign" />
-//     )}/>
-//   </Switch>
-// );
+const mapStateToProps = state => ({
+  isAuthenticated: !!state.entities.account.address
+});
 
-
-export default App;
+export default connect(mapStateToProps, null, null, { pure: false })(App);

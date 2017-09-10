@@ -1,18 +1,18 @@
 import { matchPath } from 'react-router-dom';
 
 /** Containers **/
-import Personal from '../../../../../../../containers/Personal';
+import Personal from '../../../../../containers/Personal';
 
 function SidebarContactsItem({ address, history, location, personal }) {
-  const match = matchPath(location.pathname, '/private/user/:address');
+  const match = matchPath(location.pathname, '/user/:address');
 
   return (
     <div
       className={classNames(
         styles.SidebarContactsItem,
-        match.params.address == address && styles.SidebarContactsItemSelected
+        match && match.params.address == address && styles.SidebarContactsItemSelected
       )}
-      onClick={() => history.push(`/private/user/${address}`)}
+      onClick={() => history.push(`/user/${address}`)}
     >
       <Personal {...personal} densed />
     </div>

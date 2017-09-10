@@ -1,20 +1,42 @@
-.Icon
-  background-position: center center
-  background-repeat: no-repeat
-  background-size: contain
-  display: block
-  height: 100%
-  width: 100%
+.Icon {
+  background-color: rgba(0, 0, 0, .87);
+  display: block;
+  height: 100%;
+  width: 100%;
 
-.IconAddContact
-  background-image: url(images/addContact.svg)
-  height: 17px
-  width: 15px
+  -webkit-mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
 
-.IconCopy
-  background-image: url(images/copy.svg)
-  height: 18px;
-  width: 16px;
+  &AddContact {
+    -webkit-mask-image: url(images/addContact.svg);
+  }
 
-.IconSearch
-  background-image: url(images/search.svg)
+  &Contacts {
+    -webkit-mask-image: url(images/contacts.svg);
+  }
+
+  &DeleteContact {
+    -webkit-mask-image: url(images/deleteContact.svg);
+  }
+
+  &Invoice {
+    -webkit-mask-image: url(images/Invoice.svg);
+  }
+
+  &Invoices {
+    -webkit-mask-image: url(images/Invoices.svg);
+  }
+
+  &Message {
+    -webkit-mask-image: url(images/message.svg);
+  }
+
+  &Messages {
+    -webkit-mask-image: url(images/messages.svg);
+  }
+
+  &Search {
+    -webkit-mask-image: url(images/search.svg);
+  }
+}

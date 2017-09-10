@@ -18,7 +18,7 @@ const EditExperienceForm = ({ handleSubmit, history, initialValues }) => (
     <Actions>
       <Button
         color={Button.color.SECONDARY}
-        onClick={() => history.push('/private/edit/experience')}
+        onClick={() => history.push('/edit/experience')}
       >
         Cancel
       </Button>

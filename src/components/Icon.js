@@ -6,9 +6,15 @@ class Icon extends Component {
 
   static TYPE = {
     ADD_CONTACT: 'AddContact',
+    CONTACTS: 'Contacts',
     COPY: 'Copy',
+    DELETE_CONTACT: 'DeleteContact',
+    INVOICE: 'Invoice',
+    INVOICES: 'Invoices',
+    MESSAGE: 'Message',
+    MESSAGES: 'Messages',
     SEARCH: 'Search'
-  }
+  };
 
   render() {
     return <i className={classNames(this.props.className, styles.Icon, styles[`Icon${this.props.type}`])} />

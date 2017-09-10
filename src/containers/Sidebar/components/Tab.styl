@@ -3,14 +3,33 @@
   color: rgba(0, 0, 0, .43);
   display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   justify-content: center;
 
   &:hover {
     color: rgba(0, 0, 0, .87);
     cursor: pointer;
+
+    .SidebarTabIcon {
+      background-color: rgba(0, 0, 0, .87);
+    }
   }
 
   &Selected {
     color: #174DA1;
+
+    .SidebarTabIcon {
+      background-color: #174DA1;
+    }
   }
+}
+
+.SidebarTabIcon {
+  background-color: rgba(0, 0, 0, .43);
+  height: 20px;
+  width: 20px;
+}
+
+.SidebarTabTitle {
+  margin-top: 4px;
 }

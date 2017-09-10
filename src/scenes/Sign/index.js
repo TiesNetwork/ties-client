@@ -2,6 +2,7 @@ import { Redirect } from 'react-router-dom';
 
 /** Components **/
 import Button from '../../components/Button';
+import Icon from '../../components/Icon';
 
 /** Scenes **/
 import SignCreate from './scenes/Create';
@@ -23,7 +24,10 @@ const Sign = ({
 
     <div className={styles.SignAbout}>
       <div className={styles.SignAboutLogo}>
-        <div className={styles.SignAboutLogoImage} />
+        <Icon
+          className={styles.SignAboutLogoIcon}
+          type={Icon.TYPE.LOGO}
+        />
 
         <div className={styles.SignAboutLogoTitle}>
           Ties.Network

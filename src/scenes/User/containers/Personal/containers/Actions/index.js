@@ -13,6 +13,11 @@ function UserPersonalActions({ addContact, address, deleteContact, isContact, hi
         color={Button.COLOR.CUSTOM}
         onClick={() => console.log('Send message!')}
       >
+        <Icon
+          className={styles.UserPersonalActionsIcon}
+          type={Icon.TYPE.MESSAGE}
+        />
+
         Message
       </Button>
 
@@ -23,7 +28,7 @@ function UserPersonalActions({ addContact, address, deleteContact, isContact, hi
       >
         <Icon
           className={styles.UserPersonalActionsIcon}
-          type={Icon.TYPE.ADD_CONTACT}
+          type={isContact ? Icon.TYPE.DELETE_CONTACT : Icon.TYPE.ADD_CONTACT}
         />
 
         {isContact ? 'Remove' : 'Add'}
@@ -32,16 +37,26 @@ function UserPersonalActions({ addContact, address, deleteContact, isContact, hi
       <Button
         className={styles.UserPersonalActionsButton}
         color={Button.COLOR.CUSTOM}
-        onClick={() => history.push({ pathname: '/private/transfer/send', query: { to: address }})}
+        onClick={() => history.push({ pathname: '/transfer/send', query: { to: address }})}
       >
+        <Icon
+          className={styles.UserPersonalActionsIcon}
+          type={Icon.TYPE.INVOICE}
+        />
+
         Transfer
       </Button>
 
       <Button
         className={styles.UserPersonalActionsButton}
         color={Button.COLOR.CUSTOM}
-        onClick={() => history.push({ pathname: '/private/invoice', query: { to: address }})}
+        onClick={() => history.push({ pathname: '/invoice', query: { to: address }})}
       >
+        <Icon
+          className={styles.UserPersonalActionsIcon}
+          type={Icon.TYPE.INVOICE}
+        />
+
         Invoice
       </Button>
     </div>

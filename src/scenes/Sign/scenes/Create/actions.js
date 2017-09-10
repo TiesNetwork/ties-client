@@ -20,6 +20,6 @@ export const create = password => (dispatch, getState, { api, push, schema }) =>
       dispatch(setCurrentUserId(data.result.wallets[0]));
       dispatch(updateEntities(data));
 
-      dispatch(push('/public/sign/recovery'));
+      dispatch(push('/sign/recovery'));
     })
 });

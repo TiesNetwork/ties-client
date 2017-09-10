@@ -19,7 +19,7 @@ function Transfer({ history, match }) {
 
           <Button
             className={styles.TransferAction}
-            onClick={() => history.push('/private/invoice')}
+            onClick={() => history.push('/invoice')}
           >
             Issue a Invoice
           </Button>

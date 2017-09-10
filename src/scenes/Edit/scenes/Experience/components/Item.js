@@ -12,7 +12,7 @@ const EditExperienceItem = ({ handleRemoveClick, history, id, project }) => (
     <div className={styles.EditExperienceItemActions}>
       <Button
         className={styles.EditExperienceItemAction}
-        onClick={() =>  history.push(`/private/edit/experience/${id}`)}
+        onClick={() =>  history.push(`/edit/experience/${id}`)}
       >
         Edit
       </Button>

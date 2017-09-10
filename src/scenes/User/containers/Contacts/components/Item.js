@@ -5,7 +5,7 @@ function UserContactsItem({ address, history, name, photo, surname }) {
   return (
     <div
       className={styles.UserContactsItem}
-      onClick={() => history.push(`/private/user/${address}`)}
+      onClick={() => history.push(`/user/${address}`)}
     >
       <Avatar
         className={styles.UserContactsItemAvatar}

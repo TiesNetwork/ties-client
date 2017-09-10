@@ -9,7 +9,10 @@ function Header({ balance, history, user }) {
   return (
     <div className={styles.Header}>
       <div className={styles.HeaderLogo}>
-        <div className={styles.HeaderLogoImage}/>
+        <Icon
+          className={styles.HeaderLogoIcon}
+          type={Icon.TYPE.LOGO}
+        />
       </div>
 
       {balance && (
@@ -20,7 +23,7 @@ function Header({ balance, history, user }) {
       )}
 
       <div className={styles.HeaderTopup}>
-        <Button onClick={() => history.push('/private/topup')}>
+        <Button onClick={() => history.push('/topup')}>
           Topup
         </Button>
       </div>
@@ -29,7 +32,7 @@ function Header({ balance, history, user }) {
         <Button
           className={styles.HeaderSearchButton}
           color={Button.color.CUSTOM}
-          onClick={() => history.push('/private/search/users')}
+          onClick={() => history.push('/search/users')}
         >
           <Icon type={Icon.TYPE.SEARCH}/>
         </Button>
@@ -40,7 +43,7 @@ function Header({ balance, history, user }) {
           <Button
             className={styles.HeaderUserButton}
             color={Button.color.CUSTOM}
-            onClick={() => history.push(`/private/user/${user.address}`)}
+            onClick={() => history.push(`/user/${user.address}`)}
           >
             <Avatar className={styles.HeaderUserAvatar} src={user.photo} />
           </Button>

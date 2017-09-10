@@ -10,6 +10,6 @@ export const sendTransfer = (address, currency, sum) => (dispatch, getState, { a
   promise: api.transfers.send(address, currency, sum)
     .then(response => {
       dispatch(updateTransaction(response.tx, response));
-      dispatch(replace(`/private/transaction/${response.tx}`));
+      dispatch(replace(`/transaction/${response.tx}`));
     })
 });

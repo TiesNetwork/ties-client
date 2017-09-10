@@ -13,6 +13,6 @@ export const createProject = values => (dispatch, getState, { api, push, schema 
       dispatch(updateProject(response.id, response));
       dispatch(updateProjects(response.__address, response.id));
 
-      dispatch(push('/private/edit/experience'));
+      dispatch(push('/edit/experience'));
     })
 });

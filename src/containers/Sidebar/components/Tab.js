@@ -2,9 +2,10 @@
 import { selectContainer } from '../actions';
 
 /** Components **/
-import Button from '../../../../../components/Button';
+import Button from '../../../components/Button';
+import Icon from '../../../components/Icon';
 
-function SidebarTab({ handleClick, isCurrent, title }) {
+function SidebarTab({ handleClick, icon, isCurrent, title }) {
   return (
     <Button
       className={classNames(
@@ -14,6 +15,11 @@ function SidebarTab({ handleClick, isCurrent, title }) {
       color={Button.COLOR.CUSTOM}
       onClick={handleClick}
     >
+      <Icon
+        className={styles.SidebarTabIcon}
+        type={icon}
+      />
+
       <div className={styles.SidebarTabTitle}>
         {title}
       </div>
@@ -22,7 +28,7 @@ function SidebarTab({ handleClick, isCurrent, title }) {
 }
 
 const mapStateToProps = (state, { title }) => ({
-  isCurrent: state.scenes.containers.sidebar.current == title
+  isCurrent: state.containers.sidebar.current == title
 });
 const mapDispatchToProps = (dispatch, { title }) => ({
   handleClick: () => dispatch(selectContainer(title))

@@ -17,7 +17,7 @@ class PersonalRating extends Component {
 
   render() {
     const { densed } = this.props;
-    const rating = (this.props.rating || 0) / 10;
+    const rating = ((this.props.rating || 0) / 10).toFixed(1);
 
     return (
       <div className={classNames(
