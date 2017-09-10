@@ -6,11 +6,12 @@ import Tab from './components/Tab';
 import Contacts from './containers/Contacts';
 import Invoices from './containers/Invoices';
 
-function Sidebar() {
+function Sidebar({ current }) {
   return (
     <div className={styles.Sidebar}>
       <div className={styles.SidebarContainer}>
-        <Invoices />
+        {current == 'Contacts' && <Contacts />}
+        {current == 'Invoices' && <Invoices />}
       </div>
 
       <div className={styles.SidebarTabs}>
@@ -22,4 +23,6 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+const mapStateToProps = state => state.containers.sidebar;
+
+export default connect(mapStateToProps)(Sidebar);

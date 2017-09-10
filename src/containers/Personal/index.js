@@ -1,5 +1,6 @@
 /** Components **/
-import Avatar from '../../components/Avatar'
+import Avatar from '../../components/Avatar';
+import Icon from '../../components/Icon';
 
 /** Containers **/
 import Rating from './containers/Rating';
@@ -39,6 +40,11 @@ class Personal extends Component {
 
           {this.props.country && (
             <div className={styles.PersonalCountry}>
+              <Icon
+                className={styles.PersonalCountryIcon}
+                type={Icon.TYPE.LOCATION}
+              />
+
               {this.props.country}
             </div>
           )}

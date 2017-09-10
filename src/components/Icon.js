@@ -11,6 +11,8 @@ class Icon extends Component {
     DELETE_CONTACT: 'DeleteContact',
     INVOICE: 'Invoice',
     INVOICES: 'Invoices',
+    LOCATION: 'Location',
+    LOGO: 'Logo',
     MESSAGE: 'Message',
     MESSAGES: 'Messages',
     SEARCH: 'Search'
