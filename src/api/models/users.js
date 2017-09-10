@@ -1,11 +1,11 @@
 class Users {
-  /**
-   * @param {string} address
-   * @return {number}
-   */
   static async getRating(address) {
     const user = await Client.User.createFromDB(address);
     return user.getRating();
+  }
+
+  static async get(address) {
+    return await Client.User.createFromDB(address);
   }
 
   static toJson({

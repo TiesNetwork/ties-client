@@ -47,7 +47,7 @@ const SignRecovery = ({ history, wallet }) => (
     </div>
 
     <div className={styles.SignRecoveryActions}>
-      <Button onClick={() => history.push(`/private/users/${wallet.address}`)} solid>
+      <Button onClick={() => history.push(`/private/user/${wallet.address}`)} solid>
         Continue
       </Button>
     </div>

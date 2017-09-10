@@ -1,5 +1,5 @@
 /** Actions **/
-import { setRating } from '../../entities/users';
+import { setRating } from '../../../../entities/users';
 
 export const GET_RATING_FAILURE = 'CONTAINERS/RATING/GET_RATING_FAILURE';
 export const GET_RATING_REQUEST = 'CONTAINERS/RATING/GET_RATING_REQUEST';

@@ -3,7 +3,7 @@ import { deleteProject } from '../actions';
 
 /** Components **/
 import Button from '../../../../../../../components/Button';
-import UserProject from '../../../../Users/scenes/User/components/Experience/Project';
+import UserProject from '../../../../User/containers/Experience/components/Project';
 
 const EditExperienceItem = ({ handleRemoveClick, history, id, project }) => (
   <div className={styles.EditExperienceItem}>

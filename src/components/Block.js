@@ -1,6 +1,6 @@
 class Block extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
     title: PropTypes.string

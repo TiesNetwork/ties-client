@@ -2,7 +2,7 @@
 import Avatar from '../../components/Avatar'
 
 /** Containers **/
-import Rating from '../Rating';
+import Rating from './containers/Rating';
 
 const PersonalSize = {
   SMALL: 'Small'

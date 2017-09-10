@@ -9,7 +9,7 @@ export default (state = {
     case SET_RESULT:
       return {
         ...state,
-        result: action.result
+        result: action.payload
       };
     default:
       return state;

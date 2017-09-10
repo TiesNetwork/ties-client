@@ -1,0 +1,32 @@
+.UserContactsItem {
+  align-items: center;
+  display: flex;
+  flex: 0 0 100px;
+  flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.UserContactsItemAvatar {
+  flex: 0 0 72px;
+  height: 72px;
+  width: 72px;
+}
+
+.UserContactsItemInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  padding: 0 12px;
+  text-align: center;
+}
+
+.UserContactsItemSurname {
+  font-weight: 600;
+}

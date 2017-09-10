@@ -19,7 +19,7 @@ import Search from './scenes/Search';
 import Topup from './scenes/Topup';
 import Transfer from './scenes/Transfer';
 import Transaction from './scenes/Transaction';
-import Users from './scenes/Users';
+import User from './scenes/User';
 
 class Private extends Component {
   componentDidMount() {
@@ -87,7 +87,8 @@ class Private extends Component {
               <Route component={Topup} path={`${match.url}/topup`} />
               <Route component={Transaction} path={`${match.url}/transaction/:tx`} />
               <Route component={Transfer} path={`${match.url}/transfer`} />
-              <Route component={Users} path={`${match.url}/users`} />
+
+              <Route component={User} path={`${match.url}/user/:address`} />
             </Switch>
           </div>
         </div>

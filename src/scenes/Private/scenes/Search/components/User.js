@@ -1,20 +1,22 @@
 /** Components **/
 import Block from '../../../../../components/Block';
+
+/** Containers **/
 import Personal from '../../../../../containers/Personal';
 
 function SearchUser({ history, user }) {
   return (
     <Block
       className={styles.SearchUser}
-      onClick={() => history.push(`/private/users/${user.address}`)}
+      onClick={() => history.push(`/private/user/${user.address}`)}
     >
       <Personal {...user} />
     </Block>
-  );
+  )
 }
 
 const mapStateToProps = (state, { address }) => ({
   user: state.entities.users[address]
 });
 
-export default connect(mapStateToProps)(withRouter(SearchUser));
+export default withRouter(connect(mapStateToProps)(SearchUser));

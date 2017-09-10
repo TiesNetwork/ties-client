@@ -53,7 +53,7 @@ const Header = ({ balance, history, user }) => (
         <Button
           className={styles.HeaderUserButton}
           color={Button.color.CUSTOM}
-          onClick={() => history.push(`/private/users/${user.address}`)}
+          onClick={() => history.push(`/private/user/${user.address}`)}
         >
           <Avatar
             className={styles.HeaderUserAvatar}

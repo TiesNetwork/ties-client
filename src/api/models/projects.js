@@ -39,26 +39,6 @@ class Projects {
   }
 
   /**
-   * @param {string} address - wallet (user) address
-   */
-  static async getByAddress(address) {
-    let response = await Client.Project.getProjects(address)
-
-    return response.map(project => {
-      const data = project.toJson()
-
-      return {
-        __address: data.__address,
-        dateEnd: data.date_end,
-        dateStart: data.date_start,
-        description: data.description,
-        id: data.id.toString(),
-        name: data.name,
-      }
-    });
-  }
-
-  /**
    * @param {string} address
    * @param {string} id
    * @param {{
@@ -90,6 +70,33 @@ class Projects {
       id: data.id.toString(),
       name: data.name,
     }
+  }
+
+  static async getByAddress(address) {
+    const projects = await Client.Project.getProjects(address);
+
+    return projects.map(project => Projects.toJson(project.toJson()));
+  }
+
+  static fromJson({ dateEnd, dateStart, description, name }) {
+    return {
+      date_end: dateEnd,
+      date_start: dateStart,
+      description, name
+    };
+  }
+
+  static toJson({
+    __address,
+    date_end, date_start,
+    description, id, name
+  }) {
+    return {
+      address: __address,
+      dateEnd: date_end,
+      dateStart: date_start,
+      description, id, name
+    };
   }
 }
 

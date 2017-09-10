@@ -20,6 +20,6 @@ export const login = password => (dispatch, getState, { api, push, schema }) => 
       dispatch(setCurrentUserId(data.result.wallets[0]));
       dispatch(updateEntities(data));
 
-      dispatch(push(`/private/users/${data.result.wallets[0]}`));
+      dispatch(push(`/private/user/${data.result.wallets[0]}`));
     })
 });

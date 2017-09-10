@@ -9,7 +9,7 @@ function SidebarContacts({ contacts, history }) {
           {contacts.map(user => (
             <User {...user}
               key={user.address}
-              onClick={() => history.push(`/private/users/${user.address}`)}
+              onClick={() => history.push(`/private/user/${user.address}`)}
             />
           ))}
         </div>
