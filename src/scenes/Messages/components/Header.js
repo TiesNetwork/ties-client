@@ -7,7 +7,10 @@ function MessagesHeader({ name, online, surname }) {
         </div>
       )}
 
-      <div className={styles.MessagesHeaderStatus}>
+      <div className={classNames(
+        styles.MessagesHeaderStatus,
+        online && styles.MessagesHeaderStatusOnline
+      )}>
         {online ? 'online' : 'offline'}
       </div>
     </div>

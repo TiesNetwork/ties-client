@@ -27,4 +27,4 @@ function Sidebar({ current }) {
 
 const mapStateToProps = state => state.containers.sidebar;
 
-export default connect(mapStateToProps)(Sidebar);
+export default withRouter(connect(mapStateToProps)(Sidebar));
