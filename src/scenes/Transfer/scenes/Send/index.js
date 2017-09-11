@@ -14,9 +14,7 @@ function TransferSend({ handleSubmit }) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit: values => dispatch(sendTransfer(
-    values.address, values.currency, values.sum
-  ))
+  handleSubmit: values => dispatch(sendTransfer(values))
 });
 
 export default connect(null, mapDispatchToProps)(TransferSend);

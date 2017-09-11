@@ -19,6 +19,7 @@ class Invoices {
       if (status && status.transaction) {
         data.transaction = {
           address: invoice.recepient,
+          currency: invoice.currency,
           sum: invoice.amount.toNumber(),
           tx: status.transaction
         };
@@ -33,7 +34,7 @@ class Invoices {
     const invoice = invoices.filter(({ invoice }) => invoice.id == invoiceId)[0];
     await invoice.setTransaction(tx);
 
-    const result = await invoice.saveToDB(tx);
+    const result = await invoice.saveToDB();
   }
 
   static toJson({ __address, __timestamp, amount, comment, currency, id, recepient }) {

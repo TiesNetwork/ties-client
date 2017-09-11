@@ -2,20 +2,20 @@
 import Button from '../../../../../components/Button';
 import Form, { Actions, Group, Input, Select, Recipients } from '../../../../../components/Form';
 
-function TransferSendForm({ invalid, handleSubmit, history, submitting }) {
+function TransferSendForm({ initialValues, invalid, handleSubmit, history, submitting }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Recipients label="Recipients:" name="recipient" />
 
-      <Input label="Account Number" name="address" />
+      <Input disabled label="Account Number" name="address" />
 
       <Group>
-        <Select label="Account Currency" name="currency">
+        <Select disabled={!!initialValues.invoice} label="Account Currency" name="currency">
           <option>TIE</option>
           <option>ETH</option>
         </Select>
 
-        <Input label="Sum" name="sum" />
+        <Input disabled={!!initialValues.invoice} label="Sum" name="sum" />
       </Group>
 
       <Actions>
@@ -45,7 +45,8 @@ const mapStateToProps = (state, { location }) => {
     return {
       initialValues: {
         address: user.address,
-        currency: invoice && invoice.sum || 'TIE',
+        currency: invoice && invoice.currency || 'TIE',
+        invoice: invoice.id,
         sum: invoice && invoice.sum,
         recipient: user
       }
@@ -53,7 +54,7 @@ const mapStateToProps = (state, { location }) => {
   }
 
   return {};
-}
+};
 
 export default withRouter(connect(mapStateToProps)(reduxForm({
   form: 'TransferSendForm'
