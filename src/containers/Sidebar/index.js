@@ -5,6 +5,7 @@ import Tab from './components/Tab';
 /** Containers **/
 import Contacts from './containers/Contacts';
 import Invoices from './containers/Invoices';
+import Messages from './containers/Messages';
 
 function Sidebar({ current }) {
   return (
@@ -12,6 +13,7 @@ function Sidebar({ current }) {
       <div className={styles.SidebarContainer}>
         {current == 'Contacts' && <Contacts />}
         {current == 'Invoices' && <Invoices />}
+        {current == 'Messages' && <Messages />}
       </div>
 
       <div className={styles.SidebarTabs}>

@@ -1,0 +1,25 @@
+.SidebarMessagesItem {
+  align-items: center;
+  display: flex;
+  padding: 12px 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:not(:first-child) {
+    border-top: 1px solid rgba(23, 77, 161, .43);
+  }
+
+  &Selected {
+    background: #F9F9F9;
+
+    .SidebarMessagesItemUser {
+      font-weight: 600;
+    }
+  }
+}
+
+.SidebarMessagesItemUser {
+  flex: 1 1 auto;
+}

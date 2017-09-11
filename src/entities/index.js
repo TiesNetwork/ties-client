@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 /** Model reducers **/
 import accountReducer from './account';
+import dialogsReducer from './dialogs';
 import invoicesReducer from './invoices';
 import messagesReducer from './messages';
 import projectsReducer from './projects';
@@ -11,6 +12,7 @@ import walletsReducer from './wallets';
 
 const modelsReducer = combineReducers({
   account: accountReducer,
+  dialogs: dialogsReducer,
   invoices: invoicesReducer,
   messages: messagesReducer,
   projects: projectsReducer,

@@ -1,0 +1,37 @@
+.MessagesItem {
+  align-items: flex-end
+  display: flex;
+  margin-top: 8px;
+
+  &Incoming {
+    flex-direction: row-reverse;
+
+    .MessagesItemArrow {
+      border-color: transparent transparent transparent #EEE;
+      border-style: solid;
+      border-width: 12px 0 0 12px;
+    }
+
+    .MessagesItemText {
+      background: #EEE;
+    }
+  }
+}
+
+.MessagesItemArrow {
+  border-color: transparent transparent #FFF transparent;
+  border-style: solid;
+  border-width: 0 0 12px 12px;
+}
+
+.MessagesItemDate {
+  color: rgba(0, 0, 0, .43);
+  margin: 0 8px;
+}
+
+.MessagesItemText {
+  background: #FFF;
+  max-width: 70%;
+  padding: 8px 12px;
+  position: relative;
+}

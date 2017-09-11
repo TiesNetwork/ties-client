@@ -11,7 +11,7 @@ function UserPersonalActions({ addContact, address, deleteContact, isContact, hi
       <Button
         className={styles.UserPersonalActionsButton}
         color={Button.COLOR.CUSTOM}
-        onClick={() => console.log('Send message!')}
+        onClick={() => history.push(`/messages/${address}`)}
       >
         <Icon
           className={styles.UserPersonalActionsIcon}
