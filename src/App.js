@@ -1,7 +1,5 @@
-/** Components **/
-import Header from './components/Header';
-
 /** Containers **/
+import Header from './containers/Header';
 import Sidebar from './containers/Sidebar';
 
 /** Scenes **/
@@ -11,7 +9,7 @@ import Sign from './scenes/Sign';
 function App({ isAuthenticated }) {
   return (
     <div className={styles.App}>
-      <Header />
+      {isAuthenticated && <Header />}
 
       <div className={styles.AppContainer}>
         {isAuthenticated && <Sidebar />}
