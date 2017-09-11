@@ -1,4 +1,4 @@
-import { push, replace, routerMiddleware, routerReducer } from 'react-router-redux'
+import { goBack, push, replace, routerMiddleware, routerReducer } from 'react-router-redux'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 
@@ -23,29 +23,30 @@ const reducer = combineReducers({
 
   form: formReducer,
   router: routerReducer
-})
+});
 
 const clientMiddleware = store => next => action => {
   if (action.promise && action.types) {
-    const [ REQUESTED, RESOLVED, REJECTED ] = action.types
+    const [ REQUESTED, RESOLVED, REJECTED ] = action.types;
 
-    next({ ...action, type: REQUESTED })
+    next({ ...action, type: REQUESTED });
 
     return action.promise.then(
       result => next({ ...action, type: RESOLVED }),
       error => {
-        console.error(error)
-        next({ action, type: REJECTED })
+        console.error(error);
+        next({ action, type: REJECTED });
       }
-    )
+    );
   } else {
-    return next(action)
+    return next(action);
   }
-}
+};
 
 export default history => createStore(reducer, applyMiddleware(
   thunkMiddleware.withExtraArgument({
     api: new Api(),
+    history: { goBack, push, replace },
     push, replace, schema
   }),
   loggerMiddleware,

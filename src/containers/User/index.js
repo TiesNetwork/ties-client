@@ -7,15 +7,14 @@ import Avatar from '../../components/Avatar';
 class User extends Component {
   componentDidMount() {
     const { fetchUser, user } = this.props;
-    console.log(!user.name);
-    !user.name && fetchUser();
+    (!user || !user.name) && fetchUser();
   }
 
   componentDidUpdate(prevProps) {
     const { address, fetchUser, user } = this.props;
 
     if (address != prevProps.address) {
-      !user.name && fetchUser();
+      (!user || !user.name) && fetchUser();
     }
   }
 

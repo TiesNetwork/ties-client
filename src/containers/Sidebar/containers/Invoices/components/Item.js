@@ -2,12 +2,12 @@
 import Button from '../../../../../components/Button';
 
 /** Containers **/
-import Personal from '../../../../../containers/Personal';
+import User from '../../../../../containers/User';
 
 function SidebarInvoicesItem({
-  comment, currency, date,
+  address, comment, currency, date,
   id, isIncoming, history, number, sum,
-  transaction, user
+  transaction
 }) {
   return (
     <div className={styles.SidebarInvoicesItem}>
@@ -30,14 +30,7 @@ function SidebarInvoicesItem({
       </div>
 
       <div className={styles.SidebarInvoicesItemUser}>
-        <Personal
-          address={user.address}
-          company={moment(date).format('DD.MM.YYYY')}
-          densed
-          name={user.name}
-          surname={user.surname}
-          photo={user.photo}
-        />
+        <User address={address} company={moment(date).format('DD.MM.YYYY')} position={null} />
       </div>
 
       <div className={styles.SidebarInvoicesItemComment}>
@@ -70,8 +63,8 @@ const mapStateToProps = (state, { address, recipient }) => {
   const isIncoming = recipient == state.entities.account.address;
 
   return {
-    isIncoming,
-    user: state.entities.users[isIncoming ? address : recipient]
+    address: isIncoming ? address : recipient,
+    isIncoming
   };
 };
 
