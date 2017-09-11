@@ -17,4 +17,4 @@ const mapStateToProps = state => ({
   dialogs: _.values(state.entities.dialogs)
 });
 
-export default connect(mapStateToProps)(SidebarMessages);
+export default withRouter(connect(mapStateToProps)(SidebarMessages));

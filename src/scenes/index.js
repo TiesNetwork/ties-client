@@ -14,7 +14,10 @@ import User from './User';
 
 class Scenes extends Component {
   componentDidMount() {
-    const { address, contacts } = this.props;
+    const {
+      address, contacts,
+      addMessage, createDialog, setOnline
+    } = this.props;
 
     Chat.connectCallback = address => setOnline(address, true);
     Chat.disconnectCallback = address => setOnline(address, false);

@@ -1,9 +1,19 @@
+import { matchPath } from 'react-router-dom';
+
 /** Containers **/
 import User from '../../../../User';
 
-function SidebarMessagesItem({ address, message }) {
+function SidebarMessagesItem({ address, history, location, message }) {
+  const match = matchPath(location.pathname, '/messages/:address');
+
   return (
-    <div className={styles.SidebarMessagesItem}>
+    <div
+      className={classNames(
+        styles.SidebarMessagesItem,
+        match && match.params.address == address && styles.SidebarMessagesItemSelected
+      )}
+      onClick={() => history.push(`/messages/${address}`)}
+    >
       <div className={styles.SidebarMessagesItemUser}>
         <User
           address={address}
@@ -14,7 +24,7 @@ function SidebarMessagesItem({ address, message }) {
 
       <div className={styles.SidebarMessagesItemStatus}>
         {message && (
-          <div className={styles.SidebarMessagesItemStatus}>
+          <div className={styles.SidebarMessagesItemDate}>
             {moment(message.date).format('HH:MM')}
           </div>
         )}
@@ -31,4 +41,4 @@ const mapStateToProps = (state, { address }) => {
   };
 };
 
-export default connect(mapStateToProps)(SidebarMessagesItem);
+export default withRouter(connect(mapStateToProps)(SidebarMessagesItem));
