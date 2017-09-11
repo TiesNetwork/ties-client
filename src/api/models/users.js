@@ -5,7 +5,8 @@ class Users {
   }
 
   static async get(address) {
-    return await Client.User.createFromDB(address);
+    const result = await Client.User.createFromDB(address);
+    return Users.toJson(result.user);
   }
 
   static toJson({

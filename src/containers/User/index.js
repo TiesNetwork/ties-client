@@ -7,46 +7,53 @@ import Avatar from '../../components/Avatar';
 class User extends Component {
   componentDidMount() {
     const { fetchUser, user } = this.props;
-    !user && fetchUser();
+    console.log(!user.name);
+    !user.name && fetchUser();
   }
 
   componentDidUpdate(prevProps) {
     const { address, fetchUser, user } = this.props;
 
     if (address != prevProps.address) {
-      !user && fetchUser();
+      !user.name && fetchUser();
     }
   }
 
   render() {
-    const { company, name, photo, position, surname } = this.props;
+    const user = { ...this.props.user, ...this.props };
 
     return (
       <div className={styles.User}>
-        <Avatar
-          className={styles.UserAvatar}
-          src={photo}
-        />
+        {user && (
+          <div className={styles.UserContainer}>
+            <Avatar
+              className={styles.UserAvatar}
+              src={user.photo}
+            />
 
-        <div className={styles.UserInfo}>
-          {(name || surname) && (
-            <div className={styles.UserName}>
-              {name} {surname}
-            </div>
-          )}
+            <div className={styles.UserInfo}>
+              {(user.name || user.surname) && (
+                <div className={styles.UserName}>
+                  {user.name} {user.surname}
+                </div>
+              )}
 
-          {(company || position) && (
-            <div className={styles.UserPosition}>
-              {company} {position && `, ${position}`}
+              {(user.company || user.position) && (
+                <div className={styles.UserPosition}>
+                  {user.company} {user.position && `, ${user.position}`}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({ ...state.entities.users[ownProps.address], ...ownProps });
+const mapStateToProps = (state, { address }) => ({
+  user: state.entities.users[address]
+});
 const mapDispatchToProps = (dispatch, { address }) => ({
   fetchUser: () => dispatch(fetchUser(address))
 });

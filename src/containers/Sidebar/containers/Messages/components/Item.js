@@ -17,7 +17,7 @@ function SidebarMessagesItem({ address, history, location, message }) {
       <div className={styles.SidebarMessagesItemUser}>
         <User
           address={address}
-          company={message && `${message.from != address && 'You: '}${message.text}`}
+          company={message && `${message.from != address ? 'You: ' : ''}${message.text}`}
           position={null}
         />
       </div>

@@ -11,7 +11,7 @@ export const fetchUser = address => (dispatch, getState, { api, schema }) => dis
   types: [FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE],
   promise: api.users.get(address)
     .then(response => {
-      const data = normalize(response, [schema.user]);
+      const data = normalize(response, schema.user);
       dispatch(updateEntities(data));
     })
 });
