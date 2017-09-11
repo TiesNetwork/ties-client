@@ -1,3 +1,6 @@
+/** Components **/
+import Prompt from './components/Prompt';
+
 /** Containers **/
 import Header from './containers/Header';
 import Sidebar from './containers/Sidebar';
@@ -25,6 +28,8 @@ function App({ isAuthenticated }) {
           </Switch>
         </div>
       </div>
+
+      <Prompt />
     </div>
   );
 }

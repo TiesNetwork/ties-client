@@ -1,5 +1,6 @@
 /** Actions **/
 import { addMessage, createDialog, setOnline } from './actions';
+import { prompt } from '../services/modals';
 
 /** Scenes **/
 import Edit from './Edit';
@@ -16,16 +17,26 @@ class Scenes extends Component {
   componentDidMount() {
     const {
       address, contacts,
-      addMessage, createDialog, setOnline
+      addMessage, createDialog, prompt, setOnline
     } = this.props;
 
     Chat.connectCallback = address => setOnline(address, true);
     Chat.disconnectCallback = address => setOnline(address, false);
-
     Chat.messageCallback = (from, message) => {
       addMessage({ address: from, date: new Date(), from: from, text: message.toString() });
       createDialog(from);
     };
+
+    Client.confirmCallback = description =>
+      new Promise((resolve, reject) => prompt({
+        description: description,
+        input: {
+          label: 'Password',
+          type: 'password'
+        },
+        onSubmit: value => resolve(value),
+        title: 'Confirm transaction'
+      }));
   }
 
   componentDidUpdate() {
@@ -57,6 +68,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addMessage: message => dispatch(addMessage(message)),
   createDialog: (address) => dispatch(createDialog(address)),
+  prompt: props => dispatch(prompt(props)),
   setOnline: (address, status) => dispatch(setOnline(address, status))
 });
 
