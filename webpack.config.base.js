@@ -2,6 +2,10 @@ import path from 'path'
 import webpack from 'webpack';
 
 export default {
+  externals: {
+    Client: '@ties-network/ties-client-base'
+  },
+
   module: {
     rules: [
       {
@@ -41,6 +45,7 @@ export default {
       moment: 'moment',
       reduxForm: ['redux-form', 'reduxForm'],
       withRouter: ['react-router-dom', 'withRouter'],
+      Client: 'Client',
       Component: ['react', 'Component'],
       PropTypes: 'prop-types',
       React: 'react',

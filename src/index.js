@@ -29,6 +29,40 @@ Client.connect()
     const history = createHistory();
     const store = createStore(history);
 
+    class ClientChat {
+      constructor() {
+        this.chat = null;
+
+        this.connectCallback = null;
+        this.disconnectCallback = null;
+        this.messageCallback = null;
+      }
+
+      addContact(contact) {
+        this.chat.addContact(contact);
+      }
+
+      create(address, contacts) {
+        if (!this.chat && address && contacts) {
+          this.chat = new Client.Chat(address, {
+            connectPeer: this.connectCallback,
+            disconnectPeer: this.disconnectCallback,
+            message: this.messageCallback
+          }, contacts);
+        }
+      }
+
+      destroy() {
+        this.chat && this.chat.destroy();
+      }
+
+      sendMessage(address, message) {
+        return this.chat.sendMessage(address, message);
+      }
+    }
+
+    window.Chat = new ClientChat();
+
     ReactDOM.render((
       <Provider store={store}>
         <Router history={history}>

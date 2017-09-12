@@ -14,7 +14,7 @@
     "files": [
       "dist/",
       "node_modules/",
-      "app.html",
+      "index.html",
       "main.prod.js",
       "main.prod.js.map",
       "package.json"
@@ -82,6 +82,7 @@
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "electron": "^1.7.6 <1.8.0",
+    "electron-builder": "^19.27.7",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
@@ -118,6 +119,10 @@
     "build-main": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.main.prod.js --colors",
     "build-renderer": "cross-env BABEL_DISABLE_CACHE=1 NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.prod.js --colors",
     "dev": "cross-env BABEL_DISABLE_CACHE=1 START_HOT=1 npm run start-renderer-dev",
+    "package": "npm run build && build --publish never",
+    "package-all": "npm run build && build -mwl",
+    "package-linux": "npm run build && build --linux",
+    "package-win": "npm run build && build --win --x64",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production electron ./app/",
     "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./app/main.dev",

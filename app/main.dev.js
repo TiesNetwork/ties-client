@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 
+
 let mainWindow = null;
 
 if (process.env.NODE_ENV === 'production') {
@@ -38,7 +39,7 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     height: 728,
     show: false,
-    width: 102
+    width: 1024
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
