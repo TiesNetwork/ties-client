@@ -46,7 +46,7 @@ const mapStateToProps = (state, { location }) => {
       initialValues: {
         address: user.address,
         currency: invoice && invoice.currency || 'TIE',
-        invoice: invoice.id,
+        invoice: invoice && invoice.id,
         sum: invoice && invoice.sum,
         recipient: user
       }
