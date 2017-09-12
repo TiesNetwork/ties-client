@@ -7,7 +7,14 @@ export default {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader?cacheDirectory!baggage-loader?[file].styl=styles'
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
+        }, {
+          loader: 'baggage-loader?[file].styl=styles'
+        }]
       },
       {
         test: /\.svg$/,
@@ -27,10 +34,6 @@ export default {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
-    }),
-
     new webpack.ProvidePlugin({
       _: 'lodash',
       classNames: 'classnames',
@@ -45,11 +48,13 @@ export default {
       Redirect: ['react-router-dom', 'Redirect'],
       Route: ['react-router-dom', 'Route'],
       Switch: ['react-router-dom', 'Switch']
-    })
+    }),
+
+    new webpack.NamedModulesPlugin(),
   ],
 
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: ['.js', '.json', '.jsx', '.scss'],
     modules: ['node_modules', path.join(__dirname, 'src'), path.join(__dirname, 'static')]
   }
 }

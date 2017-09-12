@@ -2,9 +2,10 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackMerge from 'webpack-merge';
 
+import { dependencies } from './package.json';
 import baseConfig from './webpack.config.base';
 
-const dist = path.resolve(process.cwd(), 'dll');
+const dist = path.resolve(process.cwd(), 'app/dll');
 
 export default webpackMerge(baseConfig, {
   context: process.cwd(),

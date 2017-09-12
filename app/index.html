@@ -9,7 +9,16 @@
     <div id="app">Connecting to the database</div>
 
     <script>
-      // @todo - Provide connect by Webpack
+      (function() {
+        if (!process.env.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist/style.css';
+          document.getElementsByTagName('head')[0].appendChild(link);
+        }
+      }());
+    </script>
+    <script>
       var Client = require('@ties-network/ties-client-base')
       const TiesChat = require('@ties-network/ties-client-base').Chat;
 
@@ -46,18 +55,23 @@
       }
 
       var Chat = new ClientChat();
+    </script>
+    <script>
+      {
+        const port = process.env.PORT || 8080;
+        const scripts = [];
 
-      const scripts = [];
+        if (process.env.NODE_ENV === 'development') {
+          scripts.push('./dll/renderer.dev.dll.js');
+        }
 
-      scripts.push(
-        process.env.HOT
-          ? 'http://localhost:' + (process.env.PORT || 8080) + '/dist/bundle.js'
-          : './dist/bundle.js'
-      )
+        scripts.push(process.env.HOT ?
+          'http://localhost:' + port + '/dist/renderer.dev.js' : './dist/renderer.prod.js');
 
-      document.write(scripts.map(script =>
-        '<script defer src="' + script + '"><\/script>'
-      ).join(''))
+        document.write(
+          scripts.map(script => '<script defer src="' + script + '"><\/script>').join('')
+        );
+      }
     </script>
   </body>
 </html>

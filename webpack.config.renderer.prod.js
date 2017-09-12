@@ -2,11 +2,12 @@ import BabiliWebpackPlugin from 'babili-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path'
 import webpack from 'webpack';
+import webpackMerge from 'webpack-merge';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-const PORT = process.env.PORT || 8080;
+import baseConfig from './webpack.config.base';
 
-export default {
+export default webpackMerge(baseConfig, {
   devtool: 'source-map',
 
   entry: './src/index',
@@ -15,31 +16,35 @@ export default {
     rules: [
       {
         test: /\.styl$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'style-loader'
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                localIndentName: '[hash:base64:5]',
-                modules: true,
-              }
-            },
-            {
-              loader: 'stylus-loader',
-              options: {
-                outputStyle: 'expanded',
-                paths: 'static',
-                sourceMap: true,
-                sourceMapContents: true
-              }
-            }
-          ]
-        })
+        loader: 'style-loader!css-loader?modules&importLoaders=2&localIndentName=[hash:base64:5]!stylus-loader?outputStyle=expanded&sourceMap&sourceMapContents&paths=static'
       }
+      // {
+      //   test: /\.styl$/,
+      //   use: ExtractTextPlugin.extract({
+      //     use: [
+      //       {
+      //         loader: 'style-loader'
+      //       },
+      //       {
+      //         loader: 'css-loader',
+      //         options: {
+      //           importLoaders: 2,
+      //           localIndentName: '[hash:base64:5]',
+      //           modules: true,
+      //         }
+      //       },
+      //       {
+      //         loader: 'stylus-loader',
+      //         options: {
+      //           outputStyle: 'expanded',
+      //           paths: 'static',
+      //           sourceMap: true,
+      //           sourceMapContents: true
+      //         }
+      //       }
+      //     ]
+      //   })
+      // }
     ]
   },
 
@@ -64,10 +69,6 @@ export default {
     })
   ],
 
-  resolve: {
-    extensions: ['.js', '.scss'],
-    modules: ['node_modules', path.join(__dirname, 'src'), path.join(__dirname, 'static')]
-  },
 
   target: 'electron-renderer'
-}
+})
