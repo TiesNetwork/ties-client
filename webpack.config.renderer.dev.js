@@ -16,11 +16,13 @@ export default {
     publicPath: `http://localhost:${PORT}/dist`,
     setup: () => {
       if (process.env.START_HOT) {
-        spawn('npm', ['run', 'start-hot-renderer'], {
-          env: process.env,
-          shell: true,
-          stdio: 'inherit'
-        }).on('close', code => process.exit(code))
+        console.log('Starting Main Process...');
+        spawn(
+          'npm',
+          ['run', 'start-main-dev'],
+          { shell: true, env: process.env, stdio: 'inherit' }
+        )
+          .on('close', code => process.exit(code))
           .on('error', error => console.error(error))
       }
     }

@@ -1,6 +1,50 @@
 {
-  "packageName": "Ties.Client",
-  "author": "Ivan Vyatkin <vanya095@gmail.com>",
+  "author": {
+    "email": "vanya095@gmail.com",
+    "name": "Ivan Vyatkin",
+    "url": "https://github.com/i-vyatkin"
+  },
+  "build": {
+    "appId": "org.develar.TiesNetwork",
+    "productName": "TiesNetwork",
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "files": [
+      "dist/",
+      "node_modules/",
+      "app.html",
+      "main.prod.js",
+      "main.prod.js.map",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    }
+  },
   "dependencies": {
     "@ties-network/ties-client-base": "^1.2.22",
     "classnames": "^2.2.5",
@@ -34,6 +78,7 @@
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "electron": "^1.7.6 <1.8.0",
+    "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
     "file-loader": "^0.11.2",
     "react-hot-loader": "3.0.0-beta.6",
@@ -46,17 +91,24 @@
     "webpack-dev-server": "^2.5.0",
     "webpack-electron-packager": "^1.0.0"
   },
+  "devEngines": {
+    "node": ">=8.x",
+    "npm": ">=5.x"
+  },
   "description": "Ties.Network client",
   "license": "ISC",
   "main": "app/index.js",
   "name": "Ties.Network",
-  "scripts": {
-    "start": "npm run dev",
-    "dev": "cross-env START_HOT=1 npm run hot-updates-server",
-    "hot-updates-server": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.renderer.js",
-    "start-hot-renderer": "cross-env HOT=1 NODE_ENV=development BABEL_DISABLE_CACHE=1 electron -r babel-register -r babel-polyfill ./app",
-    "build": "cross-env NODE_ENV=development BABEL_DISABLE_CACHE=1 webpack --config webpack.config.build.js"
+  "packageName": "Ties.Client",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiesNetwork/ties-client"
   },
-  "version": "1.0.0",
-  "repository": "https://github.com/TiesNetwork/ties-client"
+  "scripts": {
+    "dev": "cross-env BABEL_DISABLE_CACHE=1 START_HOT=1 npm run start-renderer-dev",
+    "start": "cross-env NODE_ENV=production electron './app",
+    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./app/main.dev",
+    "start-renderer-dev": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.renderer.dev.js"
+  },
+  "version": "1.0.0"
 }
