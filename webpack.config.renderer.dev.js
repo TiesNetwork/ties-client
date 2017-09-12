@@ -40,21 +40,8 @@ export default {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader?cacheDirectory!baggage-loader?[file].styl=styles'
-      },
-      {
         test: /\.styl$/,
         loader: 'style-loader!css-loader?modules&importLoaders=2&localIndentName=[name]!stylus-loader?outputStyle=expanded&sourceMap&sourceMapContents&paths=static'
-      },
-      {
-        test: /\.svg$/,
-        loader: 'url-loader?limit=65000&name=public/images/[name].[ext]'
-      },
-      {
-        test: /\.[ot]tf$/,
-        loader: 'url-loader?limit=65000&name=public/fonts/[name].[ext]'
       }
     ]
   },
