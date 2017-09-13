@@ -1,12 +1,12 @@
 {
   "author": {
-    "email": "vanya095@gmail.com",
-    "name": "Ivan Vyatkin",
-    "url": "https://github.com/i-vyatkin"
+    "email": "info@ties.network",
+    "name": "Ties.Network Team",
+    "url": "https://ties.network"
   },
   "build": {
     "appId": "org.develar.TiesNetwork",
-    "productName": "TiesNetwork",
+    "productName": "Ties.Network",
     "directories": {
       "buildResources": "resources",
       "output": "release"
