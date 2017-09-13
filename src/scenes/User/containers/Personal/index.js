@@ -3,6 +3,7 @@ import { fetchUser } from './actions';
 
 /** Components **/
 import Block from '../../../../components/Block';
+import Button from '../../../../components/Button';
 import Tag from '../../../../components/Tag';
 
 /** Containers **/
@@ -24,10 +25,13 @@ class UserPersonal extends Component {
   }
 
   render() {
-    const { isCurrentUser, personal } = this.props;
+    const { isCurrentUser, history, personal } = this.props;
 
     return (
-      <Block title="Personal Information">
+      <Block
+        actions={isCurrentUser && <Button onClick={() => history.push('/edit/personal')}>Edit</Button>}
+        title="Personal Information"
+      >
         {personal && (
           <div>
             <Personal {...personal} />

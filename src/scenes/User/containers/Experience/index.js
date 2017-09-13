@@ -3,6 +3,7 @@ import { fetchProjects } from './actions';
 
 /** Components **/
 import Block from '../../../../components/Block';
+import Button from '../../../../components/Button';
 import Project from './components/Project';
 
 class UserExperience extends Component {
@@ -20,10 +21,13 @@ class UserExperience extends Component {
   }
 
   render() {
-    const { projects } = this.props;
+    const { isCurrentUser, history, projects } = this.props;
 
     return (
-      <Block title="Experience">
+      <Block
+        actions={isCurrentUser && <Button onClick={() => history.push('/edit/experience')}>Edit</Button>}
+        title="Experience"
+      >
         {projects && projects.length > 0 && (
           <div>
             {projects.map(projectId => <Project id={projectId} key={projectId} />)}

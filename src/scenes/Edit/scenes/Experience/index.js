@@ -17,7 +17,7 @@ const EditExperience = ({ handleRemove, history, match, projects }) => (
 
     {match.isExact && (
       <Block
-        actions={<Button onClick={() => history.push(`${match.url}create`)}>Create</Button>}
+        actions={<Button onClick={() => history.push(`${match.url}/create`)}>Create</Button>}
         title="Experience"
       >
         {projects && projects.length > 0 && (

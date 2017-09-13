@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => ({
   project: state.entities.projects[ownProps.match.params.projectId]
 });
 const mapDispatchToProps = dispatch => ({
-  handleSubmit: values => dispatch(updateProject(values.__address, values.id, values))
+  handleSubmit: values => dispatch(updateProject(values.address, values.id, values))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExperienceProject);

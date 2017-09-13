@@ -7,24 +7,10 @@ class Projects {
    * @return {{}}
    */
   static async create(values) {
-    const project = await Client.user.newProject({
-            date_end: values.dateEnd || null,
-            date_start: values.dateStart || null,
-            description: values.description,
-            name: values.name
-          })
-        , response = await project.saveToDB()
+    const project = await Client.user.newProject(Projects.fromJson(values))
+        , response = await project.saveToDB();
 
-    const data = project.toJson()
-
-    return {
-      __address: data.__address,
-      dateEnd: data.date_end,
-      dateStart: data.date_start,
-      description: data.description,
-      id: data.id.toString(),
-      name: data.name,
-    }
+    return Projects.toJson(project.toJson());
   }
 
   /**
@@ -49,27 +35,11 @@ class Projects {
    * }} values
    */
   static async update(address, id, values) {
-    const project = await Client.Project.createFromDB(address, id)
+    const project = await Client.Project.createFromDB(address, id);
+    project.raw = { ...project.raw, ...Projects.fromJson(values)};
+    await project.saveToDB();
 
-    project.raw = { ...project.raw,
-      date_end: values.dateEnd,
-      date_start: values.dateStart,
-      description: values.description,
-      name: values.name
-    }
-
-    await project.saveToDB()
-
-    const data = project.toJson()
-
-    return {
-      __address: data.__address,
-      dateEnd: data.date_end,
-      dateStart: data.date_start,
-      description: data.description,
-      id: data.id.toString(),
-      name: data.name,
-    }
+    return Projects.toJson(project.toJson());
   }
 
   static async getByAddress(address) {

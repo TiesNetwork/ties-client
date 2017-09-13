@@ -11,7 +11,7 @@ export const createProject = values => (dispatch, getState, { api, push, schema 
   promise: api.projects.create(values)
     .then(response => {
       dispatch(updateProject(response.id, response));
-      dispatch(updateProjects(response.__address, response.id));
+      dispatch(updateProjects(response.address, response.id));
 
       dispatch(push('/edit/experience'));
     })
