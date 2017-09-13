@@ -21,12 +21,18 @@ export default {
         }]
       },
       {
-        test: /\.svg$/,
-        loader: 'url-loader?limit=65000&name=public/images/[name].[ext]'
+        test: /\.[ot]tf$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 65000,
+            mimetype: 'application/octet-stream'
+          }
+        }
       },
       {
-        test: /\.[ot]tf$/,
-        loader: 'url-loader?limit=65000&name=public/fonts/[name].[ext]'
+        test: /\.svg$/,
+        loader: 'url-loader?limit=65000&name=public/images/[name].[ext]'
       }
     ]
   },
