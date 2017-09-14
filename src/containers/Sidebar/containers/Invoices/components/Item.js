@@ -30,7 +30,7 @@ function SidebarInvoicesItem({
       </div>
 
       <div className={styles.SidebarInvoicesItemUser}>
-        <User address={address} company={moment(date).format('DD.MM.YYYY')} position={null} />
+        <User address={address} company={moment(date).format('DD.MM.YYYY HH:mm')} position={null} />
       </div>
 
       <div className={styles.SidebarInvoicesItemComment}>

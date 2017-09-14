@@ -31,7 +31,7 @@ class SidebarInvoices extends Component {
 }
 
 const mapStateToProps = state => ({
-  invoices: _.values(state.entities.invoices)
+  invoices: _.values(state.entities.invoices).sort((a, b) => a.date < b.date ? 1 : a.date > b.date ? -1 : 0)
 });
 const mapDispatchToProps = dispatch => ({
   fetchInvoices: () => dispatch(fetchInvoices())
