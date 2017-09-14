@@ -11,7 +11,7 @@ function MessagesItem({ date, from, isIncoming, text }) {
       </div>
 
       <div className={styles.MessagesItemDate}>
-        {moment(date).format('HH:MM')}
+        {moment(date).format('HH:mm')}
       </div>
     </div>
   );
