@@ -1,24 +1,31 @@
-color-checkbox = rgba(0, 0, 0, .38)
-color-primary = #174DA1
+.FormCheckboxControl {
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, .38);
+  box-sizing: border-box;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  margin-right: 8px;
+  width: 16px;
+}
 
-.CheckboxControl
-  border: 1px solid color-checkbox
-  box-sizing: border-box
-  height: 10px
-  margin: 4px 4px 4px 0
-  width: 10px
+.FormCheckboxControlIcon {
+  background-color: rgba(0, 0, 0, .38) !important;
+  height: 12px !important;
+  width: 12px !important;
+}
 
-  &Checked
-    border-color: color-primary
+.FormCheckboxInput {
+  display: none;
+}
 
-.CheckboxInput
-  display: none
+.FormCheckboxLabel {
+  align-items: center;
+  color: color-rgba(0, 0, 0, .38);
+  display: flex;
+  line-height: 18px;
 
-.CheckboxLabel
-  color: color-checkbox
-  display: flex
-  font-size: 10px
-  line-height: 18px
-
-  &:hover
-    cursor: pointer
+  &:hover {
+    cursor: pointer;
+  }
+}

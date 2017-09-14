@@ -1,45 +1,36 @@
-class Checkbox extends Component {
-  static propTypes = {
-    checked: PropTypes.bool,
-    className: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    value: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.string
-    ])
-  }
+/** Components **/
+import Icon from '../../Icon';
 
-  handleChange = event => this.props.onChange && this.props.onChange(event)
+function FormCheckbox({ checked, id, label, name, onChange, value }) {
+  return (
+    <div className={styles.FormCheckbox}>
+      <label
+        className={styles.FormCheckboxLabel}
+        htmlFor={id}
+      >
+        <div className={styles.FormCheckboxControl}>
+          {!!value && (
+            <Icon
+              className={styles.FormCheckboxControlIcon}
+              type={Icon.TYPE.CHECK}
+            />
+          )}
+        </div>
 
-  render() {
-    return (
-      <div className={styles.Checkbox}>
-        <label
-          className={styles.CheckboxLabel}
-          htmlFor={this.props.id}
-        >
-          <div className={classNames(
-            styles.CheckboxControl,
-            !!this.props.value && styles.CheckboxControlChecked
-          )} />
+        {label || name}
 
-          {this.props.label || this.props.name}
-
-          <input
-            checked={this.props.checked}
-            className={styles.CheckboxInput}
-            id={this.props.id}
-            name={this.props.name}
-            onChange={this.handleChange}
-            type="checkbox"
-            value={!!this.props.value}
-          />
-        </label>
-      </div>
-    )
-  }
+        <input
+          checked={checked}
+          className={styles.FormCheckboxInput}
+          id={id}
+          name={name}
+          onChange={onChange}
+          type="checkbox"
+          value={!!value}
+        />
+      </label>
+    </div>
+  );
 }
 
-export default Checkbox
+export default FormCheckbox
