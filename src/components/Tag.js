@@ -1,4 +1,6 @@
-import Button from './Button'
+/** Components **/
+import Button from './Button';
+import Icon from './Icon';
 
 class Tag extends Component {
   static propTypes = {
@@ -11,7 +13,7 @@ class Tag extends Component {
     ])
   }
 
-  handleRemoveClick = () => this.props.onRemove && this.props.onRemove(this.props.value)
+  handleRemoveClick = () => this.props.onRemove && this.props.onRemove(this.props.value);
 
   render() {
     return (
@@ -25,7 +27,12 @@ class Tag extends Component {
             className={styles.TagRemove}
             color={Button.color.CUSTOM}
             onClick={this.handleRemoveClick}
-          />
+          >
+            <Icon
+              className={styles.TagRemoveIcon}
+              type={Icon.TYPE.CLOSE}
+            />
+          </Button>
         )}
       </div>
     )

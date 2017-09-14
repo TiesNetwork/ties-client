@@ -6,6 +6,7 @@ class Icon extends Component {
 
   static TYPE = {
     ADD_CONTACT: 'AddContact',
+    CLOSE: 'Close',
     CONTACTS: 'Contacts',
     COPY: 'Copy',
     DELETE_CONTACT: 'DeleteContact',

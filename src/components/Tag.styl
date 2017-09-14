@@ -2,31 +2,35 @@ color-tag-background = rgba(0, 0, 0, .10)
 color-tag-text = rgba(0, 0, 0, .43)
 color-tag-text-hover = rgba(0, 0, 0, .87)
 
-.Tag
-  background: color-tag-background
-  display: flex
-  height: 24px
-  white-space: nowrap
+.Tag {
+  background: color-tag-background;
+  display: flex;
+  height: 24px;
+  white-space: nowrap;
+}
 
-.TagRemove
-  background-color: color-tag-text
-  border: 0
-  flex: 0 0 16px
-  height: 100%
+.TagRemove {
+  border: 0;
+  display: flex;
+  flex: 0 0 16px;
+  height: 100%;
+  justify-content: center;
   min-width: auto
   padding: 0
-  width: 16px
+  width: 16px;
 
-  //mask: url(images/close.svg)
-  mask-position: center center
-  mask-repeat: no-repeat
+  &:hover {
+    .TagRemoveIcon {
+      background-color: rgba(0, 0, 0, .87) !important; // @todo - crutch
+    }
+  }
+}
 
-  //-webkit-mask: url(images/close.svg)
-  -webkit-mask-position: center center
-  -webkit-mask-repeat: no-repeat
-
-  &:hover
-    background-color: rgba(0, 0, 0, .87)
+.TagRemoveIcon {
+  background-color: rgba(0, 0, 0, .43) !important; // @todo - crutch
+  height: 8px !important; // @todo - crutch
+  width: 8px !important; // @todo - crutch
+}
 
 .TagTitle
   color: color-tag-text
