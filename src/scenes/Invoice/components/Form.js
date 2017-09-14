@@ -46,6 +46,7 @@ const mapStateToProps = (state, { location }) => {
     return {
       initialValues: {
         address: user.address,
+        currency: 'TIE',
         recipient: user
       }
     }
