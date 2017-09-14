@@ -6,7 +6,7 @@
 /package-lock.json
 /app/dist/
 /app/dll
-/app/main.prod.js
+/app/main.prod.*
 /app/node_modules
 /release
 
