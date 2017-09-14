@@ -29,10 +29,16 @@ class Header extends Component {
     return (
       <div className={styles.Header}>
         <div className={styles.HeaderLogo}>
-          <Icon
-            className={styles.HeaderLogoIcon}
-            type={Icon.TYPE.LOGO}
-          />
+          <Button
+            className={styles.HeaderLogoButton}
+            color={Button.COLOR.CUSTOM}
+            onClick={() => history.push(`/user/${user.address}`)}
+          >
+            <Icon
+              className={styles.HeaderLogoIcon}
+              type={Icon.TYPE.LOGO}
+            />
+          </Button>
         </div>
 
         {balance && (
