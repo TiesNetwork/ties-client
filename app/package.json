@@ -5,7 +5,7 @@
     "url": "https://ties.network"
   },
   "dependencies": {
-    "@ties-network/ties-client-base": "^1.2.23",
+    "@ties-network/ties-client-base": "^1.2.24",
     "glob": "^7.1.2"
   },
   "main": "./main.prod.js",

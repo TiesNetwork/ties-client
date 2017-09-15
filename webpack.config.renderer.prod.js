@@ -51,7 +51,7 @@ export default webpackMerge(baseConfig, {
   output: {
     filename: 'renderer.prod.js',
     path: path.join(__dirname, 'app/dist'),
-    publicPath: '../dist/'
+    publicPath: './dist/'
   },
 
   plugins: [
