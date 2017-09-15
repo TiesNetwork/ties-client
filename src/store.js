@@ -1,3 +1,4 @@
+import { remote } from 'electron';
 import { goBack, push, replace, routerMiddleware, routerReducer } from 'react-router-redux'
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { reducer as formReducer } from 'redux-form'
@@ -35,6 +36,12 @@ const clientMiddleware = store => next => action => {
       result => next({ ...action, type: RESOLVED }),
       error => {
         console.error(error);
+
+        const errorString = error.toString();
+
+        errorString.toLowerCase().indexOf('user cancelled') == -1 &&
+        remote.dialog.showErrorBox('', errorString.replace('Error: ', ''));
+
         next({ action, type: REJECTED });
       }
     );

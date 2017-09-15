@@ -2,6 +2,12 @@
   "env": {
     "development": {
       "plugins": [
+        ["react-transform", {
+          "transforms": [{
+            "imports": [ "react", "redbox-react"],
+            "transform": "react-transform-catch-errors"
+          }]
+        }],
         "transform-class-properties",
         "transform-es2015-classes"
       ]

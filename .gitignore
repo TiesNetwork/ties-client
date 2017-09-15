@@ -4,9 +4,10 @@
 /node_modules
 /npm-debug.log*
 /package-lock.json
-/app/dist/
+/app/dist
 /app/dll
 /app/main.prod.*
 /app/node_modules
+/app/package-lock.json
 /release
 

@@ -1,11 +1,8 @@
-/** Actions **/
-import { closeModal } from '../../../services/modals';
-
 /** Components **/
 import Button from '../../Button';
 import Form, { Actions, Input } from '../../Form';
 
-function PromptForm({ handleCancelClick, handleSubmit, input }) {
+function PromptForm({ handleSubmit, input, onClose, submitting }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Input {...input}
@@ -16,12 +13,15 @@ function PromptForm({ handleCancelClick, handleSubmit, input }) {
       <Actions>
         <Button
           color={Button.COLOR.SECONDARY}
-          onClick={handleCancelClick}
+          onClick={onClose}
         >
           Cancel
         </Button>
 
-        <Button type="submit">
+        <Button
+          disabled={submitting}
+          type="submit"
+        >
           Ok
         </Button>
       </Actions>
@@ -33,10 +33,6 @@ const mapStateToProps = state => ({
   input: state.services.modals.prompt.input
 });
 
-const mapDispatchToProps = dispatch => ({
-  handleCancelClick: () => dispatch(closeModal('prompt'))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+export default connect(mapStateToProps)(reduxForm({
   form: 'PromptForm'
 })(PromptForm));

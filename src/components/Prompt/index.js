@@ -6,6 +6,13 @@ import Modal from '../Modal';
 import PromptForm from './components/Form';
 
 class Prompt extends Component {
+  handleClose = () => {
+    const { dispatch, onSubmit } = this.props;
+
+    dispatch(closeModal('prompt'));
+    onSubmit && onSubmit(false);
+  }
+
   handleSubmit = values => {
     const { dispatch, onSubmit } = this.props;
 
@@ -24,7 +31,10 @@ class Prompt extends Component {
           </div>
         )}
 
-        <PromptForm onSubmit={this.handleSubmit} />
+        <PromptForm
+          onClose={this.handleClose}
+          onSubmit={this.handleSubmit}
+        />
       </Modal>
     )
   }

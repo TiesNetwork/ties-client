@@ -2,7 +2,7 @@
 import Button from '../../../../../components/Button';
 import Form, { Actions, Group, Input, Select, Recipients } from '../../../../../components/Form';
 
-function TransferSendForm({ initialValues, invalid, handleSubmit, history, submitting }) {
+function TransferSendForm({ initialValues, handleSubmit, history, submitting }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Recipients label="Recipients:" name="recipient" />
@@ -21,13 +21,14 @@ function TransferSendForm({ initialValues, invalid, handleSubmit, history, submi
       <Actions>
         <Button
           color={Button.COLOR.SECONDARY}
+          disabled={submitting}
           onClick={() => history.goBack()}
         >
           Cancel
         </Button>
 
         <Button
-          disabled={invalid || submitting}
+          disabled={submitting}
           type="submit"
         >
           Send

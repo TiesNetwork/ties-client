@@ -1,3 +1,4 @@
+// @flow
 import { app, Menu, shell, BrowserWindow } from 'electron';
 
 export default class MenuBuilder {
@@ -130,7 +131,7 @@ export default class MenuBuilder {
       }]
     }, {
       label: '&View',
-      submenu: (process.env.NODE_ENV !== 'development') ? [{
+      submenu: (process.env.NODE_ENV === 'development') ? [{
           label: '&Reload',
           accelerator: 'Ctrl+R',
           click: () => {
