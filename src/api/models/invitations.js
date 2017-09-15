@@ -8,7 +8,7 @@ class Invitations {
    */
   static async get() {
     const code = await Client.user.invitationGetLast();
-    const isActive = await Client.user.invitationCheck(code);
+    const isActive = code && await Client.user.invitationCheck(code);
 
     return isActive && code;
   }
