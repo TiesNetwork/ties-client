@@ -45,7 +45,7 @@ const SignRecovery = ({ history, wallet }) => (
 
     <div className={styles.SignRecoveryBlock}>
       <strong>Attention!</strong> Keep your phrase safe!
-      Its lose will result in lose of access to your account and lose of money
+      Its loss will result in lose of access to your account and lose of money
     </div>
 
     <div className={styles.SignRecoveryActions}>
