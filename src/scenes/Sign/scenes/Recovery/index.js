@@ -36,6 +36,8 @@ const SignRecovery = ({ history, wallet }) => (
                 </div>
               ))}
             </div>
+
+            <Copy label="Copy phrase" value={wallet.phrase} />
           </div>
         )}
       </div>

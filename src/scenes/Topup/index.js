@@ -14,6 +14,10 @@ function Topup({ address, handleSubmit }) {
           You can send ETH, TIE and other tokens to the following address using any Ethereum Wallet
         </div>
 
+        <div className={styles.TopupAttention}>
+          ATTENTION! This address is on the Ethereum Kovan testnet. Do not send real ether from mainnet to this address!
+        </div>
+
         <Copy value={address} />
       </div>
 

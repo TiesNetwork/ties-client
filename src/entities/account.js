@@ -15,7 +15,9 @@ export const updateTransfers = payload => ({ type: UPDATE_TRANSFERS, payload });
 
 export default (state = {
   address: null,
-  balance: null,
+  balance: {
+    TIE: null
+  },
   id: null,
   invitationCode: null,
   transfers: null

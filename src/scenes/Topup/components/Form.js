@@ -28,6 +28,12 @@ function TopupForm({ handleSubmit, history, invalid, submitting}) {
   );
 }
 
-export default reduxForm({
+const mapStateToProps = state => ({
+  initialValues: {
+    code: !state.entities.account.balance.TIE ? 'GETMYTIES' : ''
+  }
+});
+
+export default withRouter(connect(mapStateToProps)(reduxForm({
   form: 'TopupForm'
-})(withRouter(TopupForm));
+})(TopupForm)));

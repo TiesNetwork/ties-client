@@ -30,21 +30,6 @@ class UserContacts extends Component {
             {contacts.map(address => <User address={address} key={address} />)}
           </div>
         )}
-
-        {isCurrentUser && (
-          <div className={styles.UserContactsInvitation}>
-            <div className={styles.UserContactsInvitationTitle}>
-              You can invite your friends to <strong>Ties.Network</strong>
-            </div>
-
-            <Button
-              className={styles.UserContactsInvitationAction}
-              onClick={() => history.push('/invitation')}
-            >
-              Generate invitation code
-            </Button>
-          </div>
-        )}
       </Block>
     );
   }

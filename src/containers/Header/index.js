@@ -48,11 +48,13 @@ class Header extends Component {
           </div>
         )}
 
-        <div className={styles.HeaderTopup}>
-          <Button onClick={() => history.push('/topup')}>
-            Topup
-          </Button>
-        </div>
+        {balance && (
+          <div className={styles.HeaderTopup}>
+            <Button onClick={() => history.push('/topup')}>
+              Topup
+            </Button>
+          </div>
+        )}
 
         <div className={styles.HeaderSearch}>
           <Button
