@@ -16,10 +16,8 @@ const EditPersonalForm = ({ handleSubmit, invalid, photo, submitting }) => (
       <File
         accept="image/*"
         className={styles.EditPersonalFormAvatarControl}
-        converter={File.CONVERTER.HEX}
         label="Upload photo"
         name="photo"
-        toBuffer={true}
       />
     </div>
 

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@ties-network/ties-client-base": "^1.2.22",
+    "canvas-to-buffer": "^1.0.9",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
@@ -88,6 +89,7 @@
     "electron-builder": "^19.27.7",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
+    "electron-rebuild": "^1.6.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "fbjs-scripts": "^0.8.1",
     "file-loader": "^0.11.2",

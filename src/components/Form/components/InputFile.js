@@ -1,26 +1,4 @@
-const FileConverters = {
-  DEFAULT: (files, toBuffer, callback) => {
-    callback && callback(files)
-  },
-  HEX: (files, toBuffer, callback) => {
-    const fileReader = new FileReader()
-
-    fileReader.addEventListener('load', () => {
-      let intArray = new Uint8Array(fileReader.result)
-        , bufferArray = new Array(intArray.length)
-        , i = intArray.length
-
-      while(i--) {
-        bufferArray[i] = `${toBuffer ? '0x' : ''}${(intArray[i] < 16 ? '0' : '') + intArray[i].toString(16)}`
-      }
-
-      callback && callback(toBuffer ? Buffer.from(bufferArray, 'hex') : `0x${bufferArray.join('')}`)
-      bufferArray = intArray = i = null
-    })
-
-    fileReader.readAsArrayBuffer(files[0])
-  }
-}
+import Frame from 'canvas-to-buffer';
 
 class File extends Component {
   static propTypes = {
@@ -33,14 +11,45 @@ class File extends Component {
     toBuffer: PropTypes.bool
   }
 
-  static defaultProps = {
-    converter: FileConverters.DEFAULT,
-    toBuffer: false
+  handleChange = event => {
+    const MAX_WIDTH = 200;
+    const MAX_HEIGHT = 200;
+
+    const file = event.target.files[0];
+    const img = document.createElement('img');
+    const reader = new FileReader();
+
+    img.onload = event => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const frame = new Frame(canvas);
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > MAX_WIDTH) {
+          height *= MAX_WIDTH / width;
+          width = MAX_WIDTH;
+        }
+      } else {
+        if (height > MAX_HEIGHT) {
+          width *= MAX_HEIGHT / height;
+          height = MAX_HEIGHT;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.drawImage(img, 0, 0, width, height);
+
+      this.props.onChange && this.props.onChange(frame.toBuffer());
+    };
+
+    reader.onload = event => { img.src = event.target.result; };
+    reader.readAsDataURL(file);
   }
-
-  static CONVERTER = FileConverters
-
-  handleChange = event => this.props.converter(event.target.files, this.props.toBuffer, this.props.onChange)
 
   render() {
     return (
